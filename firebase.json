@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "godly-seed-parenting",
+      "public": "dist/godly-seed-parenting",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

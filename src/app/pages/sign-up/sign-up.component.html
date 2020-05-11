@@ -1,0 +1,88 @@
+<!-- <form [formGroup]="signUpForm">
+    <input type="text" formControlName="firstName" name="firstname" placeholder="First Name">
+    <input type="text" name="lastname" formControlName="lastName" placeholder="Last Name">
+    <input type="text" name="email" formControlName="email" placeholder="Email">
+    <input type="password" name="password" formControlName="password" placeholder="Password">
+    <input type="password" name="confirm_pass" formControlName="confirmPassword" placeholder="Confirm Password">
+    <button type="button" (click)="register()">Submit</button>
+</form> -->
+
+<div class="wrapper" style="background-image: url('../../../assets/images/1.jpg');">
+    <div class="inner">
+        <div class="image-holder">
+            <img src="../../../assets/images/2.jpg" alt="">
+        </div>
+        <form [formGroup]="signUpForm">
+            <h3>Registration Form</h3>
+            <div class="form-group">
+                <input type="text" formControlName="firstName" placeholder="First Name" class="form-control"
+                [class.invalid]="signUpForm.controls.firstName.invalid && (submitAttempt || signUpForm.controls.firstName.touched || signUpForm.controls.firstName.dirty)">
+                <input type="text" formControlName="lastName" placeholder="Last Name" class="form-control"
+                [class.invalid]="signUpForm.controls.lastName.invalid && (submitAttempt || signUpForm.controls.lastName.touched || signUpForm.controls.lastName.dirty)">
+            </div>
+
+            <div class="error-message">
+                <p *ngIf="!signUpForm.controls.firstName.valid && (submitAttempt || signUpForm.controls.firstName.touched || signUpForm.controls.firstName.dirty)">
+                    First Name is Required
+                </p>
+                <p *ngIf="signUpForm.controls.lastName.invalid && (submitAttempt || signUpForm.controls.lastName.touched || signUpForm.controls.lastName.dirty)">
+                    Last name is Required
+                </p>
+            </div>
+
+            <div class="form-wrapper">
+                <input type="text" formControlName="email" placeholder="Email Address" class="form-control"
+                [class.invalid]="signUpForm.controls.email.invalid && (submitAttempt || signUpForm.controls.email.touched || signUpForm.controls.email.dirty)">
+            </div>
+            <div class="error-message">
+                <p *ngIf="signUpForm.controls.email.invalid && (submitAttempt || signUpForm.controls.email.dirty || signUpForm.controls.email.touched)">
+                    Email is required or invalid
+                </p>
+            </div>
+
+            <div class="form-wrapper">
+                <select name="" formControlName="gender" id="" class="form-control"
+                [class.invalid]="signUpForm.controls.gender.invalid && (submitAttempt || signUpForm.controls.gender.touched || signUpForm.controls.gender.dirty)">
+                    <option value="" disabled selected>Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="error-message">
+                <p *ngIf="signUpForm.controls.gender.invalid && (submitAttempt || signUpForm.controls.gender.touched || signUpForm.controls.gender.dirty)">
+                    Gender is required
+                </p>
+            </div>
+
+            <div class="form-wrapper">
+                <input type="password" formControlName="password" placeholder="Password" class="form-control"
+                [class.invalid]="signUpForm.controls.password.invalid && (submitAttempt || signUpForm.controls.password.touched || signUpForm.controls.password.dirty)">
+            </div>
+
+            <div class="error-message">
+                <p *ngIf="signUpForm.controls.password.invalid && (submitAttempt || signUpForm.controls.password.touched || signUpForm.controls.password.dirty)">
+                    Password is required
+                </p>
+            </div>
+
+            <div class="form-wrapper">
+                <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" class="form-control"
+                [class.invalid]="signUpForm.controls.confirmPassword.invalid && (submitAttempt || signUpForm.controls.confirmPassword.dirty || signUpForm.controls.confirmPassword.touched)">
+            </div>
+
+            <div class="error-message">
+
+                <p *ngIf="signUpForm.controls.password.value != signUpForm.controls.confirmPassword.value">
+                    Password and Confirm Password Fields Don't Match
+                </p>
+                <p *ngIf="signUpForm.controls.confirmPassword.invalid && (submitAttempt || signUpForm.controls.confirmPassword.touched || signUpForm.controls.confirmPassword.dirty)">
+                    Confirm Password is required
+                </p>
+            </div>
+
+            <button (click)="register()" >Register</button>
+        </form>
+    </div>
+</div>

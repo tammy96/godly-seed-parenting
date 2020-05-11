@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "godly-seed-parenting-bf240": {
+      "hosting": {
+        "godly-seed-parenting": [
+          "godly-seed-parenting-bf240"
+        ]
+      }
+    }
+  }
+}

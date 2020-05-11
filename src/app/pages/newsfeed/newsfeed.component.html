@@ -1,0 +1,160 @@
+<nav id="desktopNav">
+    <fa-icon class="fa fa-bars" [icon]="faBars"></fa-icon>
+    <!-- <i class="fa fa-bars"></i> -->
+      <ul>
+
+        <li><a href=""><img src="../../../assets/images/logo.jpg" class="logo" alt=""></a></li>
+      </ul>
+
+      <form class="" action="index.html" method="post">
+        <input type="text" name="" placeholder="Search post here....">
+        <button type="button" name="button">
+          <fa-icon class="fa fa-search" [icon]="faSearch"></fa-icon>
+          <!-- <i class="fa fa-search"></i> -->
+        </button>
+      </form>
+
+    <ul class="menu">
+      <li><a routerLink="/home" routerLinkActive="forum" class="nav-item">Home</a></li>
+      <li><a routerLink="/about" routerLinkActive="forum" class="nav-item">About Us</a></li>
+      <li><a routerLink="/newsfeed" routerLinkActive="forum" class="nav-item">New Feed</a></li>
+      <li><a routerLink="/events" routerLinkActive="forum" class="nav-item">Events</a></li>
+      <li><a routerLink="/forum" routerLinkActive="forum">Forum</a></li>
+
+    </ul>
+  </nav>
+
+  <nav id="phoneNav">
+
+    <ul>
+      <li><img src="../../../assets/images/customer3.png" alt=""></li>
+      <span><b>Home</b></span>
+    </ul>
+
+    <ul class="icons">
+      <li>
+        <fa-icon class="fa fa-search" [icon]="faSearch"></fa-icon>
+        <!-- <i class="fa fa-search"></i> -->
+      </li>
+      <li>
+        <fa-icon class="fa fa-plus" [icon]="faPlus"></fa-icon>
+        <!-- <i class="fa fa-plus"></i> -->
+      </li>
+    </ul>
+  </nav>
+
+  <nav id="bottomNav">
+    <ul>
+      <li>
+        <a routerLink="/home" class="active">
+          <fa-icon class="fa fa-home" [icon]="faHome"></fa-icon>
+          <!-- <i class="fa fa-home"></i> -->
+          <p>Home</p>
+      </a>
+      </li>
+
+      <li>
+        <fa-icon class="fa fa-newspaper" [icon]="faNewspaper"></fa-icon>
+        <!-- <i class="fa fa-newspaper"></i> -->
+        <p>New feed</p>
+      </li>
+
+      <li>
+        <a routerLink="/forum">
+          <fa-icon class="fa fa-comment" [icon]="faComment"></fa-icon>
+          <!-- <i class="fa fa-comment"></i> -->
+          <p>Forum</p>
+        </a>
+      </li>
+
+      <li>
+        <fa-icon class="fa fa-calendar" [icon]="faCalendar"></fa-icon>
+        <!-- <i class="fa fa-calendar"></i> -->
+        <p>Events</p>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="content-div">
+
+    <div class="ind-content">
+
+        <img src="../../../assets/images/profilePic.jpg" class="user-avatar" alt="">
+        <b>Ingowari Daniel</b>
+        <span class="timespan"> 1 day ago</span>
+      <h3>Introducing Your Child To Christ</h3>
+      <div class="seperator"></div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+         nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+         reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+         pariatur. Excepteur sint occaecat cupidatat non proident,
+         sunt in culpa qui officia deserunt mollit anim id est laborum.....</p>
+         <img src="../../../assets/images/2.jpg" class="postImg" alt="">
+         <img src="../../../assets/images/2.jpg" class="postImg" alt="">
+         <div class="post-details">
+           <span> 5 likes</span>
+           <span>10 Comments</span>
+         </div>
+         <hr>
+         <div class="post-actions">
+           <!-- <i class="fa fa-thumbs-up"></i>--> 
+           <fa-icon class="fa fa-thumbs-up" [icon]="faThumbsUp"></fa-icon><span class="action">Like</span> 
+           <!-- <i class="fa fa-comment"></i> -->
+           <fa-icon class="fa fa-comment" [icon]="faComment"></fa-icon><span class="action">Comment</span>
+
+         </div>
+
+         <div class="comment-section">
+           <img src="../../../assets/images/customer3.png" alt="">
+           <form>
+             <input type="text" placeholder="Write a comment">
+           </form>
+         </div>
+
+    </div>
+
+    <div class="ind-content">
+
+        <img src="../../../assets/images/customer2.png" class="user-avatar" alt="">
+        <b>John Doe</b>
+        <span class="timespan"> 1 day ago</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+           nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+           pariatur. Excepteur sint occaecat cupidatat non proident,
+           sunt in culpa qui officia deserunt mollit anim id est laborum.....</p>
+        <div class="showcase">
+            <img src="../../../assets/images/hero.jpg" alt="">
+            <div class="overlay">
+              <fa-icon class="fa fa-play fa-4x" [icon]="faPlay"></fa-icon>
+              <!-- <i class="fa fa-play fa-4x"></i> -->
+            </div>
+        </div>
+
+         <div class="post-details">
+           <span> 5 likes</span>
+           <span>10 Comments</span>
+         </div>
+         <hr>
+         <div class="post-actions">
+           <!-- <i class="fa fa-thumbs-up"></i>--> 
+           <fa-icon class="fa fa-thumbs-up" [icon]="faThumbsUp"></fa-icon><span class="action">Like</span> 
+           <!-- <i class="fa fa-comment"></i> -->
+           <fa-icon class="fa fa-comment" [icon]="faComment"></fa-icon><span class="action">Comment</span>
+
+         </div>
+
+         <div class="comment-section">
+           <img src="../../../assets/images/customer3.png" alt="">
+           <form>
+             <input type="text" placeholder="Write a comment">
+           </form>
+         </div>
+
+    </div>
+
+  </div>
