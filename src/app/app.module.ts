@@ -28,6 +28,7 @@ import { ViewPostsComponent } from './pages/view-posts/view-posts.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { EditPostComponent } from './pages/edit-post/edit-post.component';
     ViewPostsComponent,
     UserDetailComponent,
     PostDetailsComponent,
-    EditPostComponent
+    EditPostComponent,
+    FormsModule
   ],
   imports: [
     BrowserModule,
