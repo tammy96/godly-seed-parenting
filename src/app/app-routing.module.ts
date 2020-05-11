@@ -11,6 +11,8 @@ import { AddBlogComponent } from './pages/add-blog/add-blog.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { UsersComponent } from './pages/users/users.component';
+import { ViewPostsComponent } from './pages/view-posts/view-posts.component';
+import { DiscussionComponent } from './pages/discussion/discussion.component';
 
 
 const routes: Routes = [
@@ -25,7 +27,9 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, children: [
     {path: '', redirectTo: 'upload', pathMatch: 'full'},
     {path: 'upload', component: AddBlogComponent},
-    {path: 'users', component: UsersComponent}
+    {path: 'posts', component: ViewPostsComponent},
+    {path: 'users', component: UsersComponent},
+    {path: 'discussions', component: DiscussionComponent}
   ]},
   {path: '**', redirectTo: '404', pathMatch: 'full'},
   {path: '404', component: NotFoundComponent}

@@ -6,8 +6,8 @@
         <li><a href=""><img src="../../../assets/images/logo.jpg" class="logo" alt=""></a></li>
       </ul>
 
-      <form class="" action="index.html" method="post">
-        <input type="text" name="" placeholder="Search post here....">
+      <form [formGroup]="search">
+        <input type="text" formControlName="searchInput" name="" placeholder="Search post here....">
         <button type="button" name="button">
           <fa-icon class="fa fa-search" [icon]="faSearch"></fa-icon>
           <!-- <i class="fa fa-search"></i> -->
@@ -108,9 +108,7 @@
 
          <div class="comment-section">
            <img src="../../../assets/images/customer3.png" alt="">
-           <form>
              <input type="text" placeholder="Write a comment">
-           </form>
          </div>
 
     </div>
@@ -150,9 +148,7 @@
 
          <div class="comment-section">
            <img src="../../../assets/images/customer3.png" alt="">
-           <form>
              <input type="text" placeholder="Write a comment">
-           </form>
          </div>
 
     </div>

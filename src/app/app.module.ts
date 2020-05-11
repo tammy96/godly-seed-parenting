@@ -23,6 +23,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UsersComponent } from './pages/users/users.component';
+import { DiscussionComponent } from './pages/discussion/discussion.component';
+import { ViewPostsComponent } from './pages/view-posts/view-posts.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { UsersComponent } from './pages/users/users.component';
     EventsComponent,
     LoginComponent,
     SignUpComponent,
-    UsersComponent
+    UsersComponent,
+    DiscussionComponent,
+    ViewPostsComponent
   ],
   imports: [
     BrowserModule,

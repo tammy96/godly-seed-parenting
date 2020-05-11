@@ -1,17 +1,56 @@
-<ul class="nav nav-pills nav-fill">
-    <li class="nav-item">
-      <a class="nav-link active" routerLink="/admin/upload" routerLinkActive="active">Upload</a>
+<nav>
+	<ul class="left">
+		<li><i class="fa fa-bars"></i></li>
+		<li>LOGO</li>
+	</ul>
+
+	<ul class="right">
+		<li>
+      <fa-icon [icon]="faBell" class="fa fa-bell"></fa-icon><span>3</span>
+      <!-- <i class="fa fa-bell"><span>3</span></i> -->
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/admin/users" routerLinkActive="active">Users</a>
+		<li>
+      <fa-icon [icon]="faEnvelope" class="fa fa-envelope"><span>2</span></fa-icon>
+      <!-- <i class="fa fa-envelope"><span>2</span></i> -->
     </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLinkActive="active" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-    </li>
-  </ul>
-<div>
-    <router-outlet></router-outlet>
+		<li><img src="../../../assets/images/male.jpg"></li>
+		<li class="name">Admin</li>
+	</ul>	
+</nav>
+
+<div class="content">
+
+  <a routerLink="/admin/users">
+    <div class="propDiv">
+      <fa-icon [icon]="faUsers" class="fa fa-users"></fa-icon>
+      <!-- <i class="fa fa-users"></i> -->
+      <h3>54</h3>
+      <p>Total Users</p>
+    </div>
+  </a>
+
+  <a routerLink="/admin/posts">
+    <div class="propDiv">
+      <fa-icon [icon]="faNewspaper" class="fa fa-newspaper"></fa-icon>
+      <!-- <i class="fa fa-newspaper"></i> -->
+      <h3>150</h3>
+      <p>Posts</p>
+    </div>
+  </a>
+
+
+  <a routerLink="/admin/discussions">
+    <div class="propDiv">
+      <fa-icon [icon]="faComment" class="fa fa-comment"></fa-icon>
+      <!-- <i class="fa fa-comment"></i> -->
+      <h3>8</h3>
+      <p>Discussion Categories</p>
+    </div>
+  </a>
+
+	<div class="post-content">
+		<router-outlet></router-outlet>
+
+	</div>
 </div>
+

@@ -8,6 +8,7 @@ import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-newsfeed',
@@ -15,6 +16,8 @@ import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./newsfeed.component.css']
 })
 export class NewsfeedComponent implements OnInit {
+
+  search: FormGroup;
 
   //FONT AWESOME ICON VARIABLES
   faBars = faBars;
@@ -27,7 +30,11 @@ export class NewsfeedComponent implements OnInit {
   faPlay = faPlay;
   faNewspaper = faNewspaper;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { 
+    this.search = this.fb.group({
+      searchInput: ['']
+    })
+  }
 
   ngOnInit(): void {
   }
