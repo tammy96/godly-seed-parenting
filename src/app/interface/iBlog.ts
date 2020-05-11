@@ -1,7 +1,7 @@
 export interface IBlog {
     id?: string,
     title: string,
-    message: string,
+    body: string,
     imageUrl: string,
     file: string,
     createdAt: number

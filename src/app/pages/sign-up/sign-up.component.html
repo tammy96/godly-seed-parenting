@@ -1,5 +1,5 @@
 <!-- <form [formGroup]="signUpForm">
-    <input type="text" formControlName="firstName" name="firstname" placeholder="First Name">
+    <input type="text" formControlName="name" name="firstname" placeholder="First Name">
     <input type="text" name="lastname" formControlName="lastName" placeholder="Last Name">
     <input type="text" name="email" formControlName="email" placeholder="Email">
     <input type="password" name="password" formControlName="password" placeholder="Password">
@@ -14,19 +14,14 @@
         </div>
         <form [formGroup]="signUpForm">
             <h3>Registration Form</h3>
-            <div class="form-group">
-                <input type="text" formControlName="firstName" placeholder="First Name" class="form-control"
-                [class.invalid]="signUpForm.controls.firstName.invalid && (submitAttempt || signUpForm.controls.firstName.touched || signUpForm.controls.firstName.dirty)">
-                <input type="text" formControlName="lastName" placeholder="Last Name" class="form-control"
-                [class.invalid]="signUpForm.controls.lastName.invalid && (submitAttempt || signUpForm.controls.lastName.touched || signUpForm.controls.lastName.dirty)">
+            <div class="form-wrapper">
+                <input type="text" formControlName="name" placeholder="Full Name" class="form-control"
+                [class.invalid]="signUpForm.controls.name.invalid && (submitAttempt || signUpForm.controls.name.touched || signUpForm.controls.name.dirty)">
             </div>
 
             <div class="error-message">
-                <p *ngIf="!signUpForm.controls.firstName.valid && (submitAttempt || signUpForm.controls.firstName.touched || signUpForm.controls.firstName.dirty)">
+                <p *ngIf="!signUpForm.controls.name.valid && (submitAttempt || signUpForm.controls.name.touched || signUpForm.controls.name.dirty)">
                     First Name is Required
-                </p>
-                <p *ngIf="signUpForm.controls.lastName.invalid && (submitAttempt || signUpForm.controls.lastName.touched || signUpForm.controls.lastName.dirty)">
-                    Last name is Required
                 </p>
             </div>
 

@@ -1,1 +1,10 @@
-<p>view-posts works!</p>
+<div *ngIf="blogs">
+    <div *ngFor="let blog of blogs">
+        <a [routerLink]="blog.id">
+            <img [src]="blog.imageUrl" alt="Post Image">
+            <h2>{{blog.title}}</h2>
+            <p>{{blog.body}}</p>
+            <p>Date Created : {{blog.createdAt | date : 'medium'}}</p>
+        </a>
+    </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/services/admin.service';
+import { IBlog } from 'src/app/interface/iBlog';
 
 @Component({
   selector: 'app-view-posts',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewPostsComponent implements OnInit {
 
-  constructor() { }
+  blogs: IBlog[];
+
+  constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
+    this.adminService.blogs.subscribe(value => {
+      console.log(value)
+      this.blogs = value;
+    })
   }
 
 }

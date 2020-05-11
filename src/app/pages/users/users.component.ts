@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
+import { IUser } from 'src/app/interface/iUser';
 
 @Component({
   selector: 'app-users',
@@ -8,12 +9,12 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class UsersComponent implements OnInit {
 
-  usersArray: any[];
+  usersArray: IUser[];
   constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
-    this.usersService.usersCollection.valueChanges().subscribe((user) => {
-      this.usersArray = user;
+    this.usersService.getUsers().subscribe(value => {
+      this.usersArray = value;
     })
   }
 

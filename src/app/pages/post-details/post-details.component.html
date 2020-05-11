@@ -1,0 +1,5 @@
+<img [src]="blog.imageUrl" alt="Post Image">
+<h2>{{blog.title}}</h2>
+<p>{{blog.body}}</p>
+<p>Date Created : {{blog.createdAt | date : 'medium'}}</p>
+<button (click)="editPost()">Edit Post</button>

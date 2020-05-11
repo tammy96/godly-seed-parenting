@@ -27,6 +27,7 @@ export class AuthService {
 
   loginFacebook() {
     this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then((res) => {
+        console.log(res)
         this.addUserToDatabase(res)
     })
     .catch((err) => {
@@ -50,6 +51,10 @@ export class AuthService {
 
   createUserWithEmailPassword(email : string, password : string) : Promise<firebase.auth.UserCredential> {
     return this.afAuth.createUserWithEmailAndPassword(email, password);
+  }
+
+  logout() {
+    this.afAuth.signOut();
   }
 
 }

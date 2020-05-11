@@ -38,17 +38,17 @@ export class AdminService {
 
   // Add a new blog to the collection
   addBlog(data: IBlog) {
-    this.blogCollection.add(data);
+    return this.blogCollection.add(data);
   }
 
   // Get Specific blog from the collection with the doc id
-  getBlog(id) {
-    this.blogCollection.doc(id).valueChanges();
+  getBlog(id) : Observable<IBlog>{
+    return this.blogCollection.doc<IBlog>(id).valueChanges();
   }
 
   // Deletes a specific blog from the collection with the doc id
   deleteBlog(id) {
-    this.blogCollection.doc(id).delete();
+    return this.blogCollection.doc(id).delete();
   }
 
   // Updates the value/content of a blog in the collection

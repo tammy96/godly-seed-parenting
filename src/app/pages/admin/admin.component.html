@@ -24,7 +24,7 @@
     <div class="propDiv">
       <fa-icon [icon]="faUsers" class="fa fa-users"></fa-icon>
       <!-- <i class="fa fa-users"></i> -->
-      <h3>54</h3>
+      <h3 *ngIf="usersArray">{{usersArray.length}}</h3>
       <p>Total Users</p>
     </div>
   </a>
@@ -33,7 +33,7 @@
     <div class="propDiv">
       <fa-icon [icon]="faNewspaper" class="fa fa-newspaper"></fa-icon>
       <!-- <i class="fa fa-newspaper"></i> -->
-      <h3>150</h3>
+      <h3 *ngIf="blogsArray">{{blogsArray.length}}</h3>
       <p>Posts</p>
     </div>
   </a>

@@ -13,6 +13,9 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { UsersComponent } from './pages/users/users.component';
 import { ViewPostsComponent } from './pages/view-posts/view-posts.component';
 import { DiscussionComponent } from './pages/discussion/discussion.component';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { PostDetailsComponent } from './pages/post-details/post-details.component';
+import { EditPostComponent } from './pages/edit-post/edit-post.component';
 
 
 const routes: Routes = [
@@ -28,7 +31,10 @@ const routes: Routes = [
     {path: '', redirectTo: 'upload', pathMatch: 'full'},
     {path: 'upload', component: AddBlogComponent},
     {path: 'posts', component: ViewPostsComponent},
+    {path: 'posts/:id', component: PostDetailsComponent},
+    {path: 'posts/edit/:id', component: EditPostComponent},
     {path: 'users', component: UsersComponent},
+    {path: 'users/:id', component: UserDetailComponent},
     {path: 'discussions', component: DiscussionComponent}
   ]},
   {path: '**', redirectTo: '404', pathMatch: 'full'},

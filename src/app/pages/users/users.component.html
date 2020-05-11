@@ -1,5 +1,7 @@
 <div *ngIf="usersArray">
     <ul *ngFor="let users of usersArray">
-        <li>{{users.displayName }}</li>
+        <a [routerLink]="users.id">
+            <li>{{ users.name }}</li>
+        </a>
     </ul>
 </div>

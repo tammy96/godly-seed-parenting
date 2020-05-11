@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faBell,  faBars, faEnvelope, faComment, faNewspaper, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { UsersService } from 'src/app/services/users.service';
+import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,6 +10,8 @@ import { faBell,  faBars, faEnvelope, faComment, faNewspaper, faUsers } from "@f
 })
 export class AdminComponent implements OnInit {
 
+  usersArray: any[];
+  blogsArray: any[];
   // Font Awesome Icon Variables
 
   faBell = faBell;
@@ -16,9 +20,15 @@ export class AdminComponent implements OnInit {
   faComment = faComment;
   faNewspaper = faNewspaper;
   faUsers = faUsers;
-  constructor() { }
+  constructor(private usersService: UsersService, private adminService: AdminService) { }
 
   ngOnInit(): void {
+    this.usersService.getUsers().subscribe(value => {
+      this.usersArray = value;
+    })
+    this.adminService.getBlogs().subscribe(value => {
+      this.blogsArray = value;
+    })
   }
 
 }

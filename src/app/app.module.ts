@@ -25,6 +25,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UsersComponent } from './pages/users/users.component';
 import { DiscussionComponent } from './pages/discussion/discussion.component';
 import { ViewPostsComponent } from './pages/view-posts/view-posts.component';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
+import { PostDetailsComponent } from './pages/post-details/post-details.component';
+import { EditPostComponent } from './pages/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { ViewPostsComponent } from './pages/view-posts/view-posts.component';
     SignUpComponent,
     UsersComponent,
     DiscussionComponent,
-    ViewPostsComponent
+    ViewPostsComponent,
+    UserDetailComponent,
+    PostDetailsComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,
