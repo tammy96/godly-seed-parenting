@@ -44,8 +44,8 @@ export class LoginComponent implements OnInit {
           }else {
             this.router.navigateByUrl('/newsfeed')
           }
-        })
-      })
+        }).catch(err => console.log(err))
+      }).catch(err => console.log(err))
     } else {
       console.log('Form Not Valid')
     }
