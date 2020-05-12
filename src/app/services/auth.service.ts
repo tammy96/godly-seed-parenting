@@ -1,6 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from "@angular/fire/firestore";
+import { AngularFireFunctions } from "@angular/fire/functions";
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -10,7 +11,9 @@ import 'firebase/auth';
 })
 export class AuthService {
 
-  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { }
+  constructor(private afAuth: AngularFireAuth, 
+    private afs: AngularFirestore,
+    private fns: AngularFireFunctions) { }
 
   addUserToDatabase(userData: firebase.auth.UserCredential) {
     this.afs.collection('users').doc(userData.user.uid).set({

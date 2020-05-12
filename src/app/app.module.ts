@@ -1,15 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AngularFireModule } from '@angular/fire';
 import { AppRoutingModule } from './app-routing.module';
+
+import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireStorageModule } from "@angular/fire/storage";
+import { AngularFireFunctionsModule } from "@angular/fire/functions";
 import { AngularFireMessagingModule } from "@angular/fire/messaging";
-import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+
+import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NewsfeedComponent } from './pages/newsfeed/newsfeed.component';
@@ -21,14 +27,12 @@ import { AboutComponent } from './pages/about/about.component';
 import { EventsComponent } from './pages/events/events.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { UsersComponent } from './pages/users/users.component';
 import { DiscussionComponent } from './pages/discussion/discussion.component';
 import { ViewPostsComponent } from './pages/view-posts/view-posts.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
-import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -49,7 +53,7 @@ import { FormsModule } from "@angular/forms";
     UserDetailComponent,
     PostDetailsComponent,
     EditPostComponent,
-    FormsModule
+    
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,8 @@ import { FormsModule } from "@angular/forms";
     AngularFireStorageModule,
     AngularFireMessagingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

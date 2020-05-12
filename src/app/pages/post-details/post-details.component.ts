@@ -29,4 +29,11 @@ export class PostDetailsComponent implements OnInit {
     this.router.navigateByUrl(`/admin/posts/edit/${this.id}`)
   }
 
+  deletePost() {
+    this.adminService.deleteBlog(this.id).then(() => {
+      alert('Post Deleted');
+      this.router.navigateByUrl('/admin/upload')
+    });
+  }
+
 }
