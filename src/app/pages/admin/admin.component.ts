@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faBell,  faBars, faEnvelope, faComment, faNewspaper, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { UsersService } from 'src/app/services/users.service';
 import { AdminService } from 'src/app/services/admin.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -20,7 +21,9 @@ export class AdminComponent implements OnInit {
   faComment = faComment;
   faNewspaper = faNewspaper;
   faUsers = faUsers;
-  constructor(private usersService: UsersService, private adminService: AdminService) { }
+  constructor(private usersService: UsersService, 
+    private adminService: AdminService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.usersService.getUsers().subscribe(value => {
@@ -29,6 +32,9 @@ export class AdminComponent implements OnInit {
     this.adminService.getBlogs().subscribe(value => {
       this.blogsArray = value;
     })
+  }
+  logout() {
+    this.authService.logout();
   }
 
 }

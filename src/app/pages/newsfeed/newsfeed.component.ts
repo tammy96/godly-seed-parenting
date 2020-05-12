@@ -9,6 +9,9 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import { faNewspaper } from "@fortawesome/free-solid-svg-icons";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { AdminService } from 'src/app/services/admin.service';
+import { IBlog } from 'src/app/interface/iBlog';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-newsfeed',
@@ -18,6 +21,9 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 export class NewsfeedComponent implements OnInit {
 
   search: FormGroup;
+  blogs: IBlog[];
+  logoutButton:boolean = false;
+  currentUser;
 
   //FONT AWESOME ICON VARIABLES
   faBars = faBars;
@@ -30,13 +36,30 @@ export class NewsfeedComponent implements OnInit {
   faPlay = faPlay;
   faNewspaper = faNewspaper;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder, private adminService: AdminService,
+    private auth: AngularFireAuth) { 
     this.search = this.fb.group({
       searchInput: ['']
     })
   }
 
   ngOnInit(): void {
+    this.adminService.getBlogs().subscribe(value => {
+      this.blogs = value;
+
+      this.auth.onAuthStateChanged((user) => {
+        if (user) {
+          console.log(user)
+          this.currentUser = this.currentUser;
+          this.logoutButton = true;
+        } else {
+          console.log('No Logged in User')
+        }
+      })
+    })
+  }
+  logout() {
+    this.auth.signOut();
   }
 
 }

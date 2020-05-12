@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-login',

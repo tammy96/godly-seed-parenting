@@ -1,7 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from "@angular/fire/firestore";
-import { AngularFireFunctions } from "@angular/fire/functions";
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -12,8 +11,7 @@ import 'firebase/auth';
 export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, 
-    private afs: AngularFirestore,
-    private fns: AngularFireFunctions) { }
+    private afs: AngularFirestore) { }
 
   addUserToDatabase(userData: firebase.auth.UserCredential) {
     this.afs.collection('users').doc(userData.user.uid).set({
@@ -22,6 +20,8 @@ export class AuthService {
       email: userData.user.email
     })
   }
+
+  
 
   addUserToDatabaseFromEmailLogin(user: firebase.auth.UserCredential, userData) {
     this.afs.collection('users').doc(user.user.uid).set(userData);
@@ -57,7 +57,11 @@ export class AuthService {
   }
 
   logout() {
-    this.afAuth.signOut();
+    this.afAuth.signOut().then(() => {
+      console.log('Logged Out')
+    }).catch((err) => {
+      console.log(err)
+    })
   }
 
 }

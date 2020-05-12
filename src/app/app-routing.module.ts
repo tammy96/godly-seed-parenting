@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
+
 import { Routes, RouterModule } from '@angular/router';
+
+import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+
 import { HomeComponent } from './pages/home/home.component';
 import { NewsfeedComponent } from './pages/newsfeed/newsfeed.component';
 import { ForumComponent } from './pages/forum/forum.component';
@@ -17,6 +21,9 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
 
+const adminOnly = () => hasCustomClaim('admin');
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToPosts = () => redirectLoggedInTo(['newsfeed']);
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -25,9 +32,9 @@ const routes: Routes = [
   {path: 'forum', component: ForumComponent},
   {path: 'events', component: EventsComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: SignUpComponent},
-  {path: 'admin', component: AdminComponent, children: [
+  {path: 'login', canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedInToPosts}, component: LoginComponent},
+  {path: 'register', canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedInToPosts}, component: SignUpComponent},
+  {path: 'admin', component: AdminComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: adminOnly}, children: [
     {path: '', redirectTo: 'upload', pathMatch: 'full'},
     {path: 'upload', component: AddBlogComponent},
     {path: 'posts', component: ViewPostsComponent},
