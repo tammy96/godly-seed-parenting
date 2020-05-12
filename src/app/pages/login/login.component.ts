@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { userInfo } from 'os';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   submitAttempt: boolean = false;
-  constructor(private authService: AuthService, private fb: FormBuilder) { 
+  constructor(private authService: AuthService, 
+    private fb: FormBuilder, private router: Router) { 
     this.loginForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
@@ -36,6 +38,13 @@ export class LoginComponent implements OnInit {
       this.authService.emailPasswordLogin(email, password).then((res) => {
         console.log('User Logged In');
         console.log(res);
+        res.user.getIdTokenResult().then(idTokenResult => {
+          if(idTokenResult.claims.admin) {
+            this.router.navigateByUrl('/admin')
+          }else {
+            this.router.navigateByUrl('/newsfeed')
+          }
+        })
       })
     } else {
       console.log('Form Not Valid')
@@ -44,10 +53,12 @@ export class LoginComponent implements OnInit {
 
   loginWithFacebook(): void {
     this.authService.loginFacebook();
+    this.router.navigateByUrl('/newsfeed');
   }
 
   loginWithGoogle(): void {
     this.authService.loginGoogle();
+    this.router.navigateByUrl('/newsfeed');
   }
 
 }

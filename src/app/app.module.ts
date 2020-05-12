@@ -13,7 +13,7 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireFunctionsModule } from "@angular/fire/functions";
 import { AngularFireMessagingModule } from "@angular/fire/messaging";
-import { AngularFireAuthGuardModule } from "@angular/fire/auth-guard";
+import { AngularFireAuthGuard } from "@angular/fire/auth-guard";
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -66,12 +66,11 @@ import { EditPostComponent } from './pages/edit-post/edit-post.component';
     AngularFireStorageModule,
     AngularFireMessagingModule,
     AngularFireFunctionsModule,
-    AngularFireAuthGuardModule,
     FontAwesomeModule,
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

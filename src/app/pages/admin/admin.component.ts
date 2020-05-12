@@ -3,6 +3,7 @@ import { faBell,  faBars, faEnvelope, faComment, faNewspaper, faUsers } from "@f
 import { UsersService } from 'src/app/services/users.service';
 import { AdminService } from 'src/app/services/admin.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -23,7 +24,8 @@ export class AdminComponent implements OnInit {
   faUsers = faUsers;
   constructor(private usersService: UsersService, 
     private adminService: AdminService,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.usersService.getUsers().subscribe(value => {
@@ -35,6 +37,7 @@ export class AdminComponent implements OnInit {
   }
   logout() {
     this.authService.logout();
+    this.router.navigateByUrl('/login')
   }
 
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { Routes, RouterModule } from '@angular/router';
 
-import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { AngularFireAuthGuard, canActivate, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 
 import { HomeComponent } from './pages/home/home.component';
 import { NewsfeedComponent } from './pages/newsfeed/newsfeed.component';
@@ -32,9 +32,8 @@ const routes: Routes = [
   {path: 'forum', component: ForumComponent},
   {path: 'events', component: EventsComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'login', canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedInToPosts}, component: LoginComponent},
   {path: 'register', canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedInToPosts}, component: SignUpComponent},
-  {path: 'admin', component: AdminComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: adminOnly}, children: [
+  {path: 'admin', component: AdminComponent, ...canActivate(adminOnly), children: [
     {path: '', redirectTo: 'upload', pathMatch: 'full'},
     {path: 'upload', component: AddBlogComponent},
     {path: 'posts', component: ViewPostsComponent},
@@ -44,6 +43,7 @@ const routes: Routes = [
     {path: 'users/:id', component: UserDetailComponent},
     {path: 'discussions', component: DiscussionComponent}
   ]},
+  {path: 'login', component: LoginComponent},
   {path: '**', redirectTo: '404', pathMatch: 'full'},
   {path: '404', component: NotFoundComponent}
 ];
