@@ -100,9 +100,12 @@
 
          </div>
 
-         <div class="comment-section">
-           <img src="../../../assets/images/customer3.png" alt="">
-             <input type="text" placeholder="Write a comment">
+         <div *ngIf="logoutButton" class="comment-section">
+           <img  src="{{ currentUser ? currentUser.photoURL : 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJUAAACTCAMAAACwJatgAAAAZlBMVEX29vZAQED+/v40NDSfn5/7+/s5OTk9PT0wMDApKSnw8PDKysq5ubktLS2wsLBRUVFxcXHZ2dmYmJiAgICpqaldXV3ExMTQ0NBKSkppaWl4eHjf39+NjY1kZGTq6upFRUUiIiIbGxudHO8RAAAEmElEQVR4nO2c7XKyMBCFYcMmEEAQREEQ6f3f5EuqttZaTQIbnXd4/rQz9ceZ3ZPdfKz1vIWFhYWFhYX/EET89dtrQYA+XhVlriiLVdwDvFoZeuugOnLGGFeon8cqWHuv1AVy0wypEP41QqRDs5HwIk0oi5px/x6c1YV8RbwQVlkk7mr6jFiUrdz7C9om/FvTp66waR2nEbacPdSkYHzrVBYW6eNAncOVFg6TiF2koUkRdc5kYZlqivL9tHQka0yftqhRlpskQqCbvnMSAweWx93zxfcTtqOPVl/rrL5rRN1Ti4IuNBTl+2FHnEOMzUWNsmLiHOb32/FjeE6qCbYfFqJ8/4O09cDBJlRjsA6EqjC2EzXKInQWFqa16gIjrPDSuFZdELWkEoXrwVKU7w9rqmBBYFOsToRk3RAaW7OPdm+oVNnbitBY2B6tRfn+saUxFsb2oRqDRVSxMLG31WishEjVyraGKthqUbWouqsqmaSKyu3vWRnWk6ooVXt+y44z7o8nqCLbI0MxYSdTUKnC3Ye1qg+6Y/1b7pA97KxPE4S3a+958vLQMoWiprxogK3dKWegvUyWldXtR0XndQVubfzOtsQ3RdCYy2Jkp64L2B+NbyCPPfnFKCambSck2ln9AIyu29WFu5vHnL1JtMK9E00eernBi0nu6rUXZa4brTB396SKWOq9mkSl00kC3ITPizwPN47feCGuHrw6K0RUxc4f6tErxKMyz/zuJVMN0JbsjxdxEbLS9VO4d7YwYttljN0KE4xlXfv1GVeaYHeJA4JMunqIGBcnOIuGukvkZZQB2p2TqQb04oaL5GqKSLZJl1eZosq7pJVXf0sEb2JyfyFs84H7It1f2QZBjRFJKc+/XYB2nwqfD/mWNF6I68N5MoaJsn/oGcS+PC9Szg5rOn9B36XftTMU3Rr+WmcA6058tyWedj3NkkQv8dntWktaD27CgAhem9yuTeYnFPYCWf4u5iJi+0BNp13Rx8Ge3ftoOf9MFsb+/Uqu5tOOhy5YKYLucFTzanc/yfy5j6qw4Q+63limwjSKojRkjz+2mTNaKDV3Ls8YszhbuNCzOG7dhzVzeR7bbC5Ro6xsnlcmlDOKUrLmSCK29ZRHpd/wenq0ELN5RaloTW4/spozfWdZU69ooJxf1CirnFS3MLCfFXjEEEzIIcQUkVIw++MPyieHK3tEZF8fSEx1gpWWmmA1T/O7T7SyyiH2T8afpyFCqxwiYf4UzGbqFsnW35csi00gzN5pbuGZsbMwMbv9tCE1vsaVFaXVTwjTfggOQqWCZZZDyOhDNQbLzFn0C/CE4TIkrlVfqoz6TitcJFB9z6nVFwUbF15XpAbnVjdeVxj4HVvqsv4N0z7wwMaN1z9V6aewdBcrrr0Kzb+wYY/2Vz2mDEGbozs27a4uKHRrA+zd2Wo01l5TlfEr/BTEUU9V71CTQsvuuHOZwDGFWvNidkMn9uiNq7is7J+qtBYhBo5Vad3P2I/JWarSG65ztA/9UqXXCR32ZoVmf95HzCWR3iBNErgl0VKF4JZX/4+JhYWFhYWFhYWFhbfnH5NlSTfEbkdBAAAAAElFTkSuQmCC' }}" alt="">
+           <form [formGroup]="comment">
+              <input type="text" formControlName="message" placeholder="Write a comment">
+              <button (click)="commentFunction(blog.id)"> Comment </button>
+           </form>  
          </div>
 
     </div>

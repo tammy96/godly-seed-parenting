@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/fire
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { IBlog } from '../interface/iBlog';
+import { firestore } from 'firebase/app';
 
 
 @Injectable({
@@ -54,5 +55,11 @@ export class AdminService {
   // Updates the value/content of a blog in the collection
   updateBlog(id, data) {
     this.blogCollection.doc(id).update(data);
+  }
+
+  addComment(id, data) {
+    this.blogCollection.doc(id).update({
+      comments: firestore.FieldValue.arrayUnion(data)
+    })
   }
 }

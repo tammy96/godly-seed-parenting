@@ -57,7 +57,18 @@ export class AddBlogComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.uploadBlogForm.value)
+    const formData = this.uploadBlogForm.value;
+    const actualUpload = {
+      title: formData.title,
+      body: formData.body,
+      imageUrl: formData.imageUrl,
+      file: formData.file,
+      createdAt: formData.createdAt,
+      comments: [{authorName: '',
+        authorImageUrl: '',
+        timeStamp: '',
+        message: ''}]
+    }
     if (this.uploadBlogForm.valid) {
       this.adminService.addBlog(this.uploadBlogForm.value).then(() => {
         this.uploadBlogForm.reset({

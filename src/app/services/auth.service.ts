@@ -16,7 +16,7 @@ export class AuthService {
   addUserToDatabase(userData: firebase.auth.UserCredential) {
     this.afs.collection('users').doc(userData.user.uid).set({
       name: userData.user.displayName,
-      photoUrl: userData.user.photoURL,
+      photoURL: userData.user.photoURL,
       email: userData.user.email
     })
   }

@@ -21,6 +21,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class NewsfeedComponent implements OnInit {
 
   search: FormGroup;
+  comment: FormGroup;
   blogs: IBlog[];
   logoutButton:boolean = false;
   currentUser;
@@ -40,7 +41,15 @@ export class NewsfeedComponent implements OnInit {
     private auth: AngularFireAuth) { 
     this.search = this.fb.group({
       searchInput: ['']
+    });
+
+    this.comment = this.fb.group({
+      authorName: ['', Validators.required],
+      authorImageUrl: ['', Validators.required],
+      message: ['', Validators.required],
+      timeStamp: ['', Validators.required]
     })
+
   }
 
   ngOnInit(): void {
@@ -50,7 +59,7 @@ export class NewsfeedComponent implements OnInit {
       this.auth.onAuthStateChanged((user) => {
         if (user) {
           console.log(user)
-          this.currentUser = this.currentUser;
+          this.currentUser = user;
           this.logoutButton = true;
         } else {
           console.log('No Logged in User')
@@ -60,6 +69,16 @@ export class NewsfeedComponent implements OnInit {
   }
   logout() {
     this.auth.signOut();
+  }
+
+  commentFunction(id) {
+    this.comment.controls.authorName.patchValue(this.currentUser.displayName);
+    this.comment.controls.authorImageUrl.patchValue(this.currentUser.photoURL);
+    this.comment.controls.timeStamp.patchValue(new Date().getTime());
+
+    if (this.comment.valid) {
+      this.adminService.addComment(id, this.comment.value)
+    }
   }
 
 }
