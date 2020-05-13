@@ -34,6 +34,7 @@ import { ViewPostsComponent } from './pages/view-posts/view-posts.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
+import { AccountComponent } from './pages/account/account.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { EditPostComponent } from './pages/edit-post/edit-post.component';
     UserDetailComponent,
     PostDetailsComponent,
     EditPostComponent,
+    AccountComponent,
     
   ],
   imports: [

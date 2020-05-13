@@ -58,7 +58,7 @@ export class AdminService {
   }
 
   addComment(id, data) {
-    this.blogCollection.doc(id).update({
+    return this.blogCollection.doc(id).update({
       comments: firestore.FieldValue.arrayUnion(data)
     })
   }

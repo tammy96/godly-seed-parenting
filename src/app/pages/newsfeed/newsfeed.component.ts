@@ -12,6 +12,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { AdminService } from 'src/app/services/admin.service';
 import { IBlog } from 'src/app/interface/iBlog';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-newsfeed',
@@ -24,6 +25,7 @@ export class NewsfeedComponent implements OnInit {
   comment: FormGroup;
   blogs: IBlog[];
   logoutButton:boolean = false;
+  defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg'
   currentUser;
 
   //FONT AWESOME ICON VARIABLES
@@ -38,7 +40,7 @@ export class NewsfeedComponent implements OnInit {
   faNewspaper = faNewspaper;
 
   constructor(private fb: FormBuilder, private adminService: AdminService,
-    private auth: AngularFireAuth) { 
+    private auth: AngularFireAuth, private userService: UsersService) { 
     this.search = this.fb.group({
       searchInput: ['']
     });
@@ -59,8 +61,10 @@ export class NewsfeedComponent implements OnInit {
       this.auth.onAuthStateChanged((user) => {
         if (user) {
           console.log(user)
-          this.currentUser = user;
-          this.logoutButton = true;
+          this.userService.getUser(user.uid).subscribe(value => {
+            this.currentUser = value;
+            this.logoutButton = true;
+          })
         } else {
           console.log('No Logged in User')
         }
@@ -69,15 +73,33 @@ export class NewsfeedComponent implements OnInit {
   }
   logout() {
     this.auth.signOut();
+    console.log('User Logged Out')
+    this.logoutButton = false;
   }
 
   commentFunction(id) {
-    this.comment.controls.authorName.patchValue(this.currentUser.displayName);
-    this.comment.controls.authorImageUrl.patchValue(this.currentUser.photoURL);
+    this.comment.controls.authorName.patchValue(this.currentUser.name);
+    if(this.currentUser.photoURL) {
+      this.comment.controls.authorImageUrl.patchValue(this.currentUser.photoURL);
+    } else {
+      this.comment.controls.authorImageUrl.patchValue(this.defaultImage)
+    }
+
     this.comment.controls.timeStamp.patchValue(new Date().getTime());
+    console.log(this.comment.value)
 
     if (this.comment.valid) {
-      this.adminService.addComment(id, this.comment.value)
+      this.adminService.addComment(id, this.comment.value).then(() => {
+        console.log('Comment Added')
+        this.comment.reset({
+          authorName: '',
+          authorImageUrl: '',
+          timeStamp: '',
+          message: ''
+        })
+      }).catch((err) => {
+        console.log(err)
+      })
     }
   }
 
