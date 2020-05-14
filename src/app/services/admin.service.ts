@@ -11,7 +11,7 @@ import { firestore } from 'firebase/app';
 })
 export class AdminService {
   blogCollection: AngularFirestoreCollection<IBlog>;
-  blogs: Observable<IBlog[]>
+  blogs: Observable<IBlog[]>;
 
   constructor(private afs: AngularFirestore) { 
 

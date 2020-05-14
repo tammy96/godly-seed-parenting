@@ -33,7 +33,7 @@ export class SignUpComponent implements OnInit {
       const password = this.signUpForm.controls.password.value;
       this.authService.createUserWithEmailPassword(email, password).then((res) => {
         this.authService.addUserToDatabaseFromEmailLogin(res, this.signUpForm.value)
-        console.log('User Regisetered and Added To Collection Successfully')
+        console.log('User Registered and Added To Collection Successfully')
       })
     } else {
       console.log('Form Not Valid')

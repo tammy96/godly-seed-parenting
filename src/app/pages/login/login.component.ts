@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
         res.user.getIdTokenResult().then(idTokenResult => {
           if(idTokenResult.claims.admin) {
             this.router.navigateByUrl('/admin')
-          }else {
-            this.router.navigateByUrl('/newsfeed')
           }
+
+          this.router.navigate(['newsfeed'])
         }).catch(err => console.log(err))
       }).catch(err => console.log(err))
     } else {
