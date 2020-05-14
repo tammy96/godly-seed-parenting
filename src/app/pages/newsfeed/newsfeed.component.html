@@ -88,8 +88,8 @@
       <p>{{blog.body}}</p>
          <img [src]="blog.imageUrl" class="postImg" alt="">
          <div class="post-details">
-           <span> 5 likes</span>
-           <span>10 Comments</span>
+           <span> 0 likes</span>
+           <span>{{ blog.comments.length }} Comments</span>
          </div>
          <hr>
          <div class="post-actions">
