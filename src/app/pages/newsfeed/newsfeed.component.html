@@ -106,7 +106,19 @@
                   <input type="text" class="reply-input" placeholder="Write a Reply...">
               </div>
             </div>
+
              </div>
+
+            <div class="reply-user-details">
+              <img [src]="comment.authorImageUrl" class="comment-user" alt="">
+              <div class="reply">
+                <div class="reply-body">
+                  <p><b>{{comment.authorName}}</b></p>
+                  <p>This is a reply</p>
+                </div>
+              </div>
+            </div>
+
             </div>
           </div>
           <hr>

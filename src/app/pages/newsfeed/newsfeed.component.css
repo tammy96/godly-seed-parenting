@@ -282,20 +282,23 @@ html, body{
     font-size: 14px;
     margin-right: 75px;
   }
-
-  .comment-user-details{
+  .comment-user-details, .reply-user-details{
     display: flex;
     margin-bottom: 15px;
   }
   
-  .comment-user{
+  .reply-user-details{
+    margin-left: 55px;
+  }
+
+  .comment-user, .reply-user{
     height: 30px;
     width: 30px;
     border-radius: 50%;
     margin-right: 10px;
   }
 
-  .comment-body{
+  .comment-body, .reply-body{
     background: #7979791f;
     width: auto;
     padding: 10px;
