@@ -27,6 +27,7 @@ export class NewsfeedComponent implements OnInit {
   logoutButton:boolean = false;
   defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg'
   currentUser;
+  replyDisplay: boolean = false;
 
   //FONT AWESOME ICON VARIABLES
   faBars = faBars;
@@ -101,6 +102,10 @@ export class NewsfeedComponent implements OnInit {
         console.log(err)
       })
     }
+  }
+
+  displayReply() {
+    this.replyDisplay = !this.replyDisplay;
   }
 
 }

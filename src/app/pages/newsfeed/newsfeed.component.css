@@ -1,3 +1,11 @@
+html, body{
+  background-color: #7979791f;
+}
+
+.wrapper{
+  background: #7979791f;
+}
+
 #desktopNav{
     background: #fff;
     width: 100%;
@@ -31,7 +39,7 @@
   
   #desktopNav form input{
     margin-bottom: 0;
-    padding: 13px 10px;
+    padding: 10px 10px;
     width: 500px;
     font-size: 15px;
   }
@@ -40,7 +48,7 @@
       background: var(--brandcolor);
       font-size: 16px;
       border: none;
-      padding: 15px 20px;
+      padding: 10px 20px;
       color: #fff;
       border-radius: 5px;
   }
@@ -274,7 +282,42 @@
     font-size: 14px;
     margin-right: 75px;
   }
+
+  .comment-user-details{
+    display: flex;
+    margin-bottom: 15px;
+  }
   
+  .comment-user{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  .comment-body{
+    background: #7979791f;
+    width: auto;
+    padding: 10px;
+    border-radius: 15px;
+  }
+ .reply{
+   display: block;
+ }
+
+  .reply-input{
+    background: #7979791f;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+    width: auto;
+    font-size: 15px;
+  }
+
+  .reply-input:focus{
+    outline: none;
+  }
+
   .showcase{
     height: 500px;
     border: 1px solid yellow;
@@ -392,7 +435,7 @@
   
     .ind-content .postImg{
       display: inline;
-      width: 600px;
-      height: 900px;
+      /* width: 600px;
+      height: 900px; */
     }
   }
