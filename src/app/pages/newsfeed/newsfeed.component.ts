@@ -13,6 +13,11 @@ import { AdminService } from 'src/app/services/admin.service';
 import { IBlog } from 'src/app/interface/iBlog';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UsersService } from 'src/app/services/users.service';
+import { CommentService } from 'src/app/services/comment.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { IComment } from 'src/app/interface/iComment';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-newsfeed',
@@ -23,7 +28,9 @@ export class NewsfeedComponent implements OnInit {
 
   search: FormGroup;
   comment: FormGroup;
+  reply: FormGroup;
   blogs: IBlog[];
+  comments: Observable<IComment[]>
   logoutButton:boolean = false;
   defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg'
   currentUser;
@@ -41,12 +48,20 @@ export class NewsfeedComponent implements OnInit {
   faNewspaper = faNewspaper;
 
   constructor(private fb: FormBuilder, private adminService: AdminService,
-    private auth: AngularFireAuth, private userService: UsersService) { 
+    private auth: AngularFireAuth, private userService: UsersService,
+    private commentService: CommentService, private afs: AngularFirestore) { 
     this.search = this.fb.group({
       searchInput: ['']
     });
 
     this.comment = this.fb.group({
+      authorName: ['', Validators.required],
+      authorImageUrl: ['', Validators.required],
+      message: ['', Validators.required],
+      timeStamp: ['', Validators.required]
+    });
+
+    this.reply = this.fb.group({
       authorName: ['', Validators.required],
       authorImageUrl: ['', Validators.required],
       message: ['', Validators.required],
@@ -90,7 +105,7 @@ export class NewsfeedComponent implements OnInit {
     console.log(this.comment.value)
 
     if (this.comment.valid) {
-      this.adminService.addComment(id, this.comment.value).then(() => {
+      this.commentService.addComment(id, this.comment.value).then(() => {
         console.log('Comment Added')
         this.comment.reset({
           authorName: '',
@@ -104,8 +119,50 @@ export class NewsfeedComponent implements OnInit {
     }
   }
 
+  replyComment(id) {
+    this.reply.controls.authorName.patchValue(this.currentUser.name);
+    if(this.currentUser.photoURL) {
+      this.reply.controls.authorImageUrl.patchValue(this.currentUser.photoURL);
+    } else {
+      this.reply.controls.authorImageUrl.patchValue(this.defaultImage)
+    }
+    this.reply.controls.timeStamp.patchValue(new Date().getTime());
+    console.log(this.reply.value)
+    if (this.reply.valid) {
+      this.adminService.addReply(id, this.reply.value).then(() => {
+        console.log('User Added');
+        this.comment.reset({
+          authorName: '',
+          authorImageUrl: '',
+          message: '',
+          timeStamp: ''
+        });
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+  }
+
   displayReply() {
     this.replyDisplay = !this.replyDisplay;
+    console.log(this.getComments('UKG3HgDG6g9pfh4aMQME'))
   }
+
+  getComments(id) {
+    // return this.comments =  this.afs.collection('blog').doc(id).collection<IComment>('comments').snapshotChanges().pipe(
+    //   map(action =>  {
+    //     return action.map(value => {
+    //     const docId = value.payload.doc.id;
+    //     const data = value.payload.doc.data() as IComment;
+
+    //     return {docId, ...data}
+    //   })
+    // })
+    // );
+
+    this.comments = this.afs.collection('blog').doc(id).collection<IComment>('comments').valueChanges({idField?: 'id'});
+    return this.comments;
+ }
+
 
 }

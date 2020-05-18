@@ -62,4 +62,10 @@ export class AdminService {
       comments: firestore.FieldValue.arrayUnion(data)
     })
   }
+
+  addReply(id, data) {
+    return this.blogCollection.doc(id).update({
+      "comments.reply": firestore.FieldValue.arrayUnion(data)
+    })
+  }
 }

@@ -88,32 +88,37 @@
         <h3>{{blog.title}}</h3>
         <div class="seperator"></div>
         <p>{{blog.body}}</p>
+        <p>{{blog.id}}</p>
           <img [src]="blog.imageUrl" class="postImg" alt="">
           <div class="post-details">
             <span> 0 likes</span>
-            <span>{{ blog.comments.length }} Comments</span>
-            <div *ngFor="let comment of blog.comments">
+            <span>15 Comments</span>
+
+            <div>
              <div class="comment-user-details">
-              <img [src]="comment.authorImageUrl" class="comment-user" alt="">
-              <div class="comment">
+              <img src="../../../assets/images/male.jpg" class="comment-user" alt="">
+              <div class="comment" *ngFor="let comment of getComments(blog.id) | async">
               <div class="comment-body">
-                <p><b>{{comment.authorName}}</b></p>
-                <p>{{comment.message}}</p>
+                <p><b>Cedar Daniel - {{comment.authorName}}</b></p>
+                <p>This is a comment</p>
                 </div>
                 <a (click)="displayReply()" class="reply">Reply</a>
                 <div *ngIf="replyDisplay">
-                  <img [src]="comment.authorImageUrl" class="comment-user" alt="">
-                  <input type="text" class="reply-input" placeholder="Write a Reply...">
+                  <img src="../../../assets/images/male.jpg" class="comment-user" alt="">
+                  <form [formGroup]="reply">
+                    <input type="text" formControlName="message" class="reply-input" placeholder="Write a Reply...">
+                    <button>Reply</button>
+                  </form>
               </div>
             </div>
 
              </div>
 
             <div class="reply-user-details">
-              <img [src]="comment.authorImageUrl" class="comment-user" alt="">
+              <img src="../../../assets/images/male.jpg" class="comment-user" alt="">
               <div class="reply">
                 <div class="reply-body">
-                  <p><b>{{comment.authorName}}</b></p>
+                  <p><b>Collins Thomas</b></p>
                   <p>This is a reply</p>
                 </div>
               </div>
