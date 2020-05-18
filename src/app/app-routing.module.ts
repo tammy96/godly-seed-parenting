@@ -20,6 +20,7 @@ import { DiscussionComponent } from './pages/discussion/discussion.component';
 import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
+import { BlogDetailsComponent } from './pages/blog-details/blog-details.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'newsfeed', component: NewsfeedComponent},
+  {path: 'newsfeed/:id', component: BlogDetailsComponent},
   {path: 'forum', component: ForumComponent},
   {path: 'events', component: EventsComponent},
   {path: 'about', component: AboutComponent},

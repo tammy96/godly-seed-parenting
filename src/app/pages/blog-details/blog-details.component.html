@@ -1,0 +1,209 @@
+<div class="wrapper">
+    <nav id="desktopNav">
+      <fa-icon class="fa fa-bars" [icon]="faBars"></fa-icon>
+      <!-- <i class="fa fa-bars"></i> -->
+      <ul>
+        <li>
+          <a href=""
+            ><img src="../../../assets/images/logo.jpg" class="logo" alt=""
+          /></a>
+        </li>
+      </ul>
+  
+    
+  
+      <ul class="menu">
+        <li>
+          <a routerLink="/home" routerLinkActive="forum" class="nav-item">Home</a>
+        </li>
+        <li>
+          <a routerLink="/about" routerLinkActive="forum" class="nav-item"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a routerLink="/newsfeed" routerLinkActive="forum" class="nav-item"
+            >New Feed</a
+          >
+        </li>
+        <li>
+          <a routerLink="/events" routerLinkActive="forum" class="nav-item"
+            >Events</a
+          >
+        </li>
+        <li><a routerLink="/forum" routerLinkActive="forum">Forum</a></li>
+        <li><button>Logout</button></li>
+      </ul>
+    </nav>
+  
+    <nav id="phoneNav">
+      <ul>
+        <li><img src="../../../assets/images/customer3.png" alt="" /></li>
+        <span><b>Home</b></span>
+      </ul>
+  
+      <ul class="icons">
+        <li>
+          <fa-icon class="fa fa-search" [icon]="faSearch"></fa-icon>
+          <!-- <i class="fa fa-search"></i> -->
+        </li>
+        <li>
+          <fa-icon class="fa fa-plus" [icon]="faPlus"></fa-icon>
+          <!-- <i class="fa fa-plus"></i> -->
+        </li>
+      </ul>
+    </nav>
+  
+    <nav id="bottomNav">
+      <ul>
+        <li>
+          <a routerLink="/home" class="active">
+            <fa-icon class="fa fa-home" [icon]="faHome"></fa-icon>
+            <!-- <i class="fa fa-home"></i> -->
+            <p>Home</p>
+          </a>
+        </li>
+  
+        <li>
+          <fa-icon class="fa fa-newspaper" [icon]="faNewspaper"></fa-icon>
+          <!-- <i class="fa fa-newspaper"></i> -->
+          <p>New feed</p>
+        </li>
+  
+        <li>
+          <a routerLink="/forum">
+            <fa-icon class="fa fa-comment" [icon]="faComment"></fa-icon>
+            <!-- <i class="fa fa-comment"></i> -->
+            <p>Forum</p>
+          </a>
+        </li>
+  
+        <li>
+          <fa-icon class="fa fa-calendar" [icon]="faCalendar"></fa-icon>
+          <!-- <i class="fa fa-calendar"></i> -->
+          <p>Events</p>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="wrapper">
+        <div class="content-div">
+            <div class="ind-content">
+              
+                <img
+                  src="../../../assets/images/profile.jpg"
+                  class="user-avatar"
+                  alt=""
+                />
+                
+                <b>Ingowari Daniel</b>
+                <span class="timespan">{{blogPost.createdAt|date:'mediumDate'}}</span>
+                <h3>{{blogPost.title}}</h3>
+                <div class="seperator"></div>
+                <p>{{blogPost.body}}</p>
+
+                <img [src]="blogPost.imageUrl" class="postImg" alt="" />
+        
+                <!-- <a (click)="getComments(blog.id)">Load Comments</a> -->
+                <div *ngFor="let comment of (comments | async)" class="post-details">
+                  <span> 0 likes</span>
+                  <span>{{displayLength}} Comments</span>
+        
+                  <div>
+                    <div class="comment-user-details">
+                      <div>
+                        <div>
+                          <img
+                            [src]="comment.authorImageUrl"
+                            class="comment-user"
+                            alt=""
+                          />
+                          <p>
+                            <b>{{comment.authorName}}</b>
+                          </p>
+                          <p>{{comment.message}}</p>
+       
+                          <a class="reply">Reply</a>
+                          <div>
+                            <div
+                              *ngFor="let reply of comment.replies"
+                              class="reply-user-details"
+                            >
+                              <img
+                                [src]="reply.authorImageUrl"
+                                class="comment-user"
+                                alt=""
+                              />
+                              <div class="reply">
+                                <div class="reply-body">
+                                  <p>
+                                    <b>{{reply.authorName}}</b>
+                                  </p>
+
+                                  <p>{{reply.message}}</p>
+               
+                                </div>
+                              </div>
+                            </div>
+                            <img
+                              [src]="currentUser.photoURL"
+                              class="comment-user"
+                              alt=""
+                            />
+
+                            <!-- <form [formGroup]="reply"> -->
+                              <input
+                                type="text"
+                                formControlName="message"
+                                class="reply-input"
+                                placeholder="Write a Reply..."
+                              />
+                              <button>
+                                Reply
+                              </button>
+                            <!-- </form> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <div class="post-actions">
+                  <!-- <i class="fa fa-thumbs-up"></i>-->
+                  <fa-icon class="fa fa-thumbs-up" [icon]="faThumbsUp"></fa-icon
+                  ><span class="action">Like</span>
+                  <!-- <i class="fa fa-comment"></i> -->
+                  <fa-icon class="fa fa-comment" [icon]="faComment"></fa-icon
+                  ><span class="action">Comment</span>
+                </div>
+        
+                <div class="comment-section">
+                  <img
+                    
+                    [src]="currentUser.photoURL"
+                    alt=""
+                  />
+
+                  <form [formGroup]="commentForm">
+                    <input
+                      type="text"
+                      formControlName="message"
+                      placeholder="Write a comment"
+                    />
+                    <button (click)="submitComment()">Comment</button>
+                  </form>
+                </div>
+        
+                <ng-template #pleaseLogin>
+                  <div class="comment-section">
+                    <p>Login to comment</p>
+                  </div>
+                </ng-template>
+            
+            </div>
+          </div>
+        </div>
+        
+
+    </div>

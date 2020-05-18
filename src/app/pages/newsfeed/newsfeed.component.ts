@@ -18,6 +18,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { IComment } from 'src/app/interface/iComment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { firestore } from 'firebase/app';
 
 @Component({
   selector: 'app-newsfeed',
@@ -32,7 +33,7 @@ export class NewsfeedComponent implements OnInit {
   blogs: IBlog[];
   comments: Observable<IComment[]>
   logoutButton:boolean = false;
-  defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg'
+  defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg';
   currentUser;
   replyDisplay: boolean = false;
 
@@ -73,7 +74,9 @@ export class NewsfeedComponent implements OnInit {
   ngOnInit(): void {
     this.adminService.getBlogs().subscribe(value => {
       this.blogs = value;
-
+      // this.blogs.forEach(item => {
+      //   this.getComments(item.id).subscribe(value => console.log(value))
+      // })
       this.auth.onAuthStateChanged((user) => {
         if (user) {
           console.log(user)
@@ -119,7 +122,7 @@ export class NewsfeedComponent implements OnInit {
     }
   }
 
-  replyComment(id) {
+  replyComment(blogID, commentID) {
     this.reply.controls.authorName.patchValue(this.currentUser.name);
     if(this.currentUser.photoURL) {
       this.reply.controls.authorImageUrl.patchValue(this.currentUser.photoURL);
@@ -127,25 +130,15 @@ export class NewsfeedComponent implements OnInit {
       this.reply.controls.authorImageUrl.patchValue(this.defaultImage)
     }
     this.reply.controls.timeStamp.patchValue(new Date().getTime());
-    console.log(this.reply.value)
-    if (this.reply.valid) {
-      this.adminService.addReply(id, this.reply.value).then(() => {
-        console.log('User Added');
-        this.comment.reset({
-          authorName: '',
-          authorImageUrl: '',
-          message: '',
-          timeStamp: ''
-        });
-      }).catch((err) => {
-        console.log(err)
-      })
-    }
+    console.log(this.reply.value, commentID)
+    this.afs.collection('blog').doc(blogID).collection('comments').doc(commentID).update({
+      replies: firestore.FieldValue.arrayUnion(this.reply.value)
+    })
+
   }
 
   displayReply() {
     this.replyDisplay = !this.replyDisplay;
-    console.log(this.getComments('UKG3HgDG6g9pfh4aMQME'))
   }
 
   getComments(id) {

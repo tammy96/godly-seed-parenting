@@ -12,3 +12,5 @@
 [0513/010740.015:ERROR:exception_snapshot_win.cc(98)] thread ID 7404 not found in process
 [0513/010740.015:ERROR:exception_snapshot_win.cc(98)] thread ID 2516 not found in process
 [0513/010740.015:ERROR:exception_snapshot_win.cc(98)] thread ID 1260 not found in process
+[0518/102439.646:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[0518/102440.286:ERROR:exception_snapshot_win.cc(98)] thread ID 5616 not found in process

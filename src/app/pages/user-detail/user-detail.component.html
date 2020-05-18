@@ -1,6 +1,6 @@
 <div>
-    <div *ngIf="userObject.photoUrl; else defaultImage">
-        <img [src]="userObject.photoUrl" alt="User Image">
+    <div *ngIf="userObject.photoURL; else defaultImage">
+        <img [src]="userObject.photoURL" alt="User Image">
     </div>
     <ng-template #defaultImage>
         <div>

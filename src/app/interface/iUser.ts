@@ -2,7 +2,7 @@ export interface IUser {
     id?: string,
     name: string,
     email: string,
-    photoUrl?: string,
+    photoURL?: string,
     password?: string,
     confirmPassword?: string,
     gender?: string,
