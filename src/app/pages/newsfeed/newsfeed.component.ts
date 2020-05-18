@@ -159,10 +159,10 @@ export class NewsfeedComponent implements OnInit {
     //   })
     // })
     // );
-
-    this.comments = this.afs.collection('blog').doc(id).collection<IComment>('comments').valueChanges({idField?: 'id'});
+    this.comments = this.afs.collection('blog').doc(id).collection<IComment>('comments').valueChanges({idField: 'id'});
     return this.comments;
  }
+
 
 
 }

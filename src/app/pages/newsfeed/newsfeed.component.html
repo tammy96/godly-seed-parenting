@@ -97,10 +97,10 @@
             <div>
              <div class="comment-user-details">
               <img src="../../../assets/images/male.jpg" class="comment-user" alt="">
-              <div class="comment" *ngFor="let comment of getComments(blog.id) | async">
-              <div class="comment-body">
-                <p><b>Cedar Daniel - {{comment.authorName}}</b></p>
-                <p>This is a comment</p>
+              <div class="comment" *ngFor="let value of (getComments(blog.id) | async)">
+                <div class="comment-body">
+                  <p><b>Cedar Daniel {{value.authorName}}</b></p>
+                  <p>This is a comment</p>
                 </div>
                 <a (click)="displayReply()" class="reply">Reply</a>
                 <div *ngIf="replyDisplay">
@@ -109,7 +109,7 @@
                     <input type="text" formControlName="message" class="reply-input" placeholder="Write a Reply...">
                     <button>Reply</button>
                   </form>
-              </div>
+                </div>
             </div>
 
              </div>
