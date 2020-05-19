@@ -132,6 +132,12 @@
     font-size: 23px;
     color: #797979bf;
   }
+
+  #postImg{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+  }
   
   nav .nav-item:hover{
     border-bottom: 3px solid var(--brandcolor);
@@ -146,35 +152,26 @@
   .layout{
     /* display: flex;
     justify-content: space-between; */
-    margin-top: 65px;
+    
     height: minmax(100 auto);
     padding-right: 10px;
     width: 100%;
   }
   
-  .sidebar{
-    height: 100vh;
-    width: 80%;
-    background: #fff;
-    margin-right: 4px;
-    z-index: 1;
-    position: fixed;
-    left: -80%;
-  }
-  
+
   .discussion-div{
     /* background: #fff; */
     /* height: 100vh; */
-    margin: 0 auto;
+    margin: 75px auto;
     width: 92%;
     margin-bottom: 50px;
   }
   
-  .discussion-div.leftPadding{
+  /* .discussion-div.leftPadding{
     padding-left: 0px;
     position: absolute;
     width: 100%;
-  }
+  } */
   
   .sidebar ul {
     list-style: none;
@@ -218,8 +215,8 @@
   }
   
   .ind-content .user-avatar{
-    height: 42px;
-    width: 42px;
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
   }
   
@@ -441,7 +438,7 @@
     .discussion-div{
       /* background: #fff; */
       height: 100vh;
-      margin-left: 6px;
+      
       width: 82%;
       /* transition: 0.4s linear; */
     }
@@ -480,14 +477,15 @@
     }
   
     .ind-content .user-avatar{
-      height: 42px;
-      width: 42px;
+      height: 35px;
+      width: 35px;
       border-radius: 50%;
     }
   
     .ind-content b{
       position: relative;
-      top: -5px;
+      top: 2px;
+      margin-left: 5px;
     }
   
     .ind-content p{
@@ -541,8 +539,8 @@
     }
   
     .comment-section img{
-      height: 42px;
-      width: 42px;
+      height: 35px;
+      width: 35px;
       border-radius: 50%;
     }
   

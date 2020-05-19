@@ -105,9 +105,9 @@
                 <img [src]="blogPost.imageUrl" class="postImg" alt="" />
         
                 <!-- <a (click)="getComments(blog.id)">Load Comments</a> -->
-                <div *ngFor="let comment of (comments | async)" class="post-details">
+                <div *ngFor="let comment of comments | async" class="post-details">
                   <span> 0 likes</span>
-                  <span>{{displayLength}} Comments</span>
+                  <span> {{displayLength}} Comments</span>
         
                   <div>
                     <div class="comment-user-details">
@@ -146,22 +146,28 @@
                               </div>
                             </div>
                             <img
+                              *ngIf="currentUser; else anonymous"
                               [src]="currentUser.photoURL"
                               class="comment-user"
                               alt=""
                             />
+                            <ng-template #anonymous>
+                              <img [src]="defaultImage" 
+                              class="comment-user"
+                              alt="">
+                            </ng-template>
 
-                            <!-- <form [formGroup]="reply"> -->
+                            <form [formGroup]="replyForm">
                               <input
                                 type="text"
                                 formControlName="message"
                                 class="reply-input"
                                 placeholder="Write a Reply..."
                               />
-                              <button>
+                              <button (click)="replyComment(comment.id)">
                                 Reply
                               </button>
-                            <!-- </form> -->
+                            </form>
                           </div>
                         </div>
                       </div>
@@ -180,10 +186,14 @@
         
                 <div class="comment-section">
                   <img
-                    
+                    *ngIf="currentUser; else anonymousUser"
                     [src]="currentUser.photoURL"
                     alt=""
                   />
+                  <ng-template #anonymousUser>
+                    <img 
+                    [src]="currentUser.photoURL" alt="">
+                  </ng-template>
 
                   <form [formGroup]="commentForm">
                     <input

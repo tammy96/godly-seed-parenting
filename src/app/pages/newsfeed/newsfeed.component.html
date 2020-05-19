@@ -112,11 +112,8 @@
         <p>{{ blog.body }}</p>
         <p>{{ blog.id }}</p>
         <img [src]="blog.imageUrl" class="postImg" alt="" />
-
-        <a (click)="getComments(blog.id)">Load Comments</a>
         <div class="post-details">
           <span> 0 likes</span>
-          <span>15 Comments</span>
 
           <div>
             <div class="comment-user-details">

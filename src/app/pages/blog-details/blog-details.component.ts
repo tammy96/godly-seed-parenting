@@ -19,6 +19,7 @@ import { CommentService } from 'src/app/services/comment.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { IComment } from 'src/app/interface/iComment';
+import { firestore } from 'firebase/app';
 
 @Component({
   selector: 'app-blog-details',
@@ -106,6 +107,24 @@ export class BlogDetailsComponent implements OnInit {
       })
     }).catch((err) => {
       console.log(err)
+    })
+  }
+
+  replyComment(commentID) {
+    this.replyForm.get('authorName').patchValue(this.currentUser.name);
+    this.replyForm.get('authorImageUrl').patchValue(this.currentUser.photoURL);
+    this.replyForm.get('timeStamp').patchValue(new Date().getTime());
+    console.log(this.replyForm.value, );
+
+    this.afs.collection('blog').doc(this.id).collection('comments').doc(commentID).update({
+      replies: firestore.FieldValue.arrayUnion(this.replyForm.value)
+    }).then(() => {
+      this.replyForm.reset({
+        authorName: '',
+        authorImageUrl: '',
+        message: '',
+        timeStamp: ''
+      })
     })
   }
 
