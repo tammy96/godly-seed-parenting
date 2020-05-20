@@ -36,6 +36,20 @@
       <b>{{firstComment[0].authorName}}</b>
       
       <p>{{firstComment[0].message}}</p>
+
+      <a (click)="showReply(firstComment[0].id)">Reply</a>
+
+      <div  class="commentBox">
+        <img src="../../../assets/images/male.jpg">
+  
+        <div class="commentText">
+          <b>Cedar Daniel</b>
+          
+          <p>Lorem ipsum dolor sit amet.</p>
+          
+        </div>
+       
+      </div>
       
     </div>
 
@@ -44,14 +58,25 @@
   
 
     <div *ngIf="allComments">
-      <div  class="commentBox" *ngFor="let rem of firstComment.slice(1)">
+      <div  class="commentBox" *ngFor="let rem of firstComment.slice(1); let i = index;">
         <img [src]="rem.authorImageUrl">
   
         <div class="commentText">
           <b>{{rem.authorName}}</b>
           
           <p>{{rem.message}}</p>
-          
+          <a (click)="hideMe[i] = !hideMe[i]">Reply</a>
+        </div>
+        <div  class="commentBox">
+          <img src="../../../assets/images/male.jpg">
+    
+          <div [hidden]="hideMe[i]" class="commentText">
+            <b>Cedar Daniel</b>
+            
+            <p>Lorem ipsum dolor sit amet.</p>
+            
+          </div>
+         
         </div>
       </div>
     </div>

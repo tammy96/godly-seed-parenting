@@ -52,6 +52,7 @@ export class BlogDetailsComponent implements OnInit {
   displayLength: number;
   firstComment: IComment[];
   allComments: boolean = false;
+  hideMe:any = {};
 
   constructor(private route: ActivatedRoute, private router: Router, 
     private adminService: AdminService, private afAuth: AngularFireAuth,
@@ -136,6 +137,9 @@ export class BlogDetailsComponent implements OnInit {
   loadComments() {
     this.allComments = !this.allComments;
     console.log('Loading all comments')
+  }
+  showReply(id) {
+    //
   }
 
 }
