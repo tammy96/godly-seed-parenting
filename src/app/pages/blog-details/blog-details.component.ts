@@ -20,6 +20,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { IComment } from 'src/app/interface/iComment';
 import { firestore } from 'firebase/app';
+import { first, skip, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-blog-details',
@@ -45,9 +46,12 @@ export class BlogDetailsComponent implements OnInit {
   defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg';
   commentForm: FormGroup;
   replyForm: FormGroup;
+  showCommentForm: boolean = true;
 
   id: string;
   displayLength: number;
+  firstComment: IComment[];
+  allComments: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, 
     private adminService: AdminService, private afAuth: AngularFireAuth,
@@ -78,7 +82,9 @@ export class BlogDetailsComponent implements OnInit {
     });
     this.comments = this.afs.collection('blog').doc(this.id).collection<IComment>('comments').valueChanges({idField: 'id'});
     this.comments.subscribe(value => {
-      this.displayLength = value.length
+      console.log(value)
+      this.displayLength = value.length;
+      this.firstComment = value
     })
     this.afAuth.authState.subscribe(user => {
       if (user) {
@@ -126,6 +132,10 @@ export class BlogDetailsComponent implements OnInit {
         timeStamp: ''
       })
     })
+  }
+  loadComments() {
+    this.allComments = !this.allComments;
+    console.log('Loading all comments')
   }
 
 }

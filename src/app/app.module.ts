@@ -16,6 +16,7 @@ import { AngularFireMessagingModule } from "@angular/fire/messaging";
 import { AngularFireAuthGuard } from "@angular/fire/auth-guard";
 import { environment } from '../environments/environment';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -36,6 +37,15 @@ import { PostDetailsComponent } from './pages/post-details/post-details.componen
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
 import { AccountComponent } from './pages/account/account.component';
 import { BlogDetailsComponent } from './pages/blog-details/blog-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatInputModule} from '@angular/material/input';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -70,9 +80,19 @@ import { BlogDetailsComponent } from './pages/blog-details/blog-details.componen
     AngularFireStorageModule,
     AngularFireMessagingModule,
     AngularFireFunctionsModule,
+    FlexLayoutModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatBadgeModule
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]

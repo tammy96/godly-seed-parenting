@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireFunctions } from "@angular/fire/functions";
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,19 @@ import { AngularFireFunctions } from "@angular/fire/functions";
 })
 export class AppComponent {
   title = 'godly-seed-parenting';
+  public showSideMenu: boolean;
+  public showFiller: boolean;
+  constructor(public breakpointObserver: BreakpointObserver) {}
 
-  constructor(private fns: AngularFireFunctions) {
-    // const addAdminUser = fns.httpsCallable('addAdminUser');
-    // addAdminUser({email: 'admin@admin.com'}).subscribe(val => {
-    //   console.log(val)
-    // });
+  ngOnInit(): void {
+    this.breakpointObserver
+      .observe(['(max-width: 420px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.showSideMenu = true;
+        } else {
+          this.showSideMenu = false;
+        }
+      });
   }
 }

@@ -1,1 +1,56 @@
-<router-outlet></router-outlet>
+<!-- <app-navbar></app-navbar> -->
+<mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation">
+        <mat-nav-list>
+            <mat-list-item>
+                <a (click)="sidenav.close()" matLine routerLink="/home">
+                    <button mat-icon-button>
+                       <mat-icon>home</mat-icon>
+                    </button>
+                    Home
+                </a>
+             </mat-list-item>
+            <mat-list-item>
+                <a (click)="sidenav.close()" matLine routerLink="/newsfeed">
+                    <button mat-icon-button>
+                       <mat-icon>dynamic_feed</mat-icon>
+                    </button>
+                    Newsfeed
+                </a>
+             </mat-list-item>
+            <mat-list-item>
+                <a (click)="sidenav.close()" matLine routerLink="/events">
+                    <button mat-icon-button>
+                       <mat-icon>calendar_today</mat-icon>
+                    </button>
+                    Events
+                </a>
+             </mat-list-item>
+            <mat-list-item>
+                <a (click)="sidenav.close()" matLine routerLink="/forum">
+                    <button mat-icon-button>
+                       <mat-icon>forum</mat-icon>
+                    </button>
+                    Forum
+                </a>
+             </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <mat-icon (click)="sidenav.toggle()" *ngIf="showSideMenu">menu</mat-icon>
+            Godly Seed Parenting
+            <div *ngIf="!showSideMenu" fxFlex fxLayout fxLayoutAlign="flex-end">
+                <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+                    <li><a routerLink="/home">Home</a></li>
+                    <li><a routerLink="/newsfeed">Newfeed</a></li>
+                    <li><a routerLink="/events">Event</a></li>
+                    <li><a routerLink="/forum">Forum</a></li>
+                    <li></li>
+                </ul>
+            </div>
+        </mat-toolbar>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

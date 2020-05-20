@@ -1,219 +1,70 @@
-<div class="wrapper">
-    <nav id="desktopNav">
-      <fa-icon class="fa fa-bars" [icon]="faBars"></fa-icon>
-      <!-- <i class="fa fa-bars"></i> -->
-      <ul>
-        <li>
-          <a href=""
-            ><img src="../../../assets/images/logo.jpg" class="logo" alt=""
-          /></a>
-        </li>
-      </ul>
-  
-    
-  
-      <ul class="menu">
-        <li>
-          <a routerLink="/home" routerLinkActive="forum" class="nav-item">Home</a>
-        </li>
-        <li>
-          <a routerLink="/about" routerLinkActive="forum" class="nav-item"
-            >About Us</a
-          >
-        </li>
-        <li>
-          <a routerLink="/newsfeed" routerLinkActive="forum" class="nav-item"
-            >New Feed</a
-          >
-        </li>
-        <li>
-          <a routerLink="/events" routerLinkActive="forum" class="nav-item"
-            >Events</a
-          >
-        </li>
-        <li><a routerLink="/forum" routerLinkActive="forum">Forum</a></li>
-        <li><button>Logout</button></li>
-      </ul>
-    </nav>
-  
-    <nav id="phoneNav">
-      <ul>
-        <li><img src="../../../assets/images/customer3.png" alt="" /></li>
-        <span><b>Home</b></span>
-      </ul>
-  
-      <ul class="icons">
-        <li>
-          <fa-icon class="fa fa-search" [icon]="faSearch"></fa-icon>
-          <!-- <i class="fa fa-search"></i> -->
-        </li>
-        <li>
-          <fa-icon class="fa fa-plus" [icon]="faPlus"></fa-icon>
-          <!-- <i class="fa fa-plus"></i> -->
-        </li>
-      </ul>
-    </nav>
-  
-    <nav id="bottomNav">
-      <ul>
-        <li>
-          <a routerLink="/home" class="active">
-            <fa-icon class="fa fa-home" [icon]="faHome"></fa-icon>
-            <!-- <i class="fa fa-home"></i> -->
-            <p>Home</p>
-          </a>
-        </li>
-  
-        <li>
-          <fa-icon class="fa fa-newspaper" [icon]="faNewspaper"></fa-icon>
-          <!-- <i class="fa fa-newspaper"></i> -->
-          <p>New feed</p>
-        </li>
-  
-        <li>
-          <a routerLink="/forum">
-            <fa-icon class="fa fa-comment" [icon]="faComment"></fa-icon>
-            <!-- <i class="fa fa-comment"></i> -->
-            <p>Forum</p>
-          </a>
-        </li>
-  
-        <li>
-          <fa-icon class="fa fa-calendar" [icon]="faCalendar"></fa-icon>
-          <!-- <i class="fa fa-calendar"></i> -->
-          <p>Events</p>
-        </li>
-      </ul>
-    </nav>
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{blogPost.title}}</mat-card-title>
+    <mat-card-subtitle>INGOWARI DANIEL</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{blogPost.body}}
+    </p>
+  </mat-card-content>
+  <img mat-card-image [src]="blogPost.imageUrl" alt="Photo of Post">
+ 
+  <div class="details">
+    <span id="likes">123 likes</span>
+  <span id="comments">{{displayLength}} comments</span>
+  </div>
 
-    <div class="wrapper">
-        <div class="content-div">
-            <div class="ind-content">
-              
-                <img
-                  src="../../../assets/images/profile.jpg"
-                  class="user-avatar"
-                  alt=""
-                />
-                
-                <b>Ingowari Daniel</b>
-                <span class="timespan">{{blogPost.createdAt|date:'mediumDate'}}</span>
-                <h3>{{blogPost.title}}</h3>
-                <div class="seperator"></div>
-                <p>{{blogPost.body}}</p>
 
-                <img [src]="blogPost.imageUrl" class="postImg" alt="" />
-        
-                <!-- <a (click)="getComments(blog.id)">Load Comments</a> -->
-                <div *ngFor="let comment of comments | async" class="post-details">
-                  <span> 0 likes</span>
-                  <span> {{displayLength}} Comments</span>
-        
-                  <div>
-                    <div class="comment-user-details">
-                      <div>
-                        <div>
-                          <img
-                            [src]="comment.authorImageUrl"
-                            class="comment-user"
-                            alt=""
-                          />
-                          <p>
-                            <b>{{comment.authorName}}</b>
-                          </p>
-                          <p>{{comment.message}}</p>
-       
-                          <a class="reply">Reply</a>
-                          <div>
-                            <div
-                              *ngFor="let reply of comment.replies"
-                              class="reply-user-details"
-                            >
-                              <img
-                                [src]="reply.authorImageUrl"
-                                class="comment-user"
-                                alt=""
-                              />
-                              <div class="reply">
-                                <div class="reply-body">
-                                  <p>
-                                    <b>{{reply.authorName}}</b>
-                                  </p>
+  <mat-card-actions>
+    <button mat-button>
+      <mat-icon>thumb_up</mat-icon>
+      Like
+    </button>
+    <button mat-button (click)="showCommentForm = !showCommentForm">
+      <mat-icon [matBadge]="displayLength">comment</mat-icon>
+      Comment
+    </button>
+  </mat-card-actions>
+  
+  
+  <div class="commentBox">
+    <img [src]="firstComment[0].authorImageUrl">
 
-                                  <p>{{reply.message}}</p>
-               
-                                </div>
-                              </div>
-                            </div>
-                            <img
-                              *ngIf="currentUser; else anonymous"
-                              [src]="currentUser.photoURL"
-                              class="comment-user"
-                              alt=""
-                            />
-                            <ng-template #anonymous>
-                              <img [src]="defaultImage" 
-                              class="comment-user"
-                              alt="">
-                            </ng-template>
-
-                            <form [formGroup]="replyForm">
-                              <input
-                                type="text"
-                                formControlName="message"
-                                class="reply-input"
-                                placeholder="Write a Reply..."
-                              />
-                              <button (click)="replyComment(comment.id)">
-                                Reply
-                              </button>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr />
-                <div class="post-actions">
-                  <!-- <i class="fa fa-thumbs-up"></i>-->
-                  <fa-icon class="fa fa-thumbs-up" [icon]="faThumbsUp"></fa-icon
-                  ><span class="action">Like</span>
-                  <!-- <i class="fa fa-comment"></i> -->
-                  <fa-icon class="fa fa-comment" [icon]="faComment"></fa-icon
-                  ><span class="action">Comment</span>
-                </div>
-        
-                <div class="comment-section">
-                  <img
-                    *ngIf="currentUser; else anonymousUser"
-                    [src]="currentUser.photoURL"
-                    alt=""
-                  />
-                  <ng-template #anonymousUser>
-                    <img 
-                    [src]="currentUser.photoURL" alt="">
-                  </ng-template>
-
-                  <form [formGroup]="commentForm">
-                    <input
-                      type="text"
-                      formControlName="message"
-                      placeholder="Write a comment"
-                    />
-                    <button (click)="submitComment()">Comment</button>
-                  </form>
-                </div>
-        
-                <ng-template #pleaseLogin>
-                  <div class="comment-section">
-                    <p>Login to comment</p>
-                  </div>
-                </ng-template>
-            
-            </div>
-          </div>
-        </div>
-        
-
+    <div class="commentText">
+      <b>{{firstComment[0].authorName}}</b>
+      
+      <p>{{firstComment[0].message}}</p>
+      
     </div>
+
+  </div>
+
+  
+
+    <div *ngIf="allComments">
+      <div  class="commentBox" *ngFor="let rem of firstComment.slice(1)">
+        <img [src]="rem.authorImageUrl">
+  
+        <div class="commentText">
+          <b>{{rem.authorName}}</b>
+          
+          <p>{{rem.message}}</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+  <button mat-flat-button color="accent" (click)="loadComments()">View more comments</button>
+
+  <form *ngIf="showCommentForm" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+  </form>
+  
+</mat-card>
+
