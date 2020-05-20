@@ -15,7 +15,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.breakpointObserver
-      .observe(['(max-width: 420px)'])
+      .observe(['(max-width: 520px)'])
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
           this.showSideMenu = true;

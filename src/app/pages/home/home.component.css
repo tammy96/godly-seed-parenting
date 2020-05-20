@@ -51,8 +51,8 @@
   }
   
   .caption{
-    /*border: 1px solid var(--brandcolor);*/
-    width: 70%;
+    display: inline-block;
+    width: auto;
     position: relative;
     top: 50%;
     left: 50%;
@@ -61,7 +61,7 @@
     color: #fff;
     background: rgba(0, 0, 0, 0.2);
     text-align: center;
-  
+    padding: 75px 10px;
   }
   
   .caption h1{
@@ -73,17 +73,19 @@
   }
   
   .caption a{
-    text-decoration: none;
-    color: #fff;
-    background: var(--brandcolor);
-    padding: 15px;
-    display: block;
-    width: 30%;
-    text-align: center;
-    font-size: 1.2rem;
-    border-radius: .3rem;
-    margin: 0 auto;
-    margin-bottom: 15px;
+    
+      text-decoration: none;
+      color: #fff;
+      background: var(--brandcolor);
+      padding: 10px 15px;
+      display: inline-block;
+      width: auto;
+      text-align: center;
+      font-size: 1.2rem;
+      border-radius: .2rem;
+      margin: 0;
+      padding: 15px 15px;
+    
   
   }
   
@@ -92,6 +94,7 @@
     margin: 0 auto;
     text-align: center;
     background: #fff;
+    padding: 25px 15px;
   }
   
   #about .about-text{
@@ -103,7 +106,7 @@
   #about .seperator{
     width: 85px;
     height: 2px;
-    margin: 20px auto;
+    margin: 15px auto;
     background: var(--brandcolor);
   }
   
@@ -198,6 +201,7 @@
     align-items: center;
     background: #7979790a;
     margin-top: 0;
+    padding: 15px 10px;
   }
   
   #team .seperator{
@@ -207,8 +211,8 @@
     background: var(--brandcolor);
   }
   .team-member img{
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
   }
   
@@ -250,13 +254,13 @@
     }
   
   .caption{
-    /*border: 1px solid var(--brandcolor);*/
-    width: 50%;
+    display: inline-block;
+    width: auto;
     position: relative;
     top: 30%;
     left: 3%;
     transform: translate(0);
-    padding: 20px;
+    padding: 40px;
     text-align: left;
     color: #fff;
     background: rgba(0, 0, 0, 0.2);
@@ -277,13 +281,13 @@
     color: #fff;
     background: var(--brandcolor);
     padding: 10px 15px;
-    display: block;
-    /* width: 100px; */
+    display: inline-block;
+    width: auto;
     text-align: center;
     font-size: 1.2rem;
-    border-radius: .3rem;
+    border-radius: .2rem;
     margin: 0;
-    margin-bottom: 15px;
+    padding: 15px 15px;
   }
   
   #about{

@@ -1,95 +1,133 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{blogPost.title}}</mat-card-title>
-    <mat-card-subtitle>INGOWARI DANIEL</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      {{blogPost.body}}
-    </p>
-  </mat-card-content>
-  <img mat-card-image [src]="blogPost.imageUrl" alt="Photo of Post">
- 
-  <div class="details">
-    <span id="likes">123 likes</span>
-  <span id="comments">{{displayLength}} comments</span>
-  </div>
+<div class="wrapper">
 
-
-  <mat-card-actions>
-    <button mat-button>
-      <mat-icon>thumb_up</mat-icon>
-      Like
-    </button>
-    <button mat-button (click)="showCommentForm = !showCommentForm">
-      <mat-icon [matBadge]="displayLength">comment</mat-icon>
-      Comment
-    </button>
-  </mat-card-actions>
-  
-  
-  <div class="commentBox">
-    <img [src]="firstComment[0].authorImageUrl">
-
-    <div class="commentText">
-      <b>{{firstComment[0].authorName}}</b>
-      
-      <p>{{firstComment[0].message}}</p>
-
-      <a (click)="showReply(firstComment[0].id)">Reply</a>
-
-      <div  class="commentBox">
-        <img src="../../../assets/images/male.jpg">
-  
-        <div class="commentText">
-          <b>Cedar Daniel</b>
-          
-          <p>Lorem ipsum dolor sit amet.</p>
-          
-        </div>
-       
-      </div>
-      
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{blogPost.title}}</mat-card-title>
+      <mat-card-subtitle>INGOWARI DANIEL</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="post-paragraph">
+        {{blogPost.body}}
+      </p>
+    </mat-card-content>
+    <img mat-card-image [src]="blogPost.imageUrl" alt="Photo of Post">
+   
+    <div class="details">
+      <span id="likes">123 likes</span>
+    <span id="comments">{{displayLength}} comments</span>
     </div>
-
-  </div>
-
+    <mat-divider></mat-divider>
   
-
-    <div *ngIf="allComments">
-      <div  class="commentBox" *ngFor="let rem of firstComment.slice(1); let i = index;">
-        <img [src]="rem.authorImageUrl">
-  
-        <div class="commentText">
-          <b>{{rem.authorName}}</b>
-          
-          <p>{{rem.message}}</p>
-          <a (click)="hideMe[i] = !hideMe[i]">Reply</a>
-        </div>
-        <div  class="commentBox">
-          <img src="../../../assets/images/male.jpg">
+    <mat-card-actions>
+      <button mat-button>
+        <mat-icon>thumb_up</mat-icon>
+        Like
+      </button>
+      <button mat-button (click)="showCommentForm = !showCommentForm">
+        <mat-icon [matBadge]="displayLength">comment</mat-icon>
+        Comment
+      </button>
+    </mat-card-actions>
+      
     
-          <div [hidden]="hideMe[i]" class="commentText">
-            <b>Cedar Daniel</b>
-            
-            <p>Lorem ipsum dolor sit amet.</p>
+    <div class="commentBox">
+      <img [src]="firstComment[0].authorImageUrl">
+  
+      <div class="commentStf">
+        <div class="commentText">
+  
+          <b>{{firstComment[0].authorName}}</b>
+          
+          <p>{{firstComment[0].message}}</p>
+          
+        </div> 
+        <a (click)="hideMe[0] = !hideMe[0]" class="reply-link">Reply</a>
+      </div>
+    </div>
+  
+    <form [hidden]="hideMe[0]" class="example-form">
+      <img src="../../../assets/images/male.jpg" class="auth-user">
+      <mat-form-field class="example-full-width">
+        <mat-label>Leave a reply</mat-label>
+        <textarea matInput placeholder="Leave a reply"></textarea>
+      </mat-form-field>
+      <mat-icon>send</mat-icon>
+    </form>
+  
+    <div class="replyBox">
+      <img src="../../../assets/images/male.jpg">
+  
+      <div class="replyText">
+        <b>Cedar Daniel</b>
+        
+        <p>Lorem ipsum dolor sit amet.</p>
+        
+      </div>
+    
+    </div>
+  
+    
+  
+      <div *ngIf="allComments">
+        <div *ngFor="let rem of firstComment.slice(1); let i = index;">
+  
+          <div  class="commentBox" >
+            <img [src]="rem.authorImageUrl">
+      
+            <div class="commentStf">
+    
+              <div class="commentText">
+                <b>{{rem.authorName}}</b>
+                
+                <p>{{rem.message}}</p>
+                
+              </div>
+              <a (click)="hideMe[i+1] = !hideMe[i+1]" class="reply-link">Reply</a>
+            </div>
             
           </div>
-         
+  
+          
+          <form [hidden]="hideMe[i+1]" class="example-form">
+            <img src="../../../assets/images/male.jpg" class="auth-user">
+            <mat-form-field class="example-full-width">
+              <mat-label>Leave a reply</mat-label>
+              <textarea matInput placeholder="Leave a reply"></textarea>
+            </mat-form-field>
+            <mat-icon>send</mat-icon>
+          </form>
+    
+          <div *ngFor="let rep of rem.replies" class="replyBox">
+  
+            <img [src]="rep.authorImageUrl">
+          
+            <div  class="replyText">
+             
+              <b>{{rep.authorName}}</b>
+              
+              <p>{{rep.message}}</p>
+              
+            </div>
+           
+          </div>
+  
         </div>
       </div>
-    </div>
-
-
-  <button mat-flat-button color="accent" (click)="loadComments()">View more comments</button>
-
-  <form *ngIf="showCommentForm" class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Leave a comment</mat-label>
-      <textarea matInput placeholder="Leave a comment"></textarea>
-    </mat-form-field>
-  </form>
   
-</mat-card>
+  
+    <button mat-flat-button color="accent" (click)="loadComments()">View more comments</button>
+  
+    <form *ngIf="showCommentForm" class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput placeholder="Leave a Comment"></textarea>
+      </mat-form-field>
+      <mat-icon>send</mat-icon>
+    </form>
+    
+  </mat-card>
+  
+  
 
+</div>

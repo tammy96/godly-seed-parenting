@@ -46,6 +46,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatIconModule,
     MatListModule,
     MatInputModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDividerModule
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]

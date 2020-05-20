@@ -37,11 +37,11 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-toolbar color="primary">
+        <mat-toolbar class="toolBar">
             <mat-icon (click)="sidenav.toggle()" *ngIf="showSideMenu">menu</mat-icon>
-            Godly Seed Parenting
+            LOGO
             <div *ngIf="!showSideMenu" fxFlex fxLayout fxLayoutAlign="flex-end">
-                <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+                <ul fxLayout fxLayoutGap="35px" class="navigation-items">
                     <li><a routerLink="/home">Home</a></li>
                     <li><a routerLink="/newsfeed">Newfeed</a></li>
                     <li><a routerLink="/events">Event</a></li>

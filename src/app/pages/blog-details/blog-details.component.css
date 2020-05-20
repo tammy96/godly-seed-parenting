@@ -443,9 +443,6 @@ html, body{
 
     }
 
-    .example-card {
-      max-width: 400px;
-    }
     
     .example-header-image {
       background-image: url('../../../assets/images/profile.jpg');
@@ -466,22 +463,86 @@ html, body{
       justify-content: space-between;
     }
 
-    .commentBox{
+    .mat-card-actions, .mat-card-subtitle, .mat-card-content {
+      display: block;
+      margin-bottom: 0px;
+  }
+
+    .commentBox, .replyBox{
       display: flex;
       /* justify-content: space-around; */
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      margin-top: 10px;
     }
 
-    .commentBox img{
+    .replyBox{
+      margin-left: 28px;
+    }
+
+    .commentBox img, .replyBox img, .auth-user{
       height: 35px;
       width: 35px;
       border-radius: 50%;
       margin-right: 5px;
     }
 
-    .commentText{
+    .commentText, .replyText{
       background: #7979791f;
       padding: 10px;
       border-radius: 15px; 
+      text-align: left;
     }
 
+
+    .commentText p, .replyText p{
+      margin-bottom: 0;
+    }
+
+    .reply-link{
+      font-size: 13px;
+      color: cornflowerblue;
+      display: block;
+      text-align: left;
+    }
+
+    .reply-link:hover{
+      cursor: pointer;
+      color: cornflowerblue;
+    }
+
+    .mat-form-field-infinix{
+      width: 60%;
+    }
+    .example-full-width {
+      width: 80%;
+  }
+
+  .example-card {
+    max-width: 95%;
+    margin: 15px auto;
+    padding: 35px;
+  }
+  
+  .example-header-image {
+    background-image: url('../../../assets/images/profile.jpg');
+    background-size: cover;
+  }
+
+  .wrapper{
+    margin-top: 65px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .subtitle, .post-paragraph{
+    text-align: left;
+  }
+  
+  .post-paragraph{
+    margin-left: 57px;
+  }
+
+  .postImg{
+    width: calc(90% + 32px);
+  }
