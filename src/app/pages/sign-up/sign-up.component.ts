@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,  Validators, FormGroup } from "@angular/forms";
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,7 +15,7 @@ export class SignUpComponent implements OnInit {
   hide = true;
   hide2 = true;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { 
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { 
     this.signUpForm =  this.fb.group({
       name: ['', Validators.required],
       gender: ['', Validators.required],
@@ -28,7 +29,7 @@ export class SignUpComponent implements OnInit {
     if (this.signUpForm.get(formControlName).hasError('required')) {
       return 'You must enter a value';
     }
-    if (this.signUpForm.get(formControlName).hasError('minLength')) {
+    if (this.signUpForm.get(formControlName).hasError('minlength')) {
       return 'Minimum Length is 6 Characters';
     }
     
@@ -51,6 +52,7 @@ export class SignUpComponent implements OnInit {
       this.authService.createUserWithEmailPassword(email, password).then((res) => {
         this.authService.addUserToDatabaseFromEmailLogin(res, this.signUpForm.value)
         console.log('User Registered and Added To Collection Successfully')
+        this.router.navigate(['newsfeed'])
       })
     } else {
       console.log('Form Not Valid')

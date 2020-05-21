@@ -15,7 +15,7 @@
    
     <div class="details">
       <span id="likes">123 likes</span>
-    <span id="comments">{{displayLength}} comments</span>
+    <span id="comments">{{displayLength ? displayLength : 0}} comments</span>
     </div>
     <mat-divider></mat-divider>
   
@@ -31,8 +31,8 @@
     </mat-card-actions>
       
     
-    <div class="commentBox">
-      <img [src]="firstComment[0].authorImageUrl">
+    <div class="commentBox" *ngIf="firstComment[0]">
+      <img *ngIf="firstComment[0].authorImageUrl" [src]="firstComment[0].authorImageUrl">
   
       <div class="commentStf">
         <div class="commentText">
@@ -47,29 +47,39 @@
     </div>
   
     <form [hidden]="!hideMe[0]" class="example-form">
-      <img src="../../../assets/images/male.jpg" class="auth-user">
+      <img [src]="currentUser.photoURL" class="auth-user">
       <mat-form-field class="example-full-width">
         <mat-label>Leave a reply</mat-label>
-        <textarea matInput placeholder="Leave a reply"></textarea>
+        <textarea matInput 
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1"
+        cdkAutosizeMaxRows="5"
+        placeholder="Leave a reply"></textarea>
+        <button (click)="replyComment(firstComment[0].id)" mat-icon-button matSuffix>
+          <mat-icon>send</mat-icon>
+        </button>
       </mat-form-field>
-      <mat-icon>send</mat-icon>
     </form>
-  
-    <div class="replyBox" *ngFor="let one of firstComment[0].replies">
-      <img [src]="one.authorImageUrl">
-  
-      <div class="replyText">
-        <b>{{one.authorName}}</b>
-        
-        <p>{{one.message}}</p>
-        
+    <div *ngIf="firstComment[0]"> 
+      <div class="replyBox" *ngFor="let one of firstComment[0].replies">
+        <div *ngIf="firstComment[0].replies">
+          <img [src]="one.authorImageUrl">
+      
+          <div class="replyText">
+            <b>{{one.authorName}}</b>
+            
+            <p>{{one.message}}</p>
+            
+          </div>
+        </div>
+      
       </div>
-    
     </div>
   
     
   
-      <div *ngIf="allComments">
+      <div *ngIf="firstComment.length >= 1 && allComments">
         <div *ngFor="let rem of firstComment.slice(1); let i = index;">
   
           <div  class="commentBox" >
@@ -90,26 +100,29 @@
   
           
           <form [hidden]="!hideMe[i+1]" class="example-form">
-            <img src="../../../assets/images/male.jpg" class="auth-user">
+            <img [src]="currentUser.photoURL" class="auth-user">
             <mat-form-field class="example-full-width">
               <mat-label>Leave a reply</mat-label>
               <textarea matInput placeholder="Leave a reply"></textarea>
+              <button (click)="replyComment(rem.id)" mat-icon-button matSuffix>
+                <mat-icon>send</mat-icon>
+              </button>
             </mat-form-field>
-            <mat-icon>send</mat-icon>
           </form>
+          <div *ngIf="rem.replies.length >= 1"> 
+            <div *ngFor="let rep of rem.replies" class="replyBox">
     
-          <div *ngFor="let rep of rem.replies" class="replyBox">
-  
-            <img [src]="rep.authorImageUrl">
-          
-            <div  class="replyText">
+              <img [src]="rep.authorImageUrl">
+            
+              <div  class="replyText">
+               
+                <b>{{rep.authorName}}</b>
+                
+                <p>{{rep.message}}</p>
+                
+              </div>
              
-              <b>{{rep.authorName}}</b>
-              
-              <p>{{rep.message}}</p>
-              
             </div>
-           
           </div>
   
         </div>
@@ -117,14 +130,18 @@
   
   
     
-    <b><a (click)="loadComments()" class="more-comments">View more comments</a></b>
+    <b><a *ngIf="firstComment.length >= 2" (click)="loadComments() && allComments = !allComments" class="more-comments">{{allComments ? 'Show Less Comments' : 'Show More Comment'}}</a></b>
   
     <form class="example-form">
       <mat-form-field class="example-full-width">
         <mat-label>Leave a comment</mat-label>
-        <textarea matInput placeholder="Leave a Comment"></textarea>
+        <textarea matInput
+        cdkAutosizeMinRows="1"
+        placeholder="Leave a Comment"></textarea>
+        <button (click)="submitComment()" mat-icon-button matSuffix>
+          <mat-icon>send</mat-icon>
+        </button>
       </mat-form-field>
-      <mat-icon>send</mat-icon>
     </form>
     
   </mat-card>

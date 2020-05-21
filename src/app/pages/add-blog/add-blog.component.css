@@ -1,0 +1,22 @@
+form{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    border: 1px solid red;
+}
+
+form input, button{
+    display: block;
+    margin: 0 auto;
+}
+
+input[type="file"]{
+    padding: 20 30;
+    color: #fff;
+    background-color: #34495e;
+    border: none;
+    font-size: 20;
+    border-radius: 5px;
+
+}

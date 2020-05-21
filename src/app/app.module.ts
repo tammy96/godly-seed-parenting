@@ -48,6 +48,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatInputModule,
     MatBadgeModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]

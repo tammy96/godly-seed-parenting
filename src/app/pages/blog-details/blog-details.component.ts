@@ -93,6 +93,7 @@ export class BlogDetailsComponent implements OnInit {
           this.currentUser = val;
           if (!this.currentUser.photoURL) {
             this.currentUser.photoURL = this.defaultImage;
+            console.log(this.currentUser.photoURL)
           }
         })
       }
@@ -104,17 +105,22 @@ export class BlogDetailsComponent implements OnInit {
     this.commentForm.get('authorImageUrl').patchValue(this.currentUser.photoURL);
     this.commentForm.get('timeStamp').patchValue(new Date().getTime())
     console.log(this.commentForm.value)
-    this.commentService.addComment(this.id, this.commentForm.value).then(() => {
-      console.log('Comment Added');
-      this.commentForm.reset({
-        authorName: '',
-        authorImageUrl: '',
-        timeStamp: '',
-        message: ''
+    if (this.commentForm.valid) {
+      this.commentService.addComment(this.id, this.commentForm.value).then(() => {
+        console.log('Comment Added');
+        this.commentForm.reset({
+          authorName: '',
+          authorImageUrl: '',
+          timeStamp: '',
+          message: ''
+        })
+      }).catch((err) => {
+        console.log(err)
       })
-    }).catch((err) => {
-      console.log(err)
-    })
+    } else {
+      console.log('Form Not Valid')
+    }
+    
   }
 
   replyComment(commentID) {

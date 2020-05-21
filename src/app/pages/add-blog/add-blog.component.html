@@ -6,7 +6,8 @@
 <label for="">Body</label>
 <input type="text" formControlName="body" placeholder="Input body here...">
 
-<input type="file" formControlName="file" (change)="fileUpload($event)">
+<input type="file" formControlName="file" (change)="fileUpload($event)" id="file">
+<label for="file" class="file-label">Choose File</label>
 <progress max="100" [value]="(uploadPercent | async)"></progress>
 
 <button type="button" (click)="submitForm()" >Post</button>

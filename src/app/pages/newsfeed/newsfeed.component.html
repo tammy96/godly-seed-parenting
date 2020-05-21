@@ -8,7 +8,7 @@
     </mat-card-header>
     <mat-card-content>
       <p>
-        {{blog.body}}
+        {{blog.body | slice:0:200}}...<a mat-flat-button routerLink="/newsfeed/{{blog.id}}">see more</a>
       </p>
     </mat-card-content>
     <img mat-card-image [src]="blog.imageUrl" class="postImg" alt="Photo of Author">

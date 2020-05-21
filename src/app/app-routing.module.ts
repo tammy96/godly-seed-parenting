@@ -36,8 +36,6 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'register', component: SignUpComponent},
   {path: 'admin', component: AdminComponent, ...canActivate(adminOnly), children: [
-    {path: '', redirectTo: 'upload', pathMatch: 'full'},
-    {path: 'upload', component: AddBlogComponent},
     {path: 'posts', component: ViewPostsComponent},
     {path: 'posts/:id', component: PostDetailsComponent},
     {path: 'posts/edit/:id', component: EditPostComponent},

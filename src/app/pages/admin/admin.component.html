@@ -1,57 +1,16 @@
-<nav>
-	<ul class="left">
-		<li><i class="fa fa-bars"></i></li>
-		<li>LOGO</li>
-	</ul>
+<div class="wrapper">
 
-	<ul class="right">
-		<li>
-      <fa-icon [icon]="faBell" class="fa fa-bell"></fa-icon><span>3</span>
-      <!-- <i class="fa fa-bell"><span>3</span></i> -->
-    </li>
-		<li>
-      <fa-icon [icon]="faEnvelope" class="fa fa-envelope"><span>2</span></fa-icon>
-      <!-- <i class="fa fa-envelope"><span>2</span></i> -->
-    </li>
-		<li><img src="../../../assets/images/male.jpg"></li>
-    <li class="name">Admin</li>
-    <button (click)="logout()">Logout</button>
-	</ul>	
-</nav>
+  <mat-card>
+    <mat-card-header>
+    </mat-card-header>
+    <mat-card-content>
+          <mat-tab-group mat-align-tabs="center">
+            <mat-tab label="First"><app-add-blog></app-add-blog></mat-tab>
+            <mat-tab label="Second">Content 2</mat-tab>
+            <mat-tab label="Third">Content 3</mat-tab>
+          </mat-tab-group>
+      
+    </mat-card-content>
+  </mat-card>
 
-<div class="content">
-
-  <a routerLink="/admin/users">
-    <div class="propDiv">
-      <fa-icon [icon]="faUsers" class="fa fa-users"></fa-icon>
-      <!-- <i class="fa fa-users"></i> -->
-      <h3 *ngIf="usersArray">{{usersArray.length}}</h3>
-      <p>Total Users</p>
-    </div>
-  </a>
-
-  <a routerLink="/admin/posts">
-    <div class="propDiv">
-      <fa-icon [icon]="faNewspaper" class="fa fa-newspaper"></fa-icon>
-      <!-- <i class="fa fa-newspaper"></i> -->
-      <h3 *ngIf="blogsArray">{{blogsArray.length}}</h3>
-      <p>Posts</p>
-    </div>
-  </a>
-
-
-  <a routerLink="/admin/discussions">
-    <div class="propDiv">
-      <fa-icon [icon]="faComment" class="fa fa-comment"></fa-icon>
-      <!-- <i class="fa fa-comment"></i> -->
-      <h3>8</h3>
-      <p>Discussion Categories</p>
-    </div>
-  </a>
-
-	<div class="post-content">
-		<router-outlet></router-outlet>
-
-	</div>
 </div>
-
