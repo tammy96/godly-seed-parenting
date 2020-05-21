@@ -11,6 +11,8 @@ export class SignUpComponent implements OnInit {
 
   signUpForm: FormGroup;
   submitAttempt: boolean = false;
+  hide = true;
+  hide2 = true;
 
   constructor(private fb: FormBuilder, private authService: AuthService) { 
     this.signUpForm =  this.fb.group({
@@ -22,7 +24,22 @@ export class SignUpComponent implements OnInit {
     })
   }
   
-  
+  getErrorMessage(formControlName) {
+    if (this.signUpForm.get(formControlName).hasError('required')) {
+      return 'You must enter a value';
+    }
+    if (this.signUpForm.get(formControlName).hasError('minLength')) {
+      return 'Minimum Length is 6 Characters';
+    }
+    
+    return this.signUpForm.get(formControlName).hasError('email') ? 'Not a valid email' : '';
+  }
+
+  passwordMatch() {
+    if (this.signUpForm.get('password').value !== this.signUpForm.get('confirmPassword').value) {
+      return 'Password and Confirm Password field don\'t match '
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -39,5 +56,6 @@ export class SignUpComponent implements OnInit {
       console.log('Form Not Valid')
     }
   }
+
 
 }

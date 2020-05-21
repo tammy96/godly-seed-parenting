@@ -19,13 +19,13 @@
     </div>
     <mat-divider></mat-divider>
   
-    <mat-card-actions>
+    <mat-card-actions class="post-action">
       <button mat-button>
-        <mat-icon>thumb_up</mat-icon>
+        <mat-icon class="mat-icon">thumb_up</mat-icon>
         Like
       </button>
-      <button mat-button (click)="showCommentForm = !showCommentForm">
-        <mat-icon [matBadge]="displayLength">comment</mat-icon>
+      <button mat-button>
+        <mat-icon class="mat-icon">comment</mat-icon>
         Comment
       </button>
     </mat-card-actions>
@@ -46,7 +46,7 @@
       </div>
     </div>
   
-    <form [hidden]="hideMe[0]" class="example-form">
+    <form [hidden]="!hideMe[0]" class="example-form">
       <img src="../../../assets/images/male.jpg" class="auth-user">
       <mat-form-field class="example-full-width">
         <mat-label>Leave a reply</mat-label>
@@ -55,13 +55,13 @@
       <mat-icon>send</mat-icon>
     </form>
   
-    <div class="replyBox">
-      <img src="../../../assets/images/male.jpg">
+    <div class="replyBox" *ngFor="let one of firstComment[0].replies">
+      <img [src]="one.authorImageUrl">
   
       <div class="replyText">
-        <b>Cedar Daniel</b>
+        <b>{{one.authorName}}</b>
         
-        <p>Lorem ipsum dolor sit amet.</p>
+        <p>{{one.message}}</p>
         
       </div>
     
@@ -89,7 +89,7 @@
           </div>
   
           
-          <form [hidden]="hideMe[i+1]" class="example-form">
+          <form [hidden]="!hideMe[i+1]" class="example-form">
             <img src="../../../assets/images/male.jpg" class="auth-user">
             <mat-form-field class="example-full-width">
               <mat-label>Leave a reply</mat-label>
@@ -116,9 +116,10 @@
       </div>
   
   
-    <button mat-flat-button color="accent" (click)="loadComments()">View more comments</button>
+    
+    <b><a (click)="loadComments()" class="more-comments">View more comments</a></b>
   
-    <form *ngIf="showCommentForm" class="example-form">
+    <form class="example-form">
       <mat-form-field class="example-full-width">
         <mat-label>Leave a comment</mat-label>
         <textarea matInput placeholder="Leave a Comment"></textarea>

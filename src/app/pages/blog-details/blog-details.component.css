@@ -546,3 +546,15 @@ html, body{
   .postImg{
     width: calc(90% + 32px);
   }
+
+.mat-icon{
+    color: var(--brandcolor);
+  }
+
+  .more-comments{
+    color: #171515de;
+  }
+
+  .more-comments:hover{
+    color: #171515de;
+  }

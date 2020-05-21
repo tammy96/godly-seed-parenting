@@ -46,7 +46,7 @@ export class BlogDetailsComponent implements OnInit {
   defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg';
   commentForm: FormGroup;
   replyForm: FormGroup;
-  showCommentForm: boolean = true;
+
 
   id: string;
   displayLength: number;

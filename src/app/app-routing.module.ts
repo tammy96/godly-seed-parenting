@@ -34,7 +34,7 @@ const routes: Routes = [
   {path: 'forum', component: ForumComponent},
   {path: 'events', component: EventsComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'register', canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectLoggedInToPosts}, component: SignUpComponent},
+  {path: 'register', component: SignUpComponent},
   {path: 'admin', component: AdminComponent, ...canActivate(adminOnly), children: [
     {path: '', redirectTo: 'upload', pathMatch: 'full'},
     {path: 'upload', component: AddBlogComponent},

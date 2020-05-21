@@ -47,6 +47,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatListModule,
     MatInputModule,
     MatBadgeModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]
