@@ -11,7 +11,7 @@ form input, button{
     margin: 0 auto;
 }
 
-input[type="file"]{
+input[type="file"]::-webkit-file-upload-button{
     padding: 20 30;
     color: #fff;
     background-color: #34495e;
