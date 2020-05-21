@@ -1,7 +1,38 @@
-<div *ngIf="usersArray">
+<!-- <div *ngIf="usersArray">
     <ul *ngFor="let users of usersArray">
         <a [routerLink]="users.id">
             <li>{{ users.name }}</li>
         </a>
     </ul>
-</div>
+</div> -->
+
+<!-- <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">
+  </mat-form-field> -->
+  <div class="table" *ngIf="dataSource">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+       
+        <!-- Name Column -->
+        <ng-container matColumnDef="name" sticky>
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="gender">
+          <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.gender}} </mat-cell>
+        </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+  </div>
+ 

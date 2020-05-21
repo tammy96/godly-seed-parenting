@@ -49,6 +49,10 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatTableModule } from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -98,7 +102,11 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatBadgeModule,
     MatDividerModule,
     MatSelectModule,
-    MatTabsModule
+    MatTabsModule,
+    MatProgressBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]

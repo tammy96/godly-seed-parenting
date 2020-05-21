@@ -12,8 +12,6 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  usersArray: any[];
-  blogsArray: any[];
   // Font Awesome Icon Variables
 
   faBell = faBell;
@@ -28,12 +26,7 @@ export class AdminComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.usersService.getUsers().subscribe(value => {
-      this.usersArray = value;
-    })
-    this.adminService.getBlogs().subscribe(value => {
-      this.blogsArray = value;
-    })
+
   }
   logout() {
     this.authService.logout();

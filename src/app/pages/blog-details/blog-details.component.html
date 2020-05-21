@@ -130,7 +130,7 @@
   
   
     
-    <b><a *ngIf="firstComment.length >= 2" (click)="loadComments() && allComments = !allComments" class="more-comments">{{allComments ? 'Show Less Comments' : 'Show More Comment'}}</a></b>
+    <b><a *ngIf="firstComment.length >= 2" (click)="loadComments()" class="more-comments">{{allComments ? 'Show Less Comments' : 'Show More Comment'}}</a></b>
   
     <form class="example-form">
       <mat-form-field class="example-full-width">

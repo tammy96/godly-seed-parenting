@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, Validators, FormControlName } from "@angular/forms";
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -54,6 +54,12 @@ export class AddBlogComponent implements OnInit {
     ).subscribe();
 
 
+  }
+
+  getErrorMessage(formControlName) {
+    if (this.uploadBlogForm.get(formControlName).hasError('required')) {
+      return 'This Field Is Required'
+    }
   }
 
   submitForm() {

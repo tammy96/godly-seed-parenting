@@ -1,15 +1,23 @@
 <form [formGroup]="uploadBlogForm">
 
-<label for="">Title/Caption</label>
-<input type="text" formControlName="title" placeholder="Input title/caption here...">
+    <h2><b>Create New Post</b></h2>
 
-<label for="">Body</label>
-<input type="text" formControlName="body" placeholder="Input body here...">
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Enter Post Title</mat-label>
+        <input matInput placeholder="Post Title" formControlName="title" required>
+        <mat-icon matPrefix>create</mat-icon>
+        <mat-error *ngIf="uploadBlogForm.get('title').invalid">{{getErrorMessage('title')}}</mat-error>
+    </mat-form-field>
 
-<input type="file" formControlName="file" (change)="fileUpload($event)" id="file">
-<label for="file" class="file-label">Choose File</label>
-<progress max="100" [value]="(uploadPercent | async)"></progress>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Post Content</mat-label>
+        <textarea matInput placeholder="Post Content" formControlName="body"></textarea>
+        <mat-icon matPrefix>add_comment</mat-icon>
+        <mat-error *ngIf="uploadBlogForm.get('body').invalid">{{getErrorMessage('body')}}</mat-error>
+    </mat-form-field>
+ 
+    <input type="file" formControlName="file" (change)="fileUpload($event)" id="file">
+    <mat-progress-bar mode="determinate" [value]="(uploadPercent | async)" class="progress-bar"></mat-progress-bar>
 
-<button type="button" (click)="submitForm()" >Post</button>
+<button mat-raised-button (click)="submitForm()"><mat-icon>create</mat-icon>Post</button>
 </form>
-
