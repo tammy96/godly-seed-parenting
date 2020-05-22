@@ -30,6 +30,11 @@ a:hover{
 .navigation-items a{
     font-size: 16px;
     font-family: 'Palanquin', sans-serif;
+    
+}
 
+.sidebar-content{
+    background-color: #fff;
+    color: rgba(0,0,0,.87);  
 }
 

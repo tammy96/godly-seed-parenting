@@ -1,4 +1,30 @@
-.move-down {
-  margin-top: 5rem;
+.move-down { 
+  margin: 5rem auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
-  
+
+.mat-drawer-container {
+  background-color: #fff;
+  color: rgba(0,0,0,.87);
+}
+
+form{
+  max-width: 350px;
+}
+
+form input, .form-field{
+  display: block;
+}
+
+.submit-button{
+  background: var(--brandcolor);
+  color: #fff;
+}
+
+@media (max-width: 420px){
+  form{
+    width: 80%;
+  }
+}

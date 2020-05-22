@@ -1,20 +1,20 @@
-<div [formGroup]="signUpForm" class="move-down">
-
-    <mat-form-field appearance="fill">
+<form [formGroup]="signUpForm" class="move-down">
+        <h2><b>Sign Up</b></h2>
+    <mat-form-field appearance="fill" class="form-field">
         <mat-label>Full Name</mat-label>
         <input matInput placeholder="John Doe" formControlName="name" required>
         <mat-icon matPrefix>person</mat-icon>
         <mat-error *ngIf="signUpForm.get('name').invalid">{{getErrorMessage('name')}}</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="form-field">
         <mat-label>Enter your email</mat-label>
         <input matInput placeholder="pat@example.com" formControlName="email" required>
         <mat-icon matPrefix>mail</mat-icon>
         <mat-error *ngIf="signUpForm.get('email').invalid">{{getErrorMessage('email')}}</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="form-field">
         <mat-label>Gender</mat-label>
         <mat-select formControlName="gender" required>
             <mat-option value="female">Female</mat-option>
@@ -24,7 +24,7 @@
         <mat-error *ngIf="signUpForm.get('gender').invalid">{{getErrorMessage('gender')}}</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="form-field">
         <mat-label>Password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.arial-label]="'Hide Password'"
@@ -35,7 +35,7 @@
         <mat-error *ngIf="signUpForm.get('password').invalid">{{getErrorMessage('password')}}</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="form-field">
         <mat-label>Confirm password</mat-label>
         <input matInput formControlName="confirmPassword" [type]="hide2 ? 'password' : 'text'" required>
         <button mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'"
@@ -47,5 +47,5 @@
         <mat-error *ngIf="signUpForm.get('confirmPassword').value !== signUpForm.get('password').value">
             {{passwordMatch()}}</mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="register()" [disabled]="signUpForm.invalid">Submit</button>
-</div>
+    <button mat-raised-button class="submit-button" (click)="register()" [disabled]="signUpForm.invalid">Submit</button>
+</form>
