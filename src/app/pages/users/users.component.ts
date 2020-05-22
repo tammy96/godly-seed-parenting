@@ -15,7 +15,7 @@ export class UsersComponent implements OnInit {
   // @ViewChild(MatPaginator, {static: true, read: MatPaginator})  paginator: MatPaginator;
   // @ViewChild(MatSort, {static: true, read: MatSort}) sort: MatSort;
   dataSource;
-  displayedColumns: string[] = ['name', 'email', 'gender'];
+  displayedColumns: string[] = ['name', 'email'];
   usersArray: IUser[];
   constructor(private usersService: UsersService) { 
   }
