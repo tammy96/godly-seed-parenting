@@ -10,23 +10,51 @@
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">
   </mat-form-field> -->
+
+
   <div class="table" *ngIf="dataSource">
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
        
+        <!-- ID Column -->
+        <ng-container matColumnDef="id" sticky>
+          <mat-header-cell *matHeaderCellDef class="mat-header"> ID </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+
         <!-- Name Column -->
         <ng-container matColumnDef="name" sticky>
-          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef class="mat-header"> <b>Name</b> </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="mat-cell"> {{element.name}} </mat-cell>
         </ng-container>
       
         <!-- Email Column -->
         <ng-container matColumnDef="email">
-          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef class="mat-header"> <b>Email</b> </mat-header-cell>
+          <mat-cell *matCellDef="let element" class="mat-cell"> {{element.email}} </mat-cell>
+        </ng-container>
+      
+        <!-- Gender Column -->
+        <ng-container matColumnDef="gender">
+          <mat-header-cell *matHeaderCellDef class="mat-header"> <b>Gender</b> </mat-header-cell>
+          <mat-cell *matCellDef="let element"class="mat-cell"> {{element.gender}} </mat-cell>
         </ng-container>
          
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
   </div>
+
+  <mat-list class="mat-list">
+    <div mat-subheader>Users <span *ngIf="usersArray.length >= 1" [matBadge]="usersArray.length"></span></div>
+    <mat-list-item *ngFor="let user of usersArray">
+      <!-- <mat-icon mat-list-icon>folder</mat-icon> -->
+      <img *ngIf="user.photoURL; else anonymous" mat-list-avatar [src]="user.photoURL" alt="User Image">
+      <ng-template #anonymous>
+        <fa-icon mat-list-avatar [icon]="faUser"></fa-icon>
+      </ng-template>
+      <div mat-line>{{user.name}}</div>
+      <div mat-line> {{user.email}} </div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
  

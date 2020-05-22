@@ -25,7 +25,6 @@ import { ForumComponent } from './pages/forum/forum.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AddBlogComponent } from './pages/add-blog/add-blog.component';
-import { AboutComponent } from './pages/about/about.component';
 import { EventsComponent } from './pages/events/events.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
@@ -53,6 +52,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatTableModule } from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { AdminBlogPostComponent } from './pages/admin-blog-post/admin-blog-post.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NotFoundComponent,
     AdminComponent,
     AddBlogComponent,
-    AboutComponent,
     EventsComponent,
     LoginComponent,
     SignUpComponent,
@@ -75,6 +75,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     EditPostComponent,
     AccountComponent,
     BlogDetailsComponent,
+    AdminBlogPostComponent,
     
   ],
   imports: [
@@ -106,7 +107,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatProgressBarModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    EditPostComponent
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]

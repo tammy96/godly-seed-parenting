@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { IUser } from 'src/app/interface/iUser';
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 
 @Component({
@@ -12,11 +13,11 @@ import { IUser } from 'src/app/interface/iUser';
 
 
 export class UsersComponent implements OnInit {
-  // @ViewChild(MatPaginator, {static: true, read: MatPaginator})  paginator: MatPaginator;
-  // @ViewChild(MatSort, {static: true, read: MatSort}) sort: MatSort;
+
+  faUser = faUser;
   dataSource;
-  displayedColumns: string[] = ['name', 'email'];
-  usersArray: IUser[];
+  displayedColumns: string[] = ['id','name', 'email', 'gender'];
+  usersArray: IUser[] = [];
   constructor(private usersService: UsersService) { 
   }
   
@@ -32,9 +33,5 @@ export class UsersComponent implements OnInit {
     // applyFilter(event: Event) {
     //   const filterValue = (event.target as HTMLInputElement).value;
     //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  
-    //   if (this.dataSource.paginator) {
-    //     this.dataSource.paginator.firstPage();
-    //   }
     // }
 }

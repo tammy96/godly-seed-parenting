@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AdminService } from 'src/app/services/admin.service';
 import { ActivatedRoute } from '@angular/router';
 import { IBlog } from 'src/app/interface/iBlog';
 import { finalize } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-post',
@@ -20,7 +21,9 @@ export class EditPostComponent implements OnInit {
   updateBlogForm: FormGroup;
 
   constructor(private adminService: AdminService, 
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    public dialogRef: MatDialogRef<EditPostComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: IBlog) {
     this.id = this.route.snapshot.paramMap.get('id');
    }
 

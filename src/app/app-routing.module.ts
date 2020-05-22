@@ -9,7 +9,6 @@ import { NewsfeedComponent } from './pages/newsfeed/newsfeed.component';
 import { ForumComponent } from './pages/forum/forum.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { EventsComponent } from './pages/events/events.component';
-import { AboutComponent } from './pages/about/about.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AddBlogComponent } from './pages/add-blog/add-blog.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
   {path: 'newsfeed/:id', component: BlogDetailsComponent},
   {path: 'forum', component: ForumComponent},
   {path: 'events', component: EventsComponent},
-  {path: 'about', component: AboutComponent},
   {path: 'register', component: SignUpComponent},
   {path: 'admin', component: AdminComponent, ...canActivate(adminOnly), children: [
     {path: 'posts', component: ViewPostsComponent},
