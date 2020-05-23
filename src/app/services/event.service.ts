@@ -34,7 +34,7 @@ export class EventService {
   }
 
   getEvent(id) {
-    return this.eventsCollection.doc(id).valueChanges();
+    return this.eventsCollection.doc<IEvent>(id).valueChanges();
   }
 
   updateEvent(id, data) {
@@ -42,6 +42,6 @@ export class EventService {
   }
 
   deleteEvent(id) {
-    return this.eventsCollection.doc(id).delete();
+    return this.eventsCollection.doc<IEvent>(id).delete();
   }
 }

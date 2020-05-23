@@ -61,11 +61,12 @@
         </button>
       </mat-form-field>
     </form>
+
     <div *ngIf="firstComment[0]"> 
       <div class="replyBox" *ngFor="let one of firstComment[0].replies">
+        <img [src]="one.authorImageUrl">
         <div *ngIf="firstComment[0].replies">
-          <img [src]="one.authorImageUrl">
-      
+         
           <div class="replyText">
             <b>{{one.authorName}}</b>
             
@@ -109,7 +110,7 @@
               </button>
             </mat-form-field>
           </form>
-          <div *ngIf="rem.replies.length >= 1"> 
+          <div *ngIf="rem.replies && rem.replies.length >= 1"> 
             <div *ngFor="let rep of rem.replies" class="replyBox">
     
               <img [src]="rep.authorImageUrl">
@@ -132,11 +133,12 @@
     
     <b><a *ngIf="firstComment.length >= 2" (click)="loadComments()" class="more-comments">{{allComments ? 'Show Less Comments' : 'Show More Comment'}}</a></b>
   
-    <form class="example-form">
+    <form [formGroup]="commentForm" class="example-form cummentForm">
+      <img [src]="currentUser.photoURL" class="auth-user">
       <mat-form-field class="example-full-width">
         <mat-label>Leave a comment</mat-label>
-        <img [src]="currentUser.photoURL" class="auth-user">
         <textarea matInput
+        formControlName="message"
         cdkAutosizeMinRows="1"
         placeholder="Leave a Comment"></textarea>
         <button (click)="submitComment()" mat-icon-button matSuffix>

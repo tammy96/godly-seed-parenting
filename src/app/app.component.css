@@ -24,7 +24,7 @@ a:hover{
      position: fixed;
      height: 45px;
      color: #fff;
-     z-index: 1;
+     z-index: 10;
 }
 
 .navigation-items a{

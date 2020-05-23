@@ -124,3 +124,7 @@
 .more-comments:hover {
   color: #171515de;
 }
+
+.cummentForm{
+  align-items: center;
+}

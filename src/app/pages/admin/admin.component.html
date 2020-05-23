@@ -1,19 +1,23 @@
 <div class="wrapper">
 
-  <mat-card>
+  <mat-card class="main-tab">
     <mat-card-content>
           <mat-tab-group mat-align-tabs="center">
             <mat-tab label="Add Post">
               <app-add-blog></app-add-blog>
             </mat-tab>
             <mat-tab label="Users">
-              <app-users></app-users>
+              
+                <app-users></app-users>
+              
             </mat-tab>
             <mat-tab label="Blogs">
               <app-admin-blog-post></app-admin-blog-post>
             </mat-tab>
             <mat-tab label="Events">
+              <div class="container">
               <app-events></app-events>
+            </div>
             </mat-tab>
           </mat-tab-group>
     </mat-card-content>

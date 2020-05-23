@@ -56,6 +56,9 @@ import { AdminBlogPostComponent } from './pages/admin-blog-post/admin-blog-post.
 import {MatDialogModule} from '@angular/material/dialog';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import { AddEventComponent } from './pages/add-event/add-event.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import { UpdateEventComponent } from './pages/update-event/update-event.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +82,7 @@ import { AddEventComponent } from './pages/add-event/add-event.component';
     BlogDetailsComponent,
     AdminBlogPostComponent,
     AddEventComponent,
+    UpdateEventComponent,
     
   ],
   imports: [
@@ -112,11 +116,14 @@ import { AddEventComponent } from './pages/add-event/add-event.component';
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
-    TextFieldModule
+    TextFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   entryComponents: [
     EditPostComponent,
-    AddEventComponent
+    AddEventComponent,
+    UpdateEventComponent
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]

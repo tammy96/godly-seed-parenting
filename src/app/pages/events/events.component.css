@@ -1,0 +1,19 @@
+.example-card {
+    max-width: 95%;
+    margin: 15px auto;
+    padding: 35px;
+    text-align: center;
+    justify-content: center;
+  }
+
+.add-btn{
+    position: fixed;
+    bottom: 22px;
+    right: 24px;
+    background: var(--brandcolor);
+}
+
+.eventImg {
+    width: calc(90% + 32px);
+   
+  }
