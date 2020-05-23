@@ -34,6 +34,23 @@
                     Forum
                 </a>
              </mat-list-item>
+            <!-- <mat-list-item>
+                <a (click)="sidenav.close()" matLine routerLink="">
+                    <button mat-icon-button>
+                       <img *ngIf="user.photoURL; else anonymous" [src]="user.photoURL" alt="">
+                       <ng-template #anonymous>
+                           <fa-icon [icon]="faUser"></fa-icon>
+                       </ng-template>
+                    </button>
+                    {{user.name ? 'Profile' : 'Login'}}
+                </a>
+             </mat-list-item> -->
+             <!-- <mat-list-item *ngIf="user.name">
+                 <button (click)="logout()" mat-icon-button>
+                    <mat-icon>close</mat-icon>
+                 </button>
+                 Logout
+             </mat-list-item> -->
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="sidebar-content">

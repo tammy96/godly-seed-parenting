@@ -1,14 +1,14 @@
-<form class="move-down">
-    <h2>Sign Up</h2>
+<form [formGroup]="loginForm" class="move-down">
+    <h2>Login</h2>
     <mat-form-field appearance="fill" class="form-field">
         <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" required>
+        <input matInput formControlName="email" placeholder="pat@example.com" required>
         <mat-icon matPrefix>mail</mat-icon>
     </mat-form-field>
     
     <mat-form-field appearance="fill" class="form-field">
         <mat-label>Password</mat-label>
-        <input matInput type="password" required>
+        <input matInput formControlName="password" type="password" required>
         <button mat-icon-button matSuffix [attr.arial-label]="'Hide Password'"
             >
             <mat-icon>visibility_off</mat-icon>
@@ -17,7 +17,16 @@
        
     </mat-form-field>
 
+    <section>
+        
+        <div class="example-button-row">
+         
+          <button mat-raised-button (click)="loginWithFacebook()" color="primary"><fa-icon class="fa-icon" [icon]="faFacebook"></fa-icon>CONTINUE WITH FACEBOOK</button>
+          <button mat-raised-button (click)="loginWithGoogle()" color="warn"><fa-icon class="fa-icon" [icon]="faGoogle"></fa-icon>CONTINUE WITH GOOGLE</button>
+        </div>
+      </section>
+    
     <a href="#" class="password-link">Forgot Password</a>
 
-    <button mat-raised-button class="submit-button">Login</button>
+    <button mat-raised-button (click)="login()" class="submit-button">Login</button>
 </form>
