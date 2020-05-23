@@ -1,0 +1,24 @@
+
+<form>
+
+    <h2><b>Create New Post</b></h2>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Enter Post Title</mat-label>
+        <input matInput placeholder="Post Title" formControlName="title" required>
+        <mat-icon matPrefix>create</mat-icon>
+    
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Post Content</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize placeholder="Post Content" formControlName="body" required></textarea>
+        <mat-icon matPrefix>add_comment</mat-icon>
+    
+    </mat-form-field>
+ 
+    <input type="file" formControlName="file" id="file" required>
+    <mat-progress-bar mode="determinate"class="progress-bar"></mat-progress-bar>
+
+<button mat-raised-button><mat-icon>create</mat-icon>Post</button>
+</form>

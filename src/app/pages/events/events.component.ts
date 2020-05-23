@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import { AddEventComponent } from '../add-event/add-event.component';
 
 @Component({
   selector: 'app-events',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+  openDialog() {
+    const dialogRef = this.dialog.open(AddEventComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

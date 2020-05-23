@@ -55,6 +55,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { AdminBlogPostComponent } from './pages/admin-blog-post/admin-blog-post.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {TextFieldModule} from '@angular/cdk/text-field';
+import { AddEventComponent } from './pages/add-event/add-event.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     AccountComponent,
     BlogDetailsComponent,
     AdminBlogPostComponent,
+    AddEventComponent,
     
   ],
   imports: [
@@ -113,7 +115,8 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     TextFieldModule
   ],
   entryComponents: [
-    EditPostComponent
+    EditPostComponent,
+    AddEventComponent
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]

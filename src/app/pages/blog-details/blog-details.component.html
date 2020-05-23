@@ -135,6 +135,7 @@
     <form class="example-form">
       <mat-form-field class="example-full-width">
         <mat-label>Leave a comment</mat-label>
+        <img [src]="currentUser.photoURL" class="auth-user">
         <textarea matInput
         cdkAutosizeMinRows="1"
         placeholder="Leave a Comment"></textarea>
