@@ -17,6 +17,7 @@ export class AppComponent {
   faUser = faUser;
   public showSideMenu: boolean;
   public showFiller: boolean;
+  loggedIn: boolean = false;
   constructor(public breakpointObserver: BreakpointObserver,
      private userService: UsersService, private afAuth: AngularFireAuth) {}
 
@@ -30,13 +31,6 @@ export class AppComponent {
           this.showSideMenu = false;
         }
       });
-      this.afAuth.authState.subscribe(value => {
-        if (value.uid) {
-          this.userService.getUser(value.uid).subscribe(userValue => {
-            this.user = userValue;
-          })
-        }
-      })
   };
 
   logout() {

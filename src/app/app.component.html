@@ -5,52 +5,35 @@
             <mat-list-item>
                 <a (click)="sidenav.close()" matLine routerLink="/home">
                     <button mat-icon-button>
-                       <mat-icon>home</mat-icon>
+                        <mat-icon>home</mat-icon>
                     </button>
                     Home
                 </a>
-             </mat-list-item>
+            </mat-list-item>
             <mat-list-item>
                 <a (click)="sidenav.close()" matLine routerLink="/newsfeed">
                     <button mat-icon-button>
-                       <mat-icon>dynamic_feed</mat-icon>
+                        <mat-icon>dynamic_feed</mat-icon>
                     </button>
                     Newsfeed
                 </a>
-             </mat-list-item>
+            </mat-list-item>
             <mat-list-item>
                 <a (click)="sidenav.close()" matLine routerLink="/events">
                     <button mat-icon-button>
-                       <mat-icon>calendar_today</mat-icon>
+                        <mat-icon>calendar_today</mat-icon>
                     </button>
                     Events
                 </a>
-             </mat-list-item>
+            </mat-list-item>
             <mat-list-item>
                 <a (click)="sidenav.close()" matLine routerLink="/forum">
                     <button mat-icon-button>
-                       <mat-icon>forum</mat-icon>
+                        <mat-icon>forum</mat-icon>
                     </button>
                     Forum
                 </a>
-             </mat-list-item>
-            <!-- <mat-list-item>
-                <a (click)="sidenav.close()" matLine routerLink="">
-                    <button mat-icon-button>
-                       <img *ngIf="user.photoURL; else anonymous" [src]="user.photoURL" alt="">
-                       <ng-template #anonymous>
-                           <fa-icon [icon]="faUser"></fa-icon>
-                       </ng-template>
-                    </button>
-                    {{user.name ? 'Profile' : 'Login'}}
-                </a>
-             </mat-list-item> -->
-             <!-- <mat-list-item *ngIf="user.name">
-                 <button (click)="logout()" mat-icon-button>
-                    <mat-icon>close</mat-icon>
-                 </button>
-                 Logout
-             </mat-list-item> -->
+            </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="sidebar-content">
@@ -70,4 +53,3 @@
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
-
