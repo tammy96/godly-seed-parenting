@@ -1,14 +1,33 @@
-<!-- <form #updateForm="ngForm"> -->
-    <!-- <label for="">Title/Caption</label>
-    <input type="text" [(ngModel)]="post.title" placeholder="Input title/caption here...">
+<mat-dialog-content *ngIf="post">
+  <h2 mat-dialog-title>Update Post</h2>
 
-    <label for="">Body</label>
-    <input type="text" [(ngModel)]="post.body" placeholder="Input body here...">
+  <h2><b>Create New Post</b></h2>
 
-    <button type="button" (click)="update()">Update</button> -->
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Update Post Title</mat-label>
+    <input
+      matInput
+      [(ngModel)]="post.title"
+      placeholder="Post Title"
+      required
+    />
+    <mat-icon matPrefix>create</mat-icon>
+  </mat-form-field>
 
-    <!-- <input type="file" formControlName="file" (change)="fileUpload($event)">
-    <progress max="100" [value]="(uploadPercent | async)"></progress> -->
-<!-- </form> -->
-
-<p>Please Work</p>
+  <mat-form-field appearance="fill" class="form-field">
+    <mat-label>Update Post Content</mat-label>
+    <textarea
+      matInput
+      [(ngModel)]="post.body"
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      placeholder="Post Content"
+      required
+    ></textarea>
+    <mat-icon matPrefix>add_comment</mat-icon>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="closeDialog" cdkFocusInitial (click)="update()">Update</button>
+</mat-dialog-actions>

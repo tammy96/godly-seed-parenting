@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControlName } from "@angular/forms";
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { IBlog } from 'src/app/interface/iBlog';
 import { DatePipe } from '@angular/common';
 import { AdminService } from 'src/app/services/admin.service';
+import { CdkTextareaAutosize } from "@angular/cdk/text-field";
 
 @Component({
   selector: 'app-add-blog',
@@ -30,6 +31,7 @@ export class AddBlogComponent implements OnInit {
       createdAt: ['', Validators.required]
     })
   }
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
 
   ngOnInit(): void {
   }

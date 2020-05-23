@@ -1,13 +1,12 @@
 <mat-list>
     <mat-list-item *ngFor="let post of blogs">
-      <!-- <mat-icon mat-list-icon>folder</mat-icon> -->
       <img *ngIf="post.imageUrl" mat-list-avatar [src]="post.imageUrl" alt="Post Image">
       <div mat-line>{{post.title}}</div>
       <div mat-line> {{post.createdAt | date:'medium'}} </div>
-      <button mat-icon-button (click)="openDialog()">
+      <button mat-icon-button (click)="openDialog(post.id)">
         <mat-icon matSuffix>edit</mat-icon>
       </button>
-      <button mat-icon-button>
+      <button (click)="deletePost(post.id)" mat-icon-button>
         <mat-icon matSuffix>delete</mat-icon>
       </button>
       <mat-divider></mat-divider>

@@ -11,7 +11,7 @@
 
     <mat-form-field appearance="fill" class="form-field">
         <mat-label>Post Content</mat-label>
-        <textarea matInput placeholder="Post Content" formControlName="body" required></textarea>
+        <textarea matInput cdkTextareaAutosize #autosize placeholder="Post Content" formControlName="body" required></textarea>
         <mat-icon matPrefix>add_comment</mat-icon>
         <mat-error *ngIf="uploadBlogForm.get('body').invalid">{{getErrorMessage('body')}}</mat-error>
     </mat-form-field>

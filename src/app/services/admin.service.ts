@@ -54,7 +54,7 @@ export class AdminService {
 
   // Updates the value/content of a blog in the collection
   updateBlog(id, data) {
-    this.blogCollection.doc(id).update(data);
+    return this.blogCollection.doc(id).update(data);
   }
 
   addComment(id, data) {

@@ -1,67 +1,23 @@
+<form class="move-down">
+    <h2>Sign Up</h2>
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" required>
+        <mat-icon matPrefix>mail</mat-icon>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" required>
+        <button mat-icon-button matSuffix [attr.arial-label]="'Hide Password'"
+            >
+            <mat-icon>visibility_off</mat-icon>
+        </button>
+        <mat-icon matPrefix>enhanced_encryption</mat-icon>
+       
+    </mat-form-field>
 
-<div class="limiter">
-    <div class="container-login100">
-        <div class="wrap-login100">
-            <div class="login100-form-title" style="background-image: url(../../../../../assets/images/1.jpg);">
-                <span class="login100-form-title-1">
-                    Login
-                </span>
-            </div>
+    <a href="#" class="password-link">Forgot Password</a>
 
-            <form [formGroup]="loginForm" class="login100-form validate-form">
-                <div class="wrap-input100 validate-input m-b-26">
-                    <span class="label-input100">Email</span>
-                    <input class="input100" formControlName="email" type="text" name="email" placeholder="Enter email"
-                    [class.invalid]="loginForm.controls.email.invalid && (submitAttempt || loginForm.controls.email.touched || loginForm.controls.email.dirty)">
-                    <span class="focus-input100"></span>
-                </div>
-
-                <div class="error-message">
-                    <p *ngIf="loginForm.controls.email.invalid && (submitAttempt || loginForm.controls.email.touched || loginForm.controls.email.dirty)">
-                        Email is required or invalid
-                    </p>
-                </div>
-
-                <div class="wrap-input100 validate-input m-b-18">
-                    <span class="label-input100">Password</span>
-                    <input class="input100" formControlName="password" type="password" name="pass" placeholder="Enter password"
-                    [class.invalid]="loginForm.controls.password.invalid && (submitAttempt || loginForm.controls.password.touched || loginForm.controls.password.dirty)">
-                    <span class="focus-input100"></span>
-                </div>
-
-                <div class="error-message">
-                    <p *ngIf="loginForm.controls.password.invalid && (submitAttempt || loginForm.controls.password.touched || loginForm.controls.password.dirty)">
-                        Password is invalid or required
-                    </p>
-                </div>
-
-                <div class="flex-sb-m w-full p-b-30">
-                    <div>
-                        <a href="#" class="txt1">
-                            Forgot Password?
-                        </a>
-                    </div>
-                </div>
-
-                <div class="container-login100-form-btn">
-                    <button (click)="login()" class="login100-form-btn">
-                        Login
-                    </button>
-                </div>
-
-                <div class="icons">
-                    <fa-icon class="icons--facebook" (click)="loginWithFacebook()" [icon]="faFacebook"></fa-icon>
-                    <fa-icon class="icons--google" (click)="loginWithGoogle()" [icon]="faGoogle"></fa-icon>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
-
-
-<!-- <div>
-    <button type="button" (click)="loginWithFacebook()"> Login With Facebook</button>
-    <button type="button" (click)="loginWithGoogle()"> Login With Google</button>
-</div> -->
+    <button mat-raised-button class="submit-button">Login</button>
+</form>

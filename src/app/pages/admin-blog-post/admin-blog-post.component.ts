@@ -26,9 +26,21 @@ export class AdminBlogPostComponent implements OnInit {
     })
   }
 
-    openDialog(): void {
-      const dialogRef = this.dialog.open(EditPostComponent, {
-        width: '250px',
-      });
-    }
+  openDialog(id: string): void {
+    const dialogRef = this.dialog.open(EditPostComponent, {
+      width: '350px',
+      // height: ''
+      data: {
+        id: id
+      }
+    });
+  }
+
+  deletePost(id) {
+    this.adminService.deleteBlog(id).then(() => {
+      console.log('Post Deleted')
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
 }
