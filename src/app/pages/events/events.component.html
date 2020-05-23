@@ -18,6 +18,7 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-button *ngIf="router.url.includes('/admin')" (click)="editDialog(event.id)">EDIT</button>
+      <button mat-button *ngIf="router.url.includes('/admin')" (click)="deleteEvent(event.id)">DELETE</button>
       <button mat-button>SHARE</button>
     </mat-card-actions>
     <button
