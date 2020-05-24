@@ -29,7 +29,7 @@ export class AuthService {
   
 
   loginFacebook() {
-    this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then((res) => {
+    return this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then((res) => {
         console.log(res)
         this.addUserToDatabase(res)
     })
@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   loginGoogle() {
-    this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then((res) => {
       this.addUserToDatabase(res)
     })

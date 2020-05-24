@@ -59,6 +59,9 @@ export class ForumComponent implements OnInit, AfterViewInit {
     this.forumService.getMessages().subscribe(value => {
       this.forumMessages = value;
       console.log(this.forumMessages)
+      this.forumMessages.sort((a, b) => {
+        return a.timestamp - b.timestamp
+      })
     })
 
   }

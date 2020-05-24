@@ -79,5 +79,23 @@ export class LoginComponent implements OnInit {
     this.authService.loginGoogle();
     this.router.navigateByUrl('/newsfeed');
   }
+  loginWithFacebookDialog() {
+    this.authService.loginFacebook().then(() => {
+      this.matSnackbar.open('Login Success', null, {
+        duration: 2000
+      })
+    }).catch(err => {
+      this.matSnackbar.open(err.message, 'Close')
+    })
+  }
+  loginWithGoogleDialog() {
+    this.authService.loginGoogle().then(() => {
+      this.matSnackbar.open('Login Success', null, {
+        duration: 2000
+      })
+    }).catch(err => {
+      this.matSnackbar.open(err.message, 'Close')
+    })
+  }
 
 }
