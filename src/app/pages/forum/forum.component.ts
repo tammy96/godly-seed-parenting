@@ -39,6 +39,7 @@ export class ForumComponent implements OnInit, AfterViewInit {
   currentUser;
   userValue: IUser;
   defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg';
+  isAdmin: boolean = false;
   
   constructor(private fb: FormBuilder,
      private forumService: ForumService,
@@ -73,7 +74,15 @@ export class ForumComponent implements OnInit, AfterViewInit {
       }
       if (user) {
         console.log(user.uid)
+        user.getIdTokenResult().then(res => {
+          if (res.claims.admin) {
+            this.isAdmin = true;
+          }
+        }).catch(err => {
+          console.log(err)
+        })
         this.currentUser = user;
+        this.currentUser
         
         this.userService.getUser(user.uid).subscribe(value => {
           this.userValue = value;
@@ -117,6 +126,10 @@ export class ForumComponent implements OnInit, AfterViewInit {
     } else {
       console.log('Form Not Valid')
     }
+  }
+
+  deleteMessage(id) {
+    this.forumService.deleteMessage(id)
   }
 
   login() {

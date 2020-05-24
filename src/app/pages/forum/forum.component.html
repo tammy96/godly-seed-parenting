@@ -19,6 +19,7 @@
             
           </div>
           <span  class="time-stamp">{{message.timestamp | date:'medium'}}</span>
+          <a *ngIf="isAdmin" (click)="deleteMessage(message.id)">Delete</a>
          
         </div>
         
