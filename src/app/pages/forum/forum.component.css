@@ -90,3 +90,13 @@
   }
   
 }
+
+.message-div{
+  display: flex;
+  align-items: center;
+}
+
+.mat-label{
+  align-items: center;
+  padding: 5px;
+}

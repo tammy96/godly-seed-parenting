@@ -125,7 +125,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   entryComponents: [
     EditPostComponent,
     AddEventComponent,
-    UpdateEventComponent
+    UpdateEventComponent,
+    LoginComponent
   ],
   providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]

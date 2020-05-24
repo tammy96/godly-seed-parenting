@@ -27,6 +27,9 @@
       </section>
     
     <a href="#" class="password-link">Forgot Password</a>
-
-    <button mat-raised-button (click)="login()" class="submit-button">Login</button>
+      
+    <button *ngIf="router.url.includes('/forum') || router.url.includes('newsfeed'); else justLogin" mat-raised-button [mat-dialog-close]="true" (click)="loginDialog()" class="submit-button">Login</button>
+    <ng-template #justLogin>
+        <button mat-raised-button (click)="login()" class="submit-button">Login</button>
+    </ng-template>
 </form>
