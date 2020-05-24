@@ -1,48 +1,29 @@
 
-<mat-card class="example-card" *ngIf="forumMessages">
+<mat-card class="example-card" *ngIf="forumMessages && currentUser">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     
   </mat-card-header>
   
   <mat-card-content>
-    <div  class="commentBox" >
-      <img src="../../../assets/images/male.jpg">
-    
-      <div class="commentStf">
-    
-        <div class="commentText">
-          <b>Cedar Daniel</b>
-          
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit ex a ad nemo, cupiditate fugiat, voluptas, hic culpa aut quae quos.
-             Consectetur molestias excepturi nihil. Id labore consequuntur molestias dignissimos!</p>
-          
-        </div>
-        <span  class="time-stamp">1 day ago</span>
-       
-      </div>
+    <div *ngFor="let message of forumMessages">
+      <div  class="commentBox" [ngClass]="{'self': (message.authorUID === currentUser.uid)}">
+        <img [src]="message.authorImageUrl">
       
-    </div>
-
-    
-    <div  class="commentBox self">
-      <img src="../../../assets/images/male.jpg">
-    
-      <div class="commentStf">
-    
-        <div class="commentText">
-          <b>Cedar Daniel</b>
-          
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit ex a ad nemo, cupiditate fugiat, voluptas, hic culpa aut quae quos.
-             Consectetur molestias excepturi nihil. Id labore consequuntur molestias dignissimos!</p>
-          
-        </div>
-        <span  class="time-stamp">1 day ago</span>
-       
-      </div>
+        <div class="commentStf">
       
+          <div class="commentText">
+            <b>{{message.authorName}}</b>
+            
+            <p>{{message.message}}</p>
+            
+          </div>
+          <span  class="time-stamp">{{message.timestamp | date:'medium'}}</span>
+         
+        </div>
+        
+      </div>
     </div>
-
 
   </mat-card-content>
 
