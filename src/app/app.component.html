@@ -34,6 +34,14 @@
                     Forum
                 </a>
             </mat-list-item>
+            <mat-list-item>
+                <a (click)="sidenav.close()" matLine>
+                    <button (click)="logout()" mat-icon-button>
+                        <mat-icon>forum</mat-icon>
+                    </button>
+                    Logout
+                </a>
+            </mat-list-item>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="sidebar-content">

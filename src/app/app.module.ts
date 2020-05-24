@@ -59,6 +59,7 @@ import { AddEventComponent } from './pages/add-event/add-event.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { UpdateEventComponent } from './pages/update-event/update-event.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -118,7 +119,8 @@ import { UpdateEventComponent } from './pages/update-event/update-event.componen
     MatDialogModule,
     TextFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     EditPostComponent,
