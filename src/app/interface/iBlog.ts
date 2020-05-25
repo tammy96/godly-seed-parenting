@@ -5,6 +5,7 @@ export interface IBlog {
     imageUrl: string;
     file: string;
     createdAt: number;
+    likes: string[];
     comments?: [{
         authorName: string;
         authorImageUrl: string;

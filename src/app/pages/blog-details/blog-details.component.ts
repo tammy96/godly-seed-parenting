@@ -46,6 +46,7 @@ export class BlogDetailsComponent implements OnInit {
   defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg';
   commentForm: FormGroup;
   replyForm: FormGroup;
+  currentUserId: string;
 
 
   id: string;
@@ -89,6 +90,7 @@ export class BlogDetailsComponent implements OnInit {
     })
     this.afAuth.authState.subscribe(user => {
       if (user) {
+        this.currentUserId  = user.uid;
         this.userService.getUser(user.uid).subscribe(val => {
           this.currentUser = val;
           if (!this.currentUser.photoURL) {
@@ -144,8 +146,14 @@ export class BlogDetailsComponent implements OnInit {
     this.allComments = !this.allComments;
     console.log('Loading all comments')
   }
-  showReply(id) {
-    //
+  like() {
+    this.afs.collection('blog').doc(this.id).update({
+      likes: firestore.FieldValue.arrayUnion(this.currentUserId)
+    }).then((res) => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
 }
