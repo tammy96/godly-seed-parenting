@@ -1,5 +1,6 @@
 export interface IBlog {
     id?: string;
+    metadata?: string; 
     title: string;
     body: string;
     imageUrl: string;

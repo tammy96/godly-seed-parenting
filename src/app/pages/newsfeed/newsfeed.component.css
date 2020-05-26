@@ -9,7 +9,7 @@
     background-size: cover;
   }
   .wrapper{
-    margin-top: 150px;
+    margin-top: 80px;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -63,4 +63,10 @@
 
 .search-icon:hover{
   cursor: pointer;
+}
+
+.mat-list{
+  text-align: center;
+  margin: 0 auto;
+  align-items: center;
 }

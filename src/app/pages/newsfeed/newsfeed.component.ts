@@ -157,6 +157,7 @@ export class NewsfeedComponent implements OnInit {
  }
 
  searchInput(event) {
+    console.log(event)
     let input: string  = event.srcElement.value;
     console.log(input)
     if(!input) {

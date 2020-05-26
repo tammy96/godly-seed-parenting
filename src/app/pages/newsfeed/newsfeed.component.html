@@ -5,9 +5,12 @@
       <input matInput (keyup)="searchInput($event)" class="search-input">
       <mat-icon matSuffix class="search-icon">search</mat-icon>
     </mat-form-field>
-    
   </form>
-  
+  <mat-list role="list">
+    <mat-list-item role="listitem" class="mat-list"><span>Cedar</span></mat-list-item>
+    <mat-list-item role="listitem" class="mat-list">Collins</mat-list-item>
+    <mat-list-item role="listitem" class="mat-list">Emma</mat-list-item>
+  </mat-list>
 </div>
 
 <div class="wrapper">
@@ -23,7 +26,9 @@
         {{blog.body | slice:0:200}}...<a mat-flat-button routerLink="/newsfeed/{{blog.id}}">see more</a>
       </p>
     </mat-card-content>
-    <img mat-card-image [src]="blog.imageUrl" class="postImg" alt="Photo of Author">
+    <video mat-card-image *ngIf="blog.metadata == 'video/mp4'" [src]="blog.imageUrl" controls class="postImg">
+    </video>
+    <img mat-card-image *ngIf="blog.metadata == 'image/jpeg'" [src]="blog.imageUrl" class="postImg" alt="Photo of Author">
     <mat-card-actions>
       <!-- <button mat-button>LIKE</button>
       <button mat-button>SHARE</button> -->

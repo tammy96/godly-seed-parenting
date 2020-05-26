@@ -11,8 +11,8 @@
         {{blogPost.body}}
       </p>
     </mat-card-content>
-    <img mat-card-image [src]="blogPost.imageUrl" class="blogPost" alt="Photo of Post">
-   
+    <img *ngIf="blogPost.metadata == 'image/jpeg'" mat-card-image [src]="blogPost.imageUrl" class="blogPost" alt="Photo of Post">
+    <video *ngIf="blogPost.metadata == 'video/mp4'" mart-card-image [src]="blogPost.imageUrl" controls class="blogPost"></video>
     <div class="details">
       <span id="likes">{{likesArray ? likesArray.length : 0}} likes</span>
     <span id="comments">{{displayLength ? displayLength : 0}} comments</span>
