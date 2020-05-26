@@ -9,16 +9,10 @@ import { IUser } from 'src/app/interface/iUser';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-
-  userObject: IUser;
   
-  constructor(private route: ActivatedRoute, private userService: UsersService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.userService.getUser(id).subscribe(value => {
-      this.userObject = value;
-    })
   }
 
 

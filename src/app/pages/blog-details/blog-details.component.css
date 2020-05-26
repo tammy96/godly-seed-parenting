@@ -113,9 +113,6 @@
   border-radius: 20px;
 }
 
-.mat-icon {
-  color: var(--brandcolor);
-}
 
 .more-comments {
   color: #171515de;
@@ -127,4 +124,10 @@
 
 .cummentForm{
   align-items: center;
+}
+.like {
+  color: rgb(165, 0, 0);
+}
+.unlike {
+  color: rgb(9, 138, 9);
 }

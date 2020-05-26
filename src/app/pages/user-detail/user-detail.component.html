@@ -1,13 +1,2 @@
-<div>
-    <div *ngIf="userObject.photoURL; else defaultImage">
-        <img [src]="userObject.photoURL" alt="User Image">
-    </div>
-    <ng-template #defaultImage>
-        <div>
-            <img src="../../../assets/images/male.jpg" alt="Default Users Image">
-        </div>
-    </ng-template>
-    <h1>{{userObject.name}}</h1>
-    <p>{{userObject.email}}</p>
-    <p>{{userObject.gender}}</p>
-</div>
+
+<p>profile</p>

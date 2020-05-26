@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -21,13 +21,14 @@ import { Observable } from 'rxjs';
 import { IComment } from 'src/app/interface/iComment';
 import { firestore } from 'firebase/app';
 import { first, skip, take } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-blog-details',
   templateUrl: './blog-details.component.html',
   styleUrls: ['./blog-details.component.css']
 })
-export class BlogDetailsComponent implements OnInit {
+export class BlogDetailsComponent implements OnInit, AfterViewInit {
 
   //FONT AWESOME ICON VARIABLES
   faBars = faBars;
@@ -39,6 +40,7 @@ export class BlogDetailsComponent implements OnInit {
   faThumbsUp = faThumbsUp;
   faPlay = faPlay;
   faNewspaper = faNewspaper;
+  likesArray: string[];
 
   blogPost: IBlog;
   currentUser: IUser;
@@ -47,6 +49,7 @@ export class BlogDetailsComponent implements OnInit {
   commentForm: FormGroup;
   replyForm: FormGroup;
   currentUserId: string;
+  liked:boolean = false;
 
 
   id: string;
@@ -58,7 +61,8 @@ export class BlogDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, 
     private adminService: AdminService, private afAuth: AngularFireAuth,
     private userService: UsersService, private fb: FormBuilder, 
-    private commentService: CommentService, private afs: AngularFirestore) { 
+    private commentService: CommentService, private afs: AngularFirestore,
+    private matSnackbar: MatSnackBar) { 
     this.id = this.route.snapshot.paramMap.get('id');
 
     this.commentForm = this.fb.group({
@@ -80,6 +84,8 @@ export class BlogDetailsComponent implements OnInit {
     this.adminService.getBlog(this.id).subscribe(value => {
       this.blogPost = value;
       console.log(this.blogPost);
+      console.log(this.blogPost.likes)
+      this.likesArray = value.likes;
 
     });
     this.comments = this.afs.collection('blog').doc(this.id).collection<IComment>('comments').valueChanges({idField: 'id'});
@@ -100,6 +106,13 @@ export class BlogDetailsComponent implements OnInit {
         })
       }
     })
+  }
+  ngAfterViewInit() {
+    console.log(this.currentUserId);
+    console.log(this.likesArray)
+    if (this.likesArray.includes(this.currentUserId)) {
+      this.liked = true;
+    }
   }
 
   submitComment() {
@@ -147,13 +160,36 @@ export class BlogDetailsComponent implements OnInit {
     console.log('Loading all comments')
   }
   like() {
-    this.afs.collection('blog').doc(this.id).update({
-      likes: firestore.FieldValue.arrayUnion(this.currentUserId)
-    }).then((res) => {
-      console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
+    console.log(this.likesArray)
+    console.log(this.currentUserId)
+    console.log(this.likesArray.includes(this.currentUserId))
+    if (this.likesArray.includes(this.currentUserId)) {
+      this.afs.collection('blog').doc(this.id).update({
+        likes: firestore.FieldValue.arrayRemove(this.currentUserId)
+      }).then(() => {
+        this.liked = false;
+        this.matSnackbar.open('😞:(', null, {
+          duration: 1000
+        })
+      }).catch(err => {
+        this.matSnackbar.open(err.message, 'Close', {
+          duration: 2000
+        })
+      })
+    } else {
+      this.afs.collection('blog').doc(this.id).update({
+        likes: firestore.FieldValue.arrayUnion(this.currentUserId)
+      }).then(() => {
+        this.liked = true;
+        this.matSnackbar.open('😊 ^^', null, {
+          duration: 1000
+        })
+      }).catch(err => {
+        this.matSnackbar.open(err.message, 'Close', {
+          duration: 2000
+        })
+      })
+    }
   }
 
 }

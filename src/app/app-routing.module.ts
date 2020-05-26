@@ -33,12 +33,12 @@ const routes: Routes = [
   {path: 'forum', component: ForumComponent},
   {path: 'events', component: EventsComponent},
   {path: 'register', component: SignUpComponent},
+  {path: 'profile', component: UserDetailComponent},
   {path: 'admin', component: AdminComponent, ...canActivate(adminOnly), children: [
     {path: 'posts', component: ViewPostsComponent},
     {path: 'posts/:id', component: PostDetailsComponent},
     {path: 'posts/edit/:id', component: EditPostComponent},
     {path: 'users', component: UsersComponent},
-    {path: 'users/:id', component: UserDetailComponent},
     {path: 'discussions', component: DiscussionComponent}
   ]},
   {path: 'login', component: LoginComponent},

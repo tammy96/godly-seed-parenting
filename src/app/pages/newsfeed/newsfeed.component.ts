@@ -156,6 +156,25 @@ export class NewsfeedComponent implements OnInit {
     return this.comments;
  }
 
+ searchInput(event) {
+    let input: string  = event.srcElement.value;
+    console.log(input)
+    if(!input) {
+      return;
+    }
+
+    this.blogs = this.blogs.filter((val) => {
+
+      if (input === '') {
+        return
+      }
+
+      if (input && val.title) {
+        return (val.title.toLowerCase().indexOf(input.toLowerCase()) > -1 || val.body.toLowerCase().indexOf(input.toLowerCase()) > -1);
+      }
+    })
+ }
+
 
 
 }

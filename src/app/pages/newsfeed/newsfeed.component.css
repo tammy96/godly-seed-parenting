@@ -9,7 +9,7 @@
     background-size: cover;
   }
   .wrapper{
-    margin-top: 65px;
+    margin-top: 150px;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -31,3 +31,36 @@
     background: var(--brandcolor);
     color: #fff;
   }
+
+  .search{
+    margin-top: 75px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search form{
+    display: flex;
+    margin: 0 auto;
+    width: 45%;
+    align-items: center;
+  }
+
+  .search form button{
+    padding: 0;
+    background: transparent;
+  }
+
+  .search form .search-form-field{
+    width: 100%;
+    margin-right: 5px;
+  }
+
+.search-icon{
+  color: var(--brandcolor);
+  margin: 0;
+}
+
+.search-icon:hover{
+  cursor: pointer;
+}
