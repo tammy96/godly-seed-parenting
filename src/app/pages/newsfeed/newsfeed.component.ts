@@ -19,6 +19,7 @@ import { IComment } from 'src/app/interface/iComment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { firestore } from 'firebase/app';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-newsfeed',
@@ -31,6 +32,8 @@ export class NewsfeedComponent implements OnInit {
   comment: FormGroup;
   reply: FormGroup;
   blogs: IBlog[];
+  searchResult: IBlog[];
+  searchDisplay: boolean = false;
   comments: Observable<IComment[]>
   logoutButton:boolean = false;
   defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg';
@@ -50,7 +53,9 @@ export class NewsfeedComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private adminService: AdminService,
     private auth: AngularFireAuth, private userService: UsersService,
-    private commentService: CommentService, private afs: AngularFirestore) { 
+    private commentService: CommentService, private afs: AngularFirestore, 
+    private router: Router
+    ) { 
     this.search = this.fb.group({
       searchInput: ['']
     });
@@ -74,6 +79,10 @@ export class NewsfeedComponent implements OnInit {
   ngOnInit(): void {
     this.adminService.getBlogs().subscribe(value => {
       this.blogs = value;
+      this.blogs.sort((a, b) => {
+        return a.createdAt - b.createdAt
+      })
+      this.searchResult = value;
       // this.blogs.forEach(item => {
       //   this.getComments(item.id).subscribe(value => console.log(value))
       // })
@@ -141,6 +150,10 @@ export class NewsfeedComponent implements OnInit {
     this.replyDisplay = !this.replyDisplay;
   }
 
+  navigate(link) {
+    this.router.navigateByUrl(`/newsfeed/${link}`)
+  }
+
   getComments(id) {
     // return this.comments =  this.afs.collection('blog').doc(id).collection<IComment>('comments').snapshotChanges().pipe(
     //   map(action =>  {
@@ -158,13 +171,14 @@ export class NewsfeedComponent implements OnInit {
 
  searchInput(event) {
     console.log(event)
+    this.searchDisplay = true;
     let input: string  = event.srcElement.value;
     console.log(input)
     if(!input) {
       return;
     }
 
-    this.blogs = this.blogs.filter((val) => {
+    this.searchResult = this.searchResult.filter((val) => {
 
       if (input === '') {
         return

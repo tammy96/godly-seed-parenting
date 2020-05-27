@@ -7,6 +7,7 @@
     background-size: cover;
     background-color: #fff;
     padding: 10px 20px 50px 20px;
+    margin-top: 45px;
   
   }
   
@@ -172,8 +173,7 @@
   }
   
   .ind-Service .fa{
-    color: #fff;
-    /* background: var(--brandcolor); */
+    color: var(--brandcolor);
     padding: 20px;
     border-radius: 50%;
     margin-bottom: 15px;
@@ -181,6 +181,7 @@
 
   .ind-Service h1{
     margin-top: 15px;
+    color: var(--brandcolor);
   }
   
   .ind-Service p{
@@ -195,35 +196,26 @@
     padding: 20px 25px;
   }
   
-  #team{
+  #visioneer{
     text-align: center;
     justify-content: center;
     align-items: center;
-    background: #7979790a;
     margin-top: 0;
     padding: 15px 10px;
   }
   
-  #team .seperator{
+  #visioneer .seperator{
     width: 85px;
     height: 2px;
     margin: 20px auto;
     background: var(--brandcolor);
   }
-  .team-member img{
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
+
+  #visioneer img{
+    height: 450px;
+    width: 320px;
   }
   
-  .team-member h4{
-    font-size: 20px;
-  }
-  
-  .team-member p{
-    color: var(--brandcolor);
-    font-size: 20px;
-  }
   
   @media screen and (min-width: 768px){
     header{
@@ -329,9 +321,9 @@
     text-decoration: none;
     color: #fff;
     background: var(--brandcolor);
-    padding: 15px 15px;
-    display: block;
-    width: 20%;
+    padding: 15px;
+    display: inline-block;
+    width: auto;
     text-align: center;
     font-size: 1.2rem;
     border-radius: .3rem;
@@ -389,48 +381,50 @@
     font-size: 2.5rem;
   }
   
-  #team{
+  #visioneer{
     text-align: center;
     margin-top: -10px;
     padding: 20px;
   }
   
-  #team .heading{
+  #visioneer .heading{
       font-size: 2.5rem;
   }
   
-  #team .seperator{
+  #visioneer .seperator{
     width: 85px;
     height: 2px;
     margin: 20px auto;
     background: var(--brandcolor);
   }
-  
-  .team-container{
+
+  .visioneer-container{
     display: flex;
     flex-wrap: wrap;
-    flex-basis: 200px;
+    flex-basis: 400px;
     justify-content: space-around;
-    width: 75%;
+    width: 95%;
     margin: 0 auto;
   }
   
+  .visioneer-container img{
+    height: 450px;
+    width: 43%;
+  }
   
-    .team-member img{
-      height: 200px;
-      width: 200px;
-      border-radius: 50%;
-    }
-  
-    .team-member h4{
-      font-size: 20px;
-    }
-  
-    .team-member p{
-      color: var(--brandcolor);
-      font-size: 20px;
-    }
-  
+  .visioneer-content{
+    width: 48%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .visioneer-content p{
+    align-items: center;
+    margin-top: 2.5rem;
+  }
+
     #gallery{
         text-align: center;
     }

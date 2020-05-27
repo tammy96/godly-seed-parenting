@@ -94,9 +94,6 @@ export class ForumComponent implements OnInit, AfterViewInit {
       
     })
     console.log(this.currentUser);
-    this.snackbar.open(`You're not logged in!`, 'Please Login', {
-      duration: 2000
-    })
   }
 
   addMessage() {

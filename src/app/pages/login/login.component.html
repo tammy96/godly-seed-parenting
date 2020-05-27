@@ -21,12 +21,12 @@
         
         <div class="example-button-row">
             <div *ngIf="router.url.includes('/forum') || router.url.includes('newsfeed'); else socialLogin">
-                <button mat-raised-button (click)="loginWithFacebook()" [mat-dialog-close]="true" color="primary"><fa-icon class="fa-icon" [icon]="faFacebook"></fa-icon>CONTINUE WITH FACEBOOK</button>
-                <button mat-raised-button (click)="loginWithGoogle()" [mat-dialog-close]="true" color="warn"><fa-icon class="fa-icon" [icon]="faGoogle"></fa-icon>CONTINUE WITH GOOGLE</button>
+                <button mat-raised-button (click)="loginWithFacebookDialog()" [mat-dialog-close]="true" color="primary"><fa-icon class="fa-icon" [icon]="faFacebook"></fa-icon>CONTINUE WITH FACEBOOK</button>
+                <button mat-raised-button (click)="loginWithGoogleDialog()" [mat-dialog-close]="true" color="warn"><fa-icon class="fa-icon" [icon]="faGoogle"></fa-icon>CONTINUE WITH GOOGLE</button>
             </div>
             <ng-template #socialLogin>
-                <button mat-raised-button (click)="loginWithFacebookDialog()" color="primary"><fa-icon class="fa-icon" [icon]="faFacebook"></fa-icon>CONTINUE WITH FACEBOOK</button>
-                <button mat-raised-button (click)="loginWithGoogleDialog()" color="warn"><fa-icon class="fa-icon" [icon]="faGoogle"></fa-icon>CONTINUE WITH GOOGLE</button>
+                <button mat-raised-button (click)="loginWithFacebook()" color="primary"><fa-icon class="fa-icon" [icon]="faFacebook"></fa-icon>CONTINUE WITH FACEBOOK</button>
+                <button mat-raised-button (click)="loginWithGoogle()" color="warn"><fa-icon class="fa-icon" [icon]="faGoogle"></fa-icon>CONTINUE WITH GOOGLE</button>
             </ng-template>
         </div>
       </section>

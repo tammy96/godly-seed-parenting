@@ -110,8 +110,10 @@ export class BlogDetailsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     console.log(this.currentUserId);
     console.log(this.likesArray)
-    if (this.likesArray.includes(this.currentUserId)) {
-      this.liked = true;
+    if (this.likesArray) {
+      if (this.likesArray.includes(this.currentUserId)) {
+        this.liked = true;
+      }
     }
   }
 
@@ -142,18 +144,26 @@ export class BlogDetailsComponent implements OnInit, AfterViewInit {
     this.replyForm.get('authorName').patchValue(this.currentUser.name);
     this.replyForm.get('authorImageUrl').patchValue(this.currentUser.photoURL);
     this.replyForm.get('timeStamp').patchValue(new Date().getTime());
-    console.log(this.replyForm.value, );
-
-    this.afs.collection('blog').doc(this.id).collection('comments').doc(commentID).update({
-      replies: firestore.FieldValue.arrayUnion(this.replyForm.value)
-    }).then(() => {
-      this.replyForm.reset({
-        authorName: '',
-        authorImageUrl: '',
-        message: '',
-        timeStamp: ''
+    console.log(this.replyForm.value);
+    if (this.replyForm.valid) {      
+      this.afs.collection('blog').doc(this.id).collection('comments').doc(commentID).update({
+        replies: firestore.FieldValue.arrayUnion(this.replyForm.value)
+      }).then(() => {
+        this.matSnackbar.open('Replied!!', 'Close', {
+          duration: 2000
+        })
+        this.replyForm.reset({
+          authorName: '',
+          authorImageUrl: '',
+          message: '',
+          timeStamp: ''
+        })
+      }).catch((err)=> {
+        this.matSnackbar.open(err.message, 'Close', {
+          duration: 3000
+        })
       })
-    })
+    }
   }
   loadComments() {
     this.allComments = !this.allComments;
@@ -162,20 +172,22 @@ export class BlogDetailsComponent implements OnInit, AfterViewInit {
   like() {
     console.log(this.likesArray)
     console.log(this.currentUserId)
-    console.log(this.likesArray.includes(this.currentUserId))
-    if (this.likesArray.includes(this.currentUserId)) {
-      this.afs.collection('blog').doc(this.id).update({
-        likes: firestore.FieldValue.arrayRemove(this.currentUserId)
-      }).then(() => {
-        this.liked = false;
-        this.matSnackbar.open('😞:(', null, {
-          duration: 1000
+    // console.log(this.likesArray.includes(this.currentUserId))
+    if (this.likesArray.length > 0) {
+      if (this.likesArray.includes(this.currentUserId)) {
+        this.afs.collection('blog').doc(this.id).update({
+          likes: firestore.FieldValue.arrayRemove(this.currentUserId)
+        }).then(() => {
+          this.liked = false;
+          this.matSnackbar.open('😞:(', null, {
+            duration: 1000
+          })
+        }).catch(err => {
+          this.matSnackbar.open(err.message, 'Close', {
+            duration: 2000
+          })
         })
-      }).catch(err => {
-        this.matSnackbar.open(err.message, 'Close', {
-          duration: 2000
-        })
-      })
+      }
     } else {
       this.afs.collection('blog').doc(this.id).update({
         likes: firestore.FieldValue.arrayUnion(this.currentUserId)

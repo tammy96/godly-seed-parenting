@@ -1,35 +1,35 @@
 <!-- <app-navbar></app-navbar> -->
 <mat-sidenav-container>
-    <mat-sidenav #sidenav role="navigation">
+    <mat-sidenav #sidenav role="navigation" class="sidebar">
         <mat-nav-list>
             <mat-list-item>
-                <a (click)="sidenav.close()" matLine routerLink="/home">
+                <a (click)="sidenav.close()" matLine routerLink="/home" routerLinkActive="active">
                     <button mat-icon-button>
-                        <mat-icon>home</mat-icon>
+                        <mat-icon class="side-icon">home</mat-icon>
                     </button>
                     Home
                 </a>
             </mat-list-item>
             <mat-list-item>
-                <a (click)="sidenav.close()" matLine routerLink="/newsfeed">
+                <a (click)="sidenav.close()" matLine routerLink="/newsfeed" routerLinkActive="active">
                     <button mat-icon-button>
-                        <mat-icon>dynamic_feed</mat-icon>
+                        <mat-icon class="side-icon">dynamic_feed</mat-icon>
                     </button>
                     Newsfeed
                 </a>
             </mat-list-item>
             <mat-list-item>
-                <a (click)="sidenav.close()" matLine routerLink="/events">
+                <a (click)="sidenav.close()" matLine routerLink="/events" routerLinkActive="active">
                     <button mat-icon-button>
-                        <mat-icon>calendar_today</mat-icon>
+                        <mat-icon class="side-icon">calendar_today</mat-icon>
                     </button>
                     Events
                 </a>
             </mat-list-item>
             <mat-list-item>
-                <a (click)="sidenav.close()" matLine routerLink="/forum">
+                <a (click)="sidenav.close()" matLine routerLink="/forum" routerLinkActive="active">
                     <button mat-icon-button>
-                        <mat-icon>forum</mat-icon>
+                        <mat-icon class="side-icon">forum</mat-icon>
                     </button>
                     Forum
                 </a>
@@ -37,7 +37,7 @@
             <mat-list-item>
                 <a (click)="sidenav.close() && logout()" matLine>
                     <button mat-icon-button>
-                        <mat-icon>forum</mat-icon>
+                        <mat-icon class="side-icon">close</mat-icon>
                     </button>
                     Logout
                 </a>
@@ -46,14 +46,18 @@
     </mat-sidenav>
     <mat-sidenav-content class="sidebar-content">
         <mat-toolbar class="toolBar">
-            <mat-icon (click)="sidenav.toggle()" *ngIf="showSideMenu">menu</mat-icon>
-            LOGO
+            <mat-icon (click)="sidenav.toggle()" *ngIf="showSideMenu" class="menu-icon">menu</mat-icon>
+            
+            <div fxFlex fxLayout fxLayoutAlign="flex-start">
+                <img src="../assets/images/logo2.png" class="logo" alt="Logo">
+            </div>
+
             <div *ngIf="!showSideMenu" fxFlex fxLayout fxLayoutAlign="flex-end">
                 <ul fxLayout fxLayoutGap="35px" class="navigation-items">
-                    <li><a routerLink="/home">Home</a></li>
-                    <li><a routerLink="/newsfeed">Newfeed</a></li>
-                    <li><a routerLink="/events">Event</a></li>
-                    <li><a routerLink="/forum">Forum</a></li>
+                    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+                    <li><a routerLink="/newsfeed" routerLinkActive="active">Newfeed</a></li>
+                    <li><a routerLink="/events" routerLinkActive="active">Event</a></li>
+                    <li><a routerLink="/forum" routerLinkActive="active">Forum</a></li>
                     <li></li>
                 </ul>
             </div>

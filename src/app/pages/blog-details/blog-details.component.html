@@ -46,15 +46,12 @@
       </div>
     </div>
   
-    <form [hidden]="!hideMe[0]" class="example-form">
+    <form [hidden]="!hideMe[0]" [formGroup]="replyForm" class="example-form">
       <img [src]="currentUser.photoURL" class="auth-user">
       <mat-form-field class="example-full-width">
         <mat-label>Leave a reply</mat-label>
         <textarea matInput 
-        cdkTextareaAutosize
-        #autosize="cdkTextareaAutosize"
-        cdkAutosizeMinRows="1"
-        cdkAutosizeMaxRows="5"
+        formControlName="message"
         placeholder="Leave a reply"></textarea>
         <button (click)="replyComment(firstComment[0].id)" mat-icon-button matSuffix>
           <mat-icon>send</mat-icon>
@@ -100,11 +97,11 @@
           </div>
   
           
-          <form [hidden]="!hideMe[i+1]" class="example-form">
+          <form [hidden]="!hideMe[i+1]" [formGroup]="replyForm" class="example-form">
             <img [src]="currentUser.photoURL" class="auth-user">
             <mat-form-field class="example-full-width">
               <mat-label>Leave a reply</mat-label>
-              <textarea matInput placeholder="Leave a reply"></textarea>
+              <textarea matInput formControlName="message" placeholder="Leave a reply"></textarea>
               <button (click)="replyComment(rem.id)" mat-icon-button matSuffix>
                 <mat-icon>send</mat-icon>
               </button>

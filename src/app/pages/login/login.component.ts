@@ -66,6 +66,9 @@ export class LoginComponent implements OnInit {
       const email = this.loginForm.get('email').value;
       const password = this.loginForm.get('password').value;
       this.authService.emailPasswordLogin(email, password).then((res) => {
+        this.matSnackbar.open('Login Success', null, {
+          duration: 2500
+        })
         console.log(res)
       }).catch((err) => {
         this.matSnackbar.open(err.message, 'Close', {
