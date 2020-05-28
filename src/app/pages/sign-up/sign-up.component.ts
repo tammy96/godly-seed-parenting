@@ -63,22 +63,12 @@ export class SignUpComponent implements OnInit {
       let actionCodeSettings = {
         // Change URL to domain that will be bought later,
 
-        url: 'https://godly-seed-parenting-bf240.firebaseapp.com/',
-
-        handleCodeInApp: true,
-        iOS: {
-          bundleId: 'com.example.ios'
-        },
-        android: {
-          packageName: 'com.example.android',
-          installApp: true,
-          minimumVersion: '12'
-        },
-        dynamicLinkDomain: 'example.page.link'
+        url: 'https://godly-seed-parenting-bf240.firebaseapp.com'
       }
       this.authService.createUserWithEmailPassword(email, password).then((res) => {
         this.authService.addUserToDatabaseFromEmailLogin(res, this.userValue)
-        this.afAuth.sendSignInLinkToEmail(email, actionCodeSettings).then(() => {
+
+        res.user.sendEmailVerification(actionCodeSettings).then(() => {
           this.router.navigate(['verify'])
         }).catch((err) => {
           this.matSnackbar.open(err.message, 'Close', {

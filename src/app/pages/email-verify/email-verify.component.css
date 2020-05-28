@@ -10,8 +10,7 @@
     text-align: center;
     display: block;
 }
-
-.submit-btn{
-    background: var(--brandcolor);
-    color: #fff;
+.link {
+    text-decoration: none;
+    color: white;
 }

@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   // Font Awesome Icon Variables
   faGoogle = faGoogle;
   faFacebook = faFacebook;
-
+  hide: boolean = true;
   loginForm: FormGroup;
   submitAttempt: boolean = false;
   constructor(private authService: AuthService, 

@@ -1,12 +1,15 @@
 <div class="form">
-    <mat-form-field class="example-form-field">
-        <mat-label>Verify Code</mat-label>
-        <input matInput type="text" [(ngModel)]="value">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-            <mat-icon>close</mat-icon>
-        </button>
-    </mat-form-field>
-    <button mat-raised-button class="submit-btn">Verify</button>
+    <mat-card>
+        <h3>Email Verification Link Sent</h3>
+        <p>An email verification link has been sent to your inbox. (If you cannnot find it in your inbox be sure to check your spam)</p>
+        <mat-card-actions>
+            <button mat-raised-button color="primary">
+                <a class="link" routerLink="/newsfeed">
+                    Go To NewsFeed
+                </a>
+            </button>
+        </mat-card-actions>
+    </mat-card>
 </div>
 
 
