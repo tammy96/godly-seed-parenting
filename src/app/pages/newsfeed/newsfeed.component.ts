@@ -39,6 +39,8 @@ export class NewsfeedComponent implements OnInit {
   defaultImage = 'https://image.flaticon.com/icons/svg/21/21104.svg';
   currentUser;
   replyDisplay: boolean = false;
+  filteredCharacters: IBlog[];
+  notFound: string = 'Post Not Found';
 
   //FONT AWESOME ICON VARIABLES
   faBars = faBars;
@@ -178,15 +180,13 @@ export class NewsfeedComponent implements OnInit {
       return;
     }
 
-    this.searchResult = this.searchResult.filter((val) => {
+    this.filteredCharacters = this.searchResult.filter((val) => {
 
-      if (input === '') {
-        return
+      if (input == "") {
+        this.searchDisplay = false;
       }
-
-      if (input && val.title) {
-        return (val.title.toLowerCase().indexOf(input.toLowerCase()) > -1 || val.body.toLowerCase().indexOf(input.toLowerCase()) > -1);
-      }
+      return (val.title.toLowerCase().includes(input.toLowerCase())  || val.body.toLowerCase().includes(input.toLowerCase()) );
+      
     })
  }
 

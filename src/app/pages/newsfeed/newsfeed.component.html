@@ -7,7 +7,7 @@
     </mat-form-field>
   </form>
   <div *ngIf="searchResult.length >= 1 && searchDisplay">
-    <mat-list role="list" *ngFor="let result of searchResult">
+    <mat-list role="list" *ngFor="let result of filteredCharacters">
       <mat-list-item role="listitem" (click)="navigate(result.id)" class="mat-list">{{result.title}}</mat-list-item>
     </mat-list>
   </div>

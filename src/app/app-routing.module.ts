@@ -20,6 +20,8 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
 import { BlogDetailsComponent } from './pages/blog-details/blog-details.component';
+import { EmailVerifyComponent } from './pages/email-verify/email-verify.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 const adminOnly = () => hasCustomClaim('admin');
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
@@ -34,14 +36,10 @@ const routes: Routes = [
   {path: 'events', component: EventsComponent},
   {path: 'register', component: SignUpComponent},
   {path: 'profile', component: UserDetailComponent},
-  {path: 'admin', component: AdminComponent, ...canActivate(adminOnly), children: [
-    {path: 'posts', component: ViewPostsComponent},
-    {path: 'posts/:id', component: PostDetailsComponent},
-    {path: 'posts/edit/:id', component: EditPostComponent},
-    {path: 'users', component: UsersComponent},
-    {path: 'discussions', component: DiscussionComponent}
-  ]},
+  {path: 'admin', component: AdminComponent, ...canActivate(adminOnly)},
   {path: 'login', component: LoginComponent},
+  {path: 'verify', component: EmailVerifyComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: '**', redirectTo: '404', pathMatch: 'full'},
   {path: '404', component: NotFoundComponent}
 ];

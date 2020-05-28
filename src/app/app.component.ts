@@ -5,6 +5,7 @@ import { UsersService } from './services/users.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { IUser } from './interface/iUser';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ export class AppComponent {
   constructor(
     public breakpointObserver: BreakpointObserver,
     private afAuth: AngularFireAuth,
-    private fns: AngularFireFunctions
+    private fns: AngularFireFunctions,
+    private matSnackbar: MatSnackBar
   ) {
     // const addAdminUser = this.fns.httpsCallable('addAdminUser');
     // addAdminUser({email: 'admin@admin.com'}).subscribe(val => {
@@ -42,6 +44,14 @@ export class AppComponent {
   }
 
   logout() {
-    this.afAuth.signOut();
+    this.afAuth.signOut().then(() => {
+      this.matSnackbar.open('Logout Successful', 'Close', {
+        duration: 2000
+      })
+    }).catch((err) => {
+      this.matSnackbar.open(err.message, 'Close', {
+        duration: 4000
+      })
+    });
   }
 }

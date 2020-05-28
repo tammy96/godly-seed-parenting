@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,  Validators, FormGroup } from "@angular/forms";
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,10 +13,12 @@ export class SignUpComponent implements OnInit {
 
   signUpForm: FormGroup;
   submitAttempt: boolean = false;
+  userValue: any;
   hide = true;
   hide2 = true;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { 
+  constructor(private fb: FormBuilder, private authService: AuthService, 
+    private router: Router, private afAuth: AngularFireAuth) { 
     this.signUpForm =  this.fb.group({
       name: ['', Validators.required],
       gender: ['', Validators.required],
@@ -47,10 +50,18 @@ export class SignUpComponent implements OnInit {
   register() {
     this.submitAttempt = true;
     if(this.signUpForm.valid) {
+
+      this.userValue = {
+        name: this.signUpForm.get('name').value,
+        gender: this.signUpForm.get('gender').value,
+        email: this.signUpForm.get('email').value
+      }
+
       const email = this.signUpForm.controls.email.value;
       const password = this.signUpForm.controls.password.value;
       this.authService.createUserWithEmailPassword(email, password).then((res) => {
-        this.authService.addUserToDatabaseFromEmailLogin(res, this.signUpForm.value)
+        this.authService.addUserToDatabaseFromEmailLogin(res, this.userValue)
+        // this.afAuth.sendSignInLinkToEmail(email, )
         console.log('User Registered and Added To Collection Successfully')
         this.router.navigate(['newsfeed'])
       })

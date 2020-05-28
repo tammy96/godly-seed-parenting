@@ -60,6 +60,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { UpdateEventComponent } from './pages/update-event/update-event.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { EmailVerifyComponent } from './pages/email-verify/email-verify.component';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AdminBlogPostComponent,
     AddEventComponent,
     UpdateEventComponent,
+    EmailVerifyComponent,
+    ForgotPasswordComponent,
     
   ],
   imports: [

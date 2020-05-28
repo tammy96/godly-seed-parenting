@@ -57,8 +57,13 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithFacebook(): void {
-    this.authService.loginFacebook();
-    this.router.navigateByUrl('/newsfeed');
+    this.authService.loginFacebook().then(() => {
+      this.router.navigateByUrl('/newsfeed');
+    }).catch((err) => {
+      this.matSnackbar.open(err.message, 'Close', {
+        duration: 4000
+      })
+    });
   }
 
   loginDialog() {
@@ -79,8 +84,13 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithGoogle(): void {
-    this.authService.loginGoogle();
-    this.router.navigateByUrl('/newsfeed');
+    this.authService.loginGoogle().then(() => {
+      this.router.navigateByUrl('/newsfeed');
+    }).catch((err) => {
+      this.matSnackbar.open(err.message, 'Close', {
+        duration: 4000
+      })
+    });
   }
   loginWithFacebookDialog() {
     this.authService.loginFacebook().then(() => {
