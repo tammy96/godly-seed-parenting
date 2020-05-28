@@ -3,6 +3,7 @@ import { FormBuilder,  Validators, FormGroup } from "@angular/forms";
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,7 +19,7 @@ export class SignUpComponent implements OnInit {
   hide2 = true;
 
   constructor(private fb: FormBuilder, private authService: AuthService, 
-    private router: Router, private afAuth: AngularFireAuth) { 
+    private router: Router, private afAuth: AngularFireAuth, private matSnackbar: MatSnackBar) { 
     this.signUpForm =  this.fb.group({
       name: ['', Validators.required],
       gender: ['', Validators.required],
@@ -59,11 +60,32 @@ export class SignUpComponent implements OnInit {
 
       const email = this.signUpForm.controls.email.value;
       const password = this.signUpForm.controls.password.value;
+      let actionCodeSettings = {
+        // Change URL to domain that will be bought later,
+
+        url: 'https://godly-seed-parenting-bf240.firebaseapp.com/',
+
+        handleCodeInApp: true,
+        iOS: {
+          bundleId: 'com.example.ios'
+        },
+        android: {
+          packageName: 'com.example.android',
+          installApp: true,
+          minimumVersion: '12'
+        },
+        dynamicLinkDomain: 'example.page.link'
+      }
       this.authService.createUserWithEmailPassword(email, password).then((res) => {
         this.authService.addUserToDatabaseFromEmailLogin(res, this.userValue)
-        // this.afAuth.sendSignInLinkToEmail(email, )
+        this.afAuth.sendSignInLinkToEmail(email, actionCodeSettings).then(() => {
+          this.router.navigate(['verify'])
+        }).catch((err) => {
+          this.matSnackbar.open(err.message, 'Close', {
+            duration: 6000
+          })
+        })
         console.log('User Registered and Added To Collection Successfully')
-        this.router.navigate(['newsfeed'])
       })
     } else {
       console.log('Form Not Valid')
