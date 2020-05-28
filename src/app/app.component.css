@@ -37,12 +37,12 @@ a:hover{
     transition: .1s ease-in;
     border-radius: 5px;
 }
-
 .active {
     text-decoration: none;
     color: #fff;
     background: var(--brandcolor); 
 }
+
 .navigation-items a:hover{
     text-decoration: none;
     color: #fff;

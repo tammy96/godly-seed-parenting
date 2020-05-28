@@ -47,7 +47,7 @@
     </div>
   
     <form [hidden]="!hideMe[0]" [formGroup]="replyForm" class="example-form">
-      <img [src]="currentUser.photoURL" class="auth-user">
+      <img *ngIf="currentUser" [src]="currentUser.photoURL" class="auth-user">
       <mat-form-field class="example-full-width">
         <mat-label>Leave a reply</mat-label>
         <textarea matInput 
@@ -98,7 +98,7 @@
   
           
           <form [hidden]="!hideMe[i+1]" [formGroup]="replyForm" class="example-form">
-            <img [src]="currentUser.photoURL" class="auth-user">
+            <img *ngIf="currentUser" [src]="currentUser.photoURL" class="auth-user">
             <mat-form-field class="example-full-width">
               <mat-label>Leave a reply</mat-label>
               <textarea matInput formControlName="message" placeholder="Leave a reply"></textarea>
@@ -130,8 +130,8 @@
     
     <b><a *ngIf="firstComment.length >= 2" (click)="loadComments()" class="more-comments">{{allComments ? 'Show Less Comments' : 'Show More Comment'}}</a></b>
   
-    <form [formGroup]="commentForm" class="example-form cummentForm">
-      <img [src]="currentUser.photoURL" class="auth-user">
+    <form *ngIf="currentUser; else loginPlease" [formGroup]="commentForm" class="example-form cummentForm">
+      <img *ngIf="currentUser" [src]="currentUser.photoURL" class="auth-user">
       <mat-form-field class="example-full-width">
         <mat-label>Leave a comment</mat-label>
         <textarea matInput
@@ -143,6 +143,12 @@
         </button>
       </mat-form-field>
     </form>
+    <ng-template #loginPlease>
+      <div class="example-form">
+        <p>Please Login To Comment</p>
+        <button mat-raised-button color="primary" (click)="popup()">Click Here</button>
+      </div>
+    </ng-template>
     
   </mat-card>
   

@@ -22,6 +22,8 @@ import { IComment } from 'src/app/interface/iComment';
 import { firestore } from 'firebase/app';
 import { first, skip, take } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-blog-details',
@@ -62,7 +64,7 @@ export class BlogDetailsComponent implements OnInit, AfterViewInit {
     private adminService: AdminService, private afAuth: AngularFireAuth,
     private userService: UsersService, private fb: FormBuilder, 
     private commentService: CommentService, private afs: AngularFirestore,
-    private matSnackbar: MatSnackBar) { 
+    private matSnackbar: MatSnackBar, private matDialog: MatDialog) { 
     this.id = this.route.snapshot.paramMap.get('id');
 
     this.commentForm = this.fb.group({
@@ -95,6 +97,9 @@ export class BlogDetailsComponent implements OnInit, AfterViewInit {
       this.firstComment = value
     })
     this.afAuth.authState.subscribe(user => {
+      if (!user) {
+        this.matDialog.open(LoginComponent)
+      }
       if (user) {
         this.currentUserId  = user.uid;
         this.userService.getUser(user.uid).subscribe(val => {
@@ -204,4 +209,7 @@ export class BlogDetailsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  popup() {
+    this.matDialog.open(LoginComponent)
+  }
 }

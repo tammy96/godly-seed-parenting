@@ -62,6 +62,7 @@ import { UpdateEventComponent } from './pages/update-event/update-event.componen
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { EmailVerifyComponent } from './pages/email-verify/email-verify.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ResetSuccessComponent } from "./pages/reset-success/reset-success.component";
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password
     UpdateEventComponent,
     EmailVerifyComponent,
     ForgotPasswordComponent,
+    ResetSuccessComponent
     
   ],
   imports: [
