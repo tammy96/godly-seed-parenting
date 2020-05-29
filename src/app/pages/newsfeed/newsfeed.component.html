@@ -26,9 +26,9 @@
         {{blog.body | slice:0:200}}...<a mat-flat-button routerLink="/newsfeed/{{blog.id}}">see more</a>
       </p>
     </mat-card-content>
-    <video mat-card-image *ngIf="blog.metadata == 'video/mp4'" [src]="blog.imageUrl" controls class="postImg">
+    <video mat-card-image *ngIf="blog.metadata.includes('video')" [src]="blog.imageUrl" controls class="postImg">
     </video>
-    <img mat-card-image *ngIf="blog.metadata == 'image/jpeg'" [src]="blog.imageUrl" class="postImg" alt="Photo of Author">
+    <img mat-card-image *ngIf="blog.metadata.includes('image')" [src]="blog.imageUrl" class="postImg" alt="Photo of Author">
     <mat-card-actions>
       <!-- <button mat-button>LIKE</button>
       <button mat-button>SHARE</button> -->

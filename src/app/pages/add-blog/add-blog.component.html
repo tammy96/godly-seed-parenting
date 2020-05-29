@@ -16,7 +16,7 @@
         <mat-error *ngIf="uploadBlogForm.get('body').invalid">{{getErrorMessage('body')}}</mat-error>
     </mat-form-field>
  
-    <input type="file" formControlName="file" (change)="fileUpload($event)" id="file" required>
+    <input type="file" formControlName="file" (change)="fileUpload($event)" id="file" accept="image/*,video/*" required>
     <mat-progress-bar mode="determinate" [value]="(uploadPercent | async)" class="progress-bar"></mat-progress-bar>
 
 <button mat-raised-button (click)="submitForm()"><mat-icon>create</mat-icon>Post</button>

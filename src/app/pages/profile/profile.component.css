@@ -1,0 +1,27 @@
+.content{
+    margin: 65px auto;
+    width: 450px;
+    justify-content: center;
+}
+
+.example-card{
+    text-align: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.header{
+    
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.profile-img{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+}
