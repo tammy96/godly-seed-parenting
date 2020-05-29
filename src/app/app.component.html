@@ -42,9 +42,25 @@
                     Logout
                 </a>
             </mat-list-item>
+            <mat-list-item *ngIf="loggedIn">
+                <a (click)="sidenav.close()" matLine routerLink="/profile">
+                    <button mat-icon-button>
+                        <mat-icon class="side-icon">account_circle</mat-icon>
+                    </button>
+                    Profile
+                </a>
+            </mat-list-item>
+            <mat-list-item *ngIf="isAdmin">
+                <a (click)="sidenav.close()" matLine routerLink="/admin" routerLinkActive="active">
+                    <button mat-icon-button>
+                        <mat-icon class="side-icon">build</mat-icon>
+                    </button>
+                    Admin
+                </a>
+            </mat-list-item>
             <ng-template #login>
                 <mat-list-item>
-                    <a (click)="sidenav.close()" matLine routerLink="/login">
+                    <a (click)="sidenav.close()" matLine routerLink="/login" routerLinkActive="active">
                         <button mat-icon-button>
                             <mat-icon class="side-icon">exit_to_app</mat-icon>
                         </button>
@@ -70,7 +86,12 @@
                     <li><a routerLink="/newsfeed" routerLinkActive="active" class="nav-link">Newfeed</a></li>
                     <li><a routerLink="/events" routerLinkActive="active" class="nav-link">Event</a></li>
                     <li><a routerLink="/forum" routerLinkActive="active" class="nav-link">Forum</a></li>
-                    <li></li>
+                    <li *ngIf="loggedIn"><a routerLink="/profile" class="nav-link" routerLinkActive="active">Profile</a></li>
+                    <li *ngIf="loggedIn; else notLoggedIn"><a (click)="logout()" class="nav-link">Logout</a></li>
+                    <ng-template #notLoggedIn>
+                        <li><a routerLink="/login" class="nav-link" routerLinkActive="active">Login</a></li>
+                    </ng-template>
+                    <li *ngIf="isAdmin"><a routerLink="/admin" routerLinkActive="active" class="nav-link">Admin</a></li>
                 </ul>
             </div>
         </mat-toolbar>

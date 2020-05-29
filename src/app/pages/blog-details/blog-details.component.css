@@ -1,7 +1,8 @@
 .example-header-image {
-  background-image: url("../../../assets/images/profile.jpg");
+  background-image: url("../../../assets/images/visioneer.png");
   background-size: cover;
 }
+
 .example-form {
   min-width: 150px;
   max-width: 500px;
@@ -84,7 +85,7 @@
 }
 
 .example-header-image {
-  background-image: url("../../../assets/images/profile.jpg");
+  background-image: url("../../../assets/images/visioneer.png");
   background-size: cover;
 }
 

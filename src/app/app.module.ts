@@ -31,7 +31,6 @@ import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { UsersComponent } from './pages/users/users.component';
 import { DiscussionComponent } from './pages/discussion/discussion.component';
 import { ViewPostsComponent } from './pages/view-posts/view-posts.component';
-import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 import { PostDetailsComponent } from './pages/post-details/post-details.component';
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
 import { AccountComponent } from './pages/account/account.component';
@@ -63,6 +62,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { EmailVerifyComponent } from './pages/email-verify/email-verify.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { ResetSuccessComponent } from "./pages/reset-success/reset-success.component";
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +79,6 @@ import { ResetSuccessComponent } from "./pages/reset-success/reset-success.compo
     UsersComponent,
     DiscussionComponent,
     ViewPostsComponent,
-    UserDetailComponent,
     PostDetailsComponent,
     EditPostComponent,
     AccountComponent,
@@ -89,7 +88,8 @@ import { ResetSuccessComponent } from "./pages/reset-success/reset-success.compo
     UpdateEventComponent,
     EmailVerifyComponent,
     ForgotPasswordComponent,
-    ResetSuccessComponent
+    ResetSuccessComponent,
+    ProfileComponent
     
   ],
   imports: [

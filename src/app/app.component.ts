@@ -19,6 +19,7 @@ export class AppComponent {
   public showSideMenu: boolean;
   public showFiller: boolean;
   loggedIn: boolean = false;
+  isAdmin: boolean;
   constructor(
     public breakpointObserver: BreakpointObserver,
     private afAuth: AngularFireAuth,
@@ -48,10 +49,14 @@ export class AppComponent {
       if (!res) {
         console.log('No Current User')
         this.loggedIn = false;
+        this.isAdmin = false;
       }
       if (res) {
         console.log(res)
         this.loggedIn = true;
+        res.getIdTokenResult().then((val) => {
+          this.isAdmin = val.claims.admin;
+        })
       }
     })
   }
