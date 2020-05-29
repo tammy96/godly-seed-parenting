@@ -49,15 +49,17 @@
             <mat-icon (click)="sidenav.toggle()" *ngIf="showSideMenu" class="menu-icon">menu</mat-icon>
             
             <div fxFlex fxLayout fxLayoutAlign="flex-start">
-                <img src="../assets/images/logo2.png" class="logo" alt="Logo">
+                <a routerLink="/home">
+                    <img src="../assets/images/logo2.png" class="logo" alt="Logo">
+                </a>
             </div>
 
             <div *ngIf="!showSideMenu" fxFlex fxLayout fxLayoutAlign="flex-end">
                 <ul fxLayout fxLayoutGap="35px" class="navigation-items">
-                    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-                    <li><a routerLink="/newsfeed" routerLinkActive="active">Newfeed</a></li>
-                    <li><a routerLink="/events" routerLinkActive="active">Event</a></li>
-                    <li><a routerLink="/forum" routerLinkActive="active">Forum</a></li>
+                    <li><a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a></li>
+                    <li><a routerLink="/newsfeed" routerLinkActive="active" class="nav-link">Newfeed</a></li>
+                    <li><a routerLink="/events" routerLinkActive="active" class="nav-link">Event</a></li>
+                    <li><a routerLink="/forum" routerLinkActive="active" class="nav-link">Forum</a></li>
                     <li></li>
                 </ul>
             </div>

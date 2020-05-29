@@ -25,6 +25,7 @@
 
   .postImg{
     width: calc(90% + 32px);
+    height: calc(90% + 25px);
   }
 
   .details-button{

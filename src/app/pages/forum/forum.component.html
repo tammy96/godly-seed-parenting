@@ -35,14 +35,15 @@
         <img class="auth-user" [src]="userValue.photoURL" alt="Logged In User Image">
         
         <mat-form-field class="form-field">
-          <mat-label class="mat-label">Leave a comment</mat-label>
+          <mat-label class="mat-label">Leave a message</mat-label>
           <textarea 
           formControlName="message"
           matInput
           cdkAutosizeMinRows="1"
           placeholder="Leave a Messsage"></textarea>
-          <button (click)="addMessage()" mat-icon-button matSuffix>
-            <mat-icon>send</mat-icon>
+          
+          <button (click)="addMessage()" mat-flat-button mat-icon-button matSuffix color="primary">
+            <mat-icon class="send-icon">send</mat-icon>
           </button>
         </mat-form-field>
       </div>

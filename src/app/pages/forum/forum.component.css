@@ -4,15 +4,12 @@
   border: none;
   box-shadow: none;
   padding: 0;
-  
 }
 
 .commentBox,
 .replyBox {
   display: flex;
-  /* justify-content: space-around; */
   margin: 10px;
-  padding: 0px;
   text-align: left;
 }
 
@@ -48,6 +45,7 @@
 .time-stamp{
   display: block;
   text-align: right;
+  margin-bottom: 15px;
 }
 
 .self{
@@ -67,10 +65,19 @@
 }
 
 .message{
+  position: fixed;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  background-color: #fff;
 }
+
+.send-icon{
+  font-size: 10px;
+}
+
 
 .message .message-form{
   width: 70%;
@@ -99,4 +106,15 @@
 .mat-label{
   align-items: center;
   padding: 5px;
+}
+
+@media screen and (min-width: 768px){
+.commentBox,
+.replyBox {
+  display: flex;
+  /* justify-content: space-around; */
+  margin: 10px;
+  padding: 0px 50px 0px 50px;
+  text-align: left;
+}
 }
