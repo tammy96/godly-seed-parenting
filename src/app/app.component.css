@@ -57,6 +57,9 @@ ul {
 .side-icon{
   color: var(--brandcolor);  
 }
+.side-icon:active{
+  color: #fff;  
+}
 
 .sidebar{
     position: fixed;

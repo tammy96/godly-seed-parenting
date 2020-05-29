@@ -1,5 +1,5 @@
 
-<mat-card class="example-card" *ngIf="forumMessages && currentUser">
+<mat-card class="example-card" *ngIf="forumMessages && currentUser; else onlyLoggedIn">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     
@@ -35,7 +35,7 @@
         <img class="auth-user" [src]="userValue.photoURL" alt="Logged In User Image">
         
         <mat-form-field class="form-field">
-          <mat-label class="mat-label">Leave a message</mat-label>
+          <mat-label class="mat-label">Leave a comment</mat-label>
           <textarea 
           formControlName="message"
           matInput
@@ -54,3 +54,12 @@
     </ng-template>
   </div>
 </mat-card>
+
+<ng-template #onlyLoggedIn>
+  <mat-card>
+    <h3>Only Logged In Users Can View Messages</h3>
+    <button mat-flat-button color="primary" (click)="login()">
+      Click Here To Login 
+    </button>
+  </mat-card>
+</ng-template>

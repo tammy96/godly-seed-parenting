@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from "@angular/fire/firestore";
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 
 
 @Injectable({
@@ -11,7 +12,8 @@ import 'firebase/auth';
 export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, 
-    private afs: AngularFirestore) { }
+    private afs: AngularFirestore, 
+    private matSnackBar: MatSnackBar) { }
 
   addUserToDatabase(userData: firebase.auth.UserCredential) {
     this.afs.collection('users').doc(userData.user.uid).set({
@@ -21,7 +23,17 @@ export class AuthService {
     })
   }
 
-  
+  loginSuccess(message: string): MatSnackBarRef<SimpleSnackBar> {
+    return this.matSnackBar.open(message, 'Close', {
+      duration: 2000
+    })
+  }
+
+  loginFailed(e): MatSnackBarRef<SimpleSnackBar> {
+    return this.matSnackBar.open(e.message, 'Close', {
+      duration: 6000
+    })
+  }
 
   addUserToDatabaseFromEmailLogin(user: firebase.auth.UserCredential, userData) {
     this.afs.collection('users').doc(user.user.uid).set(userData);
@@ -31,20 +43,24 @@ export class AuthService {
   loginFacebook() {
     return this.afAuth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then((res) => {
         console.log(res)
-        this.addUserToDatabase(res)
+        this.addUserToDatabase(res);
+        this.loginSuccess('Login Success');
     })
     .catch((err) => {
       console.log(err)
+      this.loginFailed(err)
     })
   }
 
   loginGoogle() {
     return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then((res) => {
-      this.addUserToDatabase(res)
+      this.addUserToDatabase(res);
+      this.loginSuccess('Login Success');
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
+      this.loginFailed(err)
     })
   }
 
@@ -59,8 +75,10 @@ export class AuthService {
   logout() {
     this.afAuth.signOut().then(() => {
       console.log('Logged Out')
+      this.loginSuccess('Logout Successfull')
     }).catch((err) => {
       console.log(err)
+      this.loginFailed(err)
     })
   }
 

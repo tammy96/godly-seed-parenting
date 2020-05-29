@@ -43,6 +43,19 @@ export class AppComponent {
       });
   }
 
+  ngAfterViewInit() {
+    this.afAuth.authState.subscribe((res) => {
+      if (!res) {
+        console.log('No Current User')
+        this.loggedIn = false;
+      }
+      if (res) {
+        console.log(res)
+        this.loggedIn = true;
+      }
+    })
+  }
+
   logout() {
     this.afAuth.signOut().then(() => {
       this.matSnackbar.open('Logout Successful', 'Close', {
